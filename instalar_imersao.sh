@@ -4,6 +4,14 @@
 #  Cole este comando no Terminal e deixe rodar!
 # ============================================================
 
+# Se estiver rodando via pipe (curl | bash), salva o script
+# localmente e re-executa com stdin livre pro sudo funcionar
+if [ ! -t 0 ]; then
+  TMPSCRIPT="$HOME/.instalar_imersao_tmp.sh"
+  cat > "$TMPSCRIPT"
+  exec bash "$TMPSCRIPT"
+fi
+
 set -e
 
 GREEN='\033[0;32m'
