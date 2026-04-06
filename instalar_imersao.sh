@@ -85,6 +85,16 @@ if command -v brew &>/dev/null; then
   pular "Homebrew"
 else
   echo "  Instalando Homebrew... (vai pedir sua senha do Mac)"
+  # Garante que o sudo ja esta autenticado antes de chamar o Homebrew,
+  # caso stdin esteja ocupado pelo pipe do curl
+  if ! sudo -n true 2>/dev/null; then
+    echo ""
+    echo -e "  ${YELLOW}ATENCAO: O Homebrew precisa da sua senha do Mac.${NC}"
+    echo -e "  ${YELLOW}Se nada acontecer, rode o script assim:${NC}"
+    echo ""
+    echo -e "    ${BLUE}curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/instalar_imersao.sh -o ~/instalar.sh && bash ~/instalar.sh${NC}"
+    echo ""
+  fi
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   # Configura o PATH do Homebrew
