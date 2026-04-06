@@ -12,6 +12,28 @@ RED='\033[0;31m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
+# -----------------------------------------------------------
+# BLOQUEIO: nao pode rodar como root / sudo su
+# -----------------------------------------------------------
+if [[ "$EUID" -eq 0 ]] || [[ "$USER" == "root" ]]; then
+  echo ""
+  echo -e "${RED}============================================================${NC}"
+  echo -e "${RED}   ERRO: NAO RODE ESTE SCRIPT COMO ROOT!                   ${NC}"
+  echo -e "${RED}============================================================${NC}"
+  echo ""
+  echo -e "  Voce esta logado como ${RED}root${NC} (provavelmente usou 'sudo su')."
+  echo ""
+  echo -e "  ${GREEN}COMO RESOLVER:${NC}"
+  echo "  1. Digite: exit"
+  echo "  2. Depois rode o comando de novo SEM sudo su:"
+  echo ""
+  echo -e "     ${BLUE}curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/instalar_imersao.sh | bash${NC}"
+  echo ""
+  echo "  O script vai pedir sua senha quando precisar. Nao precisa de sudo su!"
+  echo ""
+  exit 1
+fi
+
 echo ""
 echo -e "${BLUE}============================================================${NC}"
 echo -e "${BLUE}   INSTALADOR DA IMERSAO DE IA                              ${NC}"
@@ -63,7 +85,7 @@ if command -v brew &>/dev/null; then
   pular "Homebrew"
 else
   echo "  Instalando Homebrew... (vai pedir sua senha do Mac)"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   # Configura o PATH do Homebrew
   if [[ -f /opt/homebrew/bin/brew ]]; then
