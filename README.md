@@ -26,7 +26,7 @@ O script verificará cada ferramenta e pulará aquelas já instaladas. Pode leva
 
 ## 2. Instalar Skills de IA
 
-Para acessar as 20 skills de IA compartilhadas, você precisa copiar os meta-skills para seu ambiente Claude Code:
+Para acessar as 27 skills de IA compartilhadas, você precisa copiar os meta-skills para seu ambiente Claude Code:
 
 ```bash
 git clone https://github.com/parisgroup-ai/imersao-ia-setup.git ~/.ai-skills-cache && cp -r ~/.ai-skills-cache/meta/sync-skills ~/.claude/skills/ && cp -r ~/.ai-skills-cache/meta/share-skill ~/.claude/skills/
@@ -37,7 +37,7 @@ Após executar este comando:
 1. Abra **Claude Code**
 2. Execute o comando `/sync-skills` para sincronizar todas as skills do repositório
 
-Pronto! As 20 skills estão disponíveis para uso.
+Pronto! As 27 skills estão disponíveis para uso.
 
 ## Comandos
 
@@ -52,7 +52,7 @@ Use os seguintes comandos em Claude Code para gerenciar skills:
 
 ## Skills Disponíveis
 
-Aqui estão as 20 skills de IA disponibilizadas:
+Aqui estão as 27 skills de IA disponibilizadas:
 
 | Skill | Descrição |
 |-------|-----------|
@@ -70,12 +70,19 @@ Aqui estão as 20 skills de IA disponibilizadas:
 | **i18n-audit** | Auditoria de internacionalização e traduções |
 | **i18n-maintenance** | Manutenção e sincronização de arquivos de tradução |
 | **logger-design** | Design de sistema de logging estruturado |
+| **memory-bank** | Gerenciamento de memória persistente entre sessões para contexto contínuo |
 | **mobile-pwa-usability** | Auditoria de usabilidade mobile, PWA e performance |
+| **obsidian-docs** | Documentação técnica com convenções Obsidian (ADRs, runbooks, templates) |
+| **prompt-maintenance** | Manutenção de templates de prompt com validação e rastreamento de dependências |
 | **readme-maintenance** | Padronização e atualização de arquivos README |
 | **redis-design** | Design de cache com Redis e estratégias de armazenamento |
+| **reviewer** | Validação estruturada de propostas e planos antes da implementação |
 | **saas-bootstrap** | Bootstrap de monorepo SaaS com estrutura profissional |
+| **saas-migration-audit** | Análise de viabilidade de migração para stack SaaS canônica |
 | **security-practices** | Auditoria e implementação de práticas de segurança |
+| **tasknotes** | Gestão de tarefas no Obsidian com TaskNotes, Pomodoro e sprints |
 | **testing-strategy** | Estratégia de testes unitários, integração e coverage |
+| **weekly-metrics** | Relatório semanal de produtividade a partir de git e tarefas |
 
 ## Formato das Skills
 
