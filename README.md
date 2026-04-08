@@ -26,7 +26,7 @@ O script verificará cada ferramenta e pulará aquelas já instaladas. Pode leva
 
 ## 2. Instalar Skills de IA
 
-Para acessar as 27 skills de IA compartilhadas, você precisa copiar os meta-skills para seu ambiente Claude Code:
+Para acessar as 28 skills de IA compartilhadas, você precisa copiar os meta-skills para seu ambiente Claude Code:
 
 ```bash
 git clone https://github.com/parisgroup-ai/imersao-ia-setup.git ~/.ai-skills-cache && cp -r ~/.ai-skills-cache/meta/sync-skills ~/.claude/skills/ && cp -r ~/.ai-skills-cache/meta/share-skill ~/.claude/skills/
@@ -37,7 +37,7 @@ Após executar este comando:
 1. Abra **Claude Code**
 2. Execute o comando `/sync-skills` para sincronizar todas as skills do repositório
 
-Pronto! As 27 skills estão disponíveis para uso.
+Pronto! As 28 skills estão disponíveis para uso.
 
 ## Comandos
 
@@ -52,10 +52,11 @@ Use os seguintes comandos em Claude Code para gerenciar skills:
 
 ## Skills Disponíveis
 
-Aqui estão as 27 skills de IA disponibilizadas:
+Aqui estão as 28 skills de IA disponibilizadas:
 
 | Skill | Descrição |
 |-------|-----------|
+| **agents-maintenance** | Validação e manutenção de CLAUDE.md e AGENTS.md em monorepos |
 | **api-design** | Design de APIs REST consistentes, versionadas com documentação OpenAPI |
 | **clean-architecture** | Estruturação com clean architecture e princípios SOLID |
 | **code-consolidation** | Consolidação e remoção de código duplicado |
