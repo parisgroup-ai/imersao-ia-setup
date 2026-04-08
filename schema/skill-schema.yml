@@ -1,0 +1,32 @@
+# Skill Frontmatter Schema
+# Used by CI to validate SKILL.md files
+
+required_fields:
+  - name
+  - description
+  - version
+
+optional_fields:
+  - author
+  - tags
+
+field_rules:
+  name:
+    type: string
+    pattern: "^[a-z0-9-]+$"
+    description: "Lowercase kebab-case identifier"
+  description:
+    type: string
+    min_length: 10
+    description: "When to use this skill (shown in skill picker)"
+  version:
+    type: string
+    pattern: "^\\d+\\.\\d+\\.\\d+$"
+    description: "Semantic version"
+  author:
+    type: string
+    description: "GitHub username of the skill author"
+  tags:
+    type: array
+    items: string
+    description: "Categories for discovery (e.g., backend, testing, devops)"
