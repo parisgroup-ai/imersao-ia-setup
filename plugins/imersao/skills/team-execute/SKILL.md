@@ -1,6 +1,6 @@
 ---
 name: team-execute
-description: Use when executing an implementation plan through the team-dev multi-agent pipeline.
+description: "Execute an implementation plan through the multi-agent team pipeline. Use when you have a plan and want agents to build it. Triggers on: executar o plano, rodar o plano com agentes, implementar o plano, build com agentes, team execute, execute plan."
 ---
 
 # Team Execute

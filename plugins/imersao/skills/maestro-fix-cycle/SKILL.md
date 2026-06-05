@@ -1,6 +1,6 @@
 ---
 name: maestro-fix-cycle
-description: Use when Maestro mobile failures should be handled by an automated one-flow-at-a-time repair loop.
+description: "Auto-repair loop for failing Maestro mobile tests on the iOS Simulator, one flow at a time. Use when you want mobile/simulator tests fixed automatically. Triggers on: conserta os testes mobile, arruma o teste do simulador, loop de correcao mobile, fix mobile tests, auto fix ios tests."
 ---
 
 # maestro-fix-cycle - Flow-by-Flow Test-Fix Loop with Memory

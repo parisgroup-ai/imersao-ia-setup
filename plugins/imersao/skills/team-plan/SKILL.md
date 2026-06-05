@@ -1,6 +1,6 @@
 ---
 name: team-plan
-description: Use when turning a feature request into an implementation plan with parallel research agents.
+description: "Turn a feature request into an implementation plan using parallel research agents. Use when you want a multi-agent plan before building a feature. Triggers on: planejar feature, plano de implementacao, planejar com agentes, montar um plano, team plan, implementation plan, plano multi-agente."
 ---
 
 # Team Plan

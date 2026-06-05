@@ -1,6 +1,6 @@
 ---
 name: coverage-report
-description: Use when analyzing coverage history, trends, or comparisons between snapshots and branches.
+description: "Analyze coverage history, trends and comparisons between snapshots or branches. Use when you want to see how coverage evolved. Triggers on: relatorio de cobertura, tendencia de cobertura, comparar cobertura, evolucao da cobertura, coverage report, coverage trend."
 ---
 
 # coverage-report

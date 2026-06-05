@@ -1,6 +1,6 @@
 ---
 name: mobile-native-bestpractices
-description: Use when building or reviewing React Native or Expo code for architecture, UX, performance, or native best practices.
+description: "Build or review React Native / Expo code for architecture, UX, performance and native best practices. Use when writing or reviewing a React Native / Expo app. Triggers on: react native, expo, app nativo, boas praticas mobile nativo, arquitetura react native, performance no app nativo, react native review."
 ---
 
 # Mobile Native Best Practices

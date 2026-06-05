@@ -1,6 +1,6 @@
 ---
 name: maestro-analyze
-description: Use when investigating Maestro mobile test failures or diagnosing why a mobile flow failed.
+description: "Investigate why a Maestro mobile test on the iOS Simulator failed. Use after a mobile/simulator test fails and you need the cause. Triggers on: teste mobile falhou, porque o teste do app quebrou, analisar falha mobile, maestro falhou, mobile test failed, ios simulator error."
 ---
 
 # maestro-analyze - Maestro Failure Analysis

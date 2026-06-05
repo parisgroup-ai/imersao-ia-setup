@@ -1,6 +1,6 @@
 ---
 name: qa-mobile
-description: Use when checking responsive behavior or mobile layout regressions across browser viewports.
+description: "Check responsive layout and mobile-viewport regressions in the browser (web page, not a device). Use when a web page looks broken on small/mobile screen sizes. Triggers on: responsivo, layout no celular, quebrou no mobile, tela pequena, layout responsivo no navegador, responsive, mobile viewport."
 ---
 
 # Mobile QA Skill

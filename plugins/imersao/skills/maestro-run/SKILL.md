@@ -1,6 +1,6 @@
 ---
 name: maestro-run
-description: Use when running Maestro mobile tests on iOS Simulator and you need project-aware flow selection.
+description: "Run the app's mobile UI tests on the iOS Simulator with Maestro. Use when you want to run mobile tests on a simulator. Triggers on: teste mobile, testar no simulador, rodar app no simulador iOS, teste de app mobile, maestro, mobile test, ios simulator test."
 ---
 
 # maestro-run - Smart Maestro Test Runner

@@ -1,6 +1,6 @@
 ---
 name: e2e-architect
-description: Use when planning, auditing, or debugging E2E test coverage, flows, or fixture strategy.
+description: "Plan, audit or debug end-to-end (E2E) test coverage, flows and fixtures (Playwright). Use when designing or improving an E2E test suite. Triggers on: planejar testes e2e, arquitetura de testes e2e, cobertura e2e, estrategia de e2e, fixtures e2e, e2e architect, end-to-end test plan."
 ---
 
 # E2E Architect Skill
