@@ -15,6 +15,8 @@ for f in .claude-plugin/marketplace.json plugins/imersao/.claude-plugin/plugin.j
   if command -v python3 >/dev/null 2>&1; then
     python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f" 2>/dev/null \
       && echo "  ✓ JSON válido: $f" || err "JSON inválido: $f"
+  elif [ -n "${CI:-}" ]; then
+    err "python3 ausente — não dá pra validar o JSON em CI: $f"
   else
     echo "  • (python3 ausente, pulando checagem de JSON) $f"
   fi

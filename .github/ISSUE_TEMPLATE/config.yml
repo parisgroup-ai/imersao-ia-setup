@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 Primeiros passos
+    url: https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/PRIMEIROS-PASSOS.md
+    about: O que fazer depois de instalar o ambiente.
+  - name: 🛠️ Troubleshooting
+    url: https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/TROUBLESHOOTING.md
+    about: Soluções pras travadas mais comuns no setup.
