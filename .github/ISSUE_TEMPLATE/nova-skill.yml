@@ -1,0 +1,34 @@
+name: 💡 Nova skill
+description: Propor uma nova skill de IA para o catálogo da Imersão
+title: "[skill] "
+labels: ["nova-skill"]
+body:
+  - type: input
+    id: nome
+    attributes:
+      label: Nome da skill (kebab-case)
+      placeholder: ex. minha-skill
+    validations:
+      required: true
+  - type: textarea
+    id: o-que-faz
+    attributes:
+      label: O que a skill faz e QUANDO usar
+      description: Será a base da `description` no frontmatter. Inclua gatilhos em PT-BR e EN.
+      placeholder: "Conserta um CI quebrado. Gatilhos: ci quebrou, fix ci, build quebrou..."
+    validations:
+      required: true
+  - type: textarea
+    id: conteudo
+    attributes:
+      label: Esboço do conteúdo
+      description: Passo a passo, exemplos, checklist que a skill deveria conter.
+    validations:
+      required: false
+  - type: checkboxes
+    id: generica
+    attributes:
+      label: Confirmação
+      options:
+        - label: A skill é genérica (não depende de projeto/stack interno específico)
+          required: true

@@ -1,0 +1,37 @@
+name: 🐛 Problema no instalador / setup
+description: Algo deu errado na instalação do ambiente ou das skills
+title: "[setup] "
+labels: ["setup"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Antes de abrir, rode o diagnóstico e cole o resultado abaixo:
+        ```bash
+        curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
+        ```
+        Veja também o [TROUBLESHOOTING](https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/TROUBLESHOOTING.md).
+  - type: textarea
+    id: o-que-aconteceu
+    attributes:
+      label: O que aconteceu
+      placeholder: Descreva o erro e em que passo apareceu.
+    validations:
+      required: true
+  - type: textarea
+    id: check-output
+    attributes:
+      label: Saída do check.sh
+      render: shell
+    validations:
+      required: false
+  - type: dropdown
+    id: chip
+    attributes:
+      label: Tipo de Mac
+      options:
+        - Apple Silicon (M1/M2/M3/M4)
+        - Intel
+        - Não sei
+    validations:
+      required: false
