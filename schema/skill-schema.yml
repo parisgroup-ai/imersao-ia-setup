@@ -1,32 +1,42 @@
 # Skill Frontmatter Schema
-# Used by CI to validate SKILL.md files
+# Reflete o que o Claude Code realmente lê de um SKILL.md.
+# Apenas `name` e `description` são obrigatórios e usados pelo runtime
+# (a `description` é o gatilho mostrado no seletor de skills).
+# `version`, `author` e `tags` são metadados decorativos — opcionais.
+# A versão "oficial" do plugin vive em plugins/imersao/.claude-plugin/plugin.json.
 
 required_fields:
   - name
   - description
-  - version
 
 optional_fields:
-  - author
-  - tags
+  - allowed-tools            # restringe as ferramentas que a skill pode usar
+  - disable-model-invocation # se true, a skill não dispara sozinha (só uso manual)
+  - license
+  - version                  # decorativo; a versão canônica está no plugin.json
+  - author                   # decorativo
+  - tags                     # decorativo (categorias para descoberta)
 
 field_rules:
   name:
     type: string
     pattern: "^[a-z0-9-]+$"
-    description: "Lowercase kebab-case identifier"
+    description: "Identificador kebab-case minúsculo; deve bater com o nome da pasta"
   description:
     type: string
     min_length: 10
-    description: "When to use this skill (shown in skill picker)"
+    description: "Quando usar esta skill (mostrado no seletor). Inclua gatilhos em PT-BR e EN."
+  allowed-tools:
+    type: string
+    description: "Lista separada por vírgula das ferramentas permitidas (opcional)"
   version:
     type: string
     pattern: "^\\d+\\.\\d+\\.\\d+$"
-    description: "Semantic version"
+    description: "Versão semântica (opcional, decorativa)"
   author:
     type: string
-    description: "GitHub username of the skill author"
+    description: "Usuário do GitHub (opcional)"
   tags:
     type: array
     items: string
-    description: "Categories for discovery (e.g., backend, testing, devops)"
+    description: "Categorias para descoberta (opcional)"

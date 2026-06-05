@@ -1,0 +1,20 @@
+{
+  "name": "imersao-ia",
+  "description": "Marketplace da Imersão IA — ParisGroup. Skills de IA curadas para o bootcamp, instaláveis via Claude Code plugins.",
+  "owner": {
+    "name": "ParisGroup",
+    "email": "dev@parisgroup.ai"
+  },
+  "metadata": {
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "imersao",
+      "description": "Skills de IA curadas da Imersão IA da ParisGroup — auditoria, testes, arquitetura, devops, mobile, docs e mais. Funciona em qualquer projeto.",
+      "version": "1.0.0",
+      "source": "./plugins/imersao",
+      "strict": false
+    }
+  ]
+}
