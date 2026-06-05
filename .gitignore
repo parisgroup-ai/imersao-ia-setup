@@ -1,0 +1,25 @@
+# Config local de MCP / dev — não distribuir pros alunos
+.mcp.json
+
+# macOS
+.DS_Store
+
+# Editores
+.idea/
+.vscode/
+
+# Node
+node_modules/
+
+# Variáveis de ambiente
+.env
+.env.*
+
+# Claude Code (config local da máquina)
+.claude/settings.local.json
+
+# Logs
+*.log
+
+# Cache local usado pelo sync de skills do Codex
+.imersao-ia-cache/
