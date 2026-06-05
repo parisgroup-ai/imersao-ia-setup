@@ -28,6 +28,12 @@ O script verifica cada item e pula os que já estão instalados. Ao final, **fec
 
 > O instalador configura o npm para instalar pacotes globais no seu usuário (`~/.npm-global`), evitando `sudo npm install -g` — que costuma quebrar atualizações futuras.
 
+**Instalou e travou em algo?** Veja [docs/PRIMEIROS-PASSOS.md](docs/PRIMEIROS-PASSOS.md) (o que fazer depois do setup) e [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) (erros comuns). Para re-checar o ambiente a qualquer momento:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
+```
+
 ## 2. Skills de IA (plugin)
 
 As skills são distribuídas como um **plugin do Claude Code** via marketplace. Não é preciso copiar pastas à mão: o Claude Code descobre cada skill automaticamente, e você atualiza ou desinstala com um comando.
