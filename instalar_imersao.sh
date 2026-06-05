@@ -208,7 +208,7 @@ instalar_app() {
     if brew install --cask "$cask_name" 2>/dev/null; then
       ok "$display_name"
     else
-      erro "$display_name" "tenta baixar manualmente"
+      erro "$display_name" "rode manualmente: brew install --cask $cask_name (veja docs/TROUBLESHOOTING.md)"
     fi
   fi
 }
@@ -254,7 +254,9 @@ fi
 echo -e "${BLUE}[8/$TOTAL]${NC} Instalando as skills da Imersao (plugin 'imersao')..."
 if command -v claude &>/dev/null; then
   claude plugin marketplace add parisgroup-ai/imersao-ia-setup 2>/dev/null || true
-  if claude plugin install imersao@imersao-ia 2>/dev/null; then
+  claude plugin install imersao@imersao-ia 2>/dev/null || true
+  # Confirma de fato que o plugin ficou instalado (nao confia so no exit code)
+  if claude plugin list 2>/dev/null | grep -q 'imersao@imersao-ia'; then
     ok "Skills da Imersao (plugin 'imersao')"
   else
     erro "Skills (plugin)" "no Claude Code rode: /plugin marketplace add parisgroup-ai/imersao-ia-setup e depois /plugin install imersao@imersao-ia"
@@ -315,12 +317,14 @@ echo "  2. Criar conta no Claude:   https://claude.ai/login  (plano Max \$100 ou
 echo "  3. Criar conta no ChatGPT:  https://chat.openai.com/  (plano Plus \$20/mes)"
 echo "  4. Abrir o Docker Desktop pelo menos 1x pra finalizar setup"
 echo "  5. Abrir o Claude Desktop e fazer login"
-echo "  6. Fechar e reabrir o terminal (ou o Claude Code) pra carregar as skills do plugin"
+echo "  6. Fechar e reabrir o terminal, rodar 'claude' e fazer login na 1a vez"
+echo "     (as skills do plugin carregam quando o Claude Code reinicia)"
 echo ""
 echo -e "${BLUE}PROXIMOS PASSOS:${NC}"
-echo "  - Guia do dia 1:  https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/PRIMEIROS-PASSOS.md"
-echo "  - Deu erro?       https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/TROUBLESHOOTING.md"
-echo "  - Conferir tudo:  curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash"
+echo "  - Guia do dia 1:    https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/PRIMEIROS-PASSOS.md"
+echo "  - Deu erro?         https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/TROUBLESHOOTING.md"
+echo "  - Conferir tudo:    curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash"
+echo "  - Skills novas:     claude plugin update imersao  (atualiza durante a imersao)"
 echo ""
 echo -e "${BLUE}Usa Codex tambem?${NC} As skills viram plugin so no Claude Code. Pro Codex, rode:"
 echo -e "  ${BLUE}curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/sync-codex-skills.sh | bash${NC}"
