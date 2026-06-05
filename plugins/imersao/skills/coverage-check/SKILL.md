@@ -1,6 +1,6 @@
 ---
 name: coverage-check
-description: Use when validating coverage thresholds, PR gates, or critical low-coverage files.
+description: "Validate coverage thresholds and PR gates, flagging critical low-coverage files. Use when enforcing a minimum coverage bar. Triggers on: checar cobertura, threshold de cobertura, gate de cobertura, minimo de cobertura, arquivos sem teste, coverage gate, coverage check."
 ---
 
 # coverage-check

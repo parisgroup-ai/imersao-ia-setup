@@ -26,6 +26,20 @@ Plugins são um recurso do Claude Code. Para usar essas skills no **Codex**, rod
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/sync-codex-skills.sh | bash
 ```
 
+## Qual skill usar quando
+
+Alguns grupos de skills se parecem — este mapa desambigua (você normalmente só descreve o que quer e o Claude escolhe sozinho):
+
+| Quero… | Skill |
+|--------|-------|
+| Testar **app mobile no simulador iOS** | `maestro-run` (rodar), `maestro-analyze` (falhou), `maestro-capture` (screenshots), `maestro-fix-cycle` (corrigir em loop) |
+| Ver se a **página web quebra em tela pequena** (responsivo, no navegador) | `qa-mobile` |
+| Escrever/revisar um **app React Native / Expo** | `mobile-native-bestpractices` |
+| **Testes end-to-end** de web (Playwright) | `e2e-run` (rodar), `e2e-architect` (planejar), `e2e-analyze` (falha), `e2e-fix-cycle` (corrigir), `e2e-chrome-devtools` (smoke visual) |
+| **Cobertura de testes** | `coverage-run` (rodar), `coverage-check` (gate/threshold), `coverage-report` (tendência/histórico) |
+| **Plano → execução → review** com vários agentes | `team-plan` → `team-execute` → `team-reviewer` |
+| **Mobile**: nativo vs. simulador vs. web responsivo | `mobile-native-bestpractices` (código RN/Expo) · `maestro-*` (teste no simulador iOS) · `qa-mobile` (web responsivo no navegador) |
+
 ## Estrutura
 
 ```

@@ -1,6 +1,6 @@
 ---
 name: maestro-capture
-description: Use when capturing iOS simulator screens via Maestro to compare the app against design references.
+description: "Capture iOS Simulator screens via Maestro to compare the app against design references. Use when you want screenshots of the mobile app. Triggers on: screenshot do app, capturar telas do simulador, comparar com o design mobile, telas do app mobile, maestro capture, ios simulator screenshot."
 ---
 
 # Maestro Capture

@@ -1,6 +1,6 @@
 ---
 name: team-reviewer
-description: Use when reviewing a PR or local diff with a parallel team of specialized review agents.
+description: "Review a PR or local diff with a parallel team of specialized review agents. Use when you want a thorough multi-agent code review. Triggers on: revisar PR, review do diff, revisao com agentes, revisar minhas mudancas, revisao de codigo, team review, code review multi-agente."
 ---
 
 # Team Reviewer

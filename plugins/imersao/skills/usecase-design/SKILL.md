@@ -1,6 +1,6 @@
 ---
 name: usecase-design
-description: Use when implementing features in modular Clean Architecture with use cases and thin tRPC routers.
+description: "Implement features in modular Clean Architecture with use cases and thin tRPC routers. Use when structuring backend feature logic into use-case modules. Triggers on: caso de uso, use case, clean architecture, criar use-case, organizar backend em modulos, camada de aplicacao, tRPC router."
 ---
 
 # Use Case Design (tRPC + Modules)

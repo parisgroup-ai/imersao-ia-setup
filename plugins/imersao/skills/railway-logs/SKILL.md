@@ -1,6 +1,6 @@
 ---
 name: railway-logs
-description: Use when fetching or diagnosing Railway deployment logs for production issues.
+description: "Fetch and diagnose Railway deployment logs for production issues. Use when an app or deploy on Railway is erroring. Triggers on: logs do railway, ver os logs, erro em producao, app caiu, deploy quebrou no railway, railway logs, production error."
 ---
 
 # Railway Logs Skill

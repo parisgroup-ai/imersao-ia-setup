@@ -1,6 +1,6 @@
 ---
 name: coverage-run
-description: Use when running coverage across local test stacks such as Vitest, Playwright, or pytest.
+description: "Run test coverage across local stacks (Vitest, Playwright, pytest). Use when you want to measure how much of the code the tests cover. Triggers on: rodar cobertura, cobertura de testes, gerar coverage, quanto de cobertura, run coverage, test coverage."
 ---
 
 # coverage-run

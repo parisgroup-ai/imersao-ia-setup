@@ -1,6 +1,6 @@
 ---
 name: ci-fix
-description: Diagnose and fix CI failures from the latest workflow run
+description: "Diagnose and fix a failing CI / GitHub Actions run. Use when a pipeline or build breaks. Triggers on: ci quebrou, ci falhou, conserta o ci, arruma o ci, build quebrou, o actions ta vermelho, pipeline failing, workflow failed, fix ci."
 ---
 
 # CI Fix
