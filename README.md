@@ -64,10 +64,13 @@ curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main
 
 ## 3. Processo da Imersão (do PRD ao app)
 
-O plugin traz um **pipeline guiado** que leva da ideia a um app funcionando, em 3 fases sobre um motor autônomo (`/imersao:pg-imersao-goal`, com 2 gates humanos):
+O plugin traz um **pipeline guiado** que leva da ideia a um app funcionando, em 3 fases sobre um motor autônomo (`/imersao:pg-imersao-goal`, com 2 gates humanos).
+
+**👉 Comece por `/imersao:pg-imersao-start`** — a bússola mostra os 3 passos e diz qual é o próximo (sem executar por você; quem roda cada fase é o aluno, de propósito):
 
 | Comando | Fase | O que faz |
 |---|---|---|
+| `/imersao:pg-imersao-start` | 👈 | **Comece aqui** — bússola dos 3 passos |
 | `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/PRD.md` (brainstorming guiado) |
 | `/imersao:pg-imersao-prototipo` | 2 | PRD → protótipo no **Design OS** público → export React + Tailwind |
 | `/imersao:pg-imersao-implementar` | 3 | Export + PRD → app **Next.js + Tailwind + shadcn/ui + Drizzle + Postgres (Docker)** |

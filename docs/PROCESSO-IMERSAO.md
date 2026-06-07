@@ -7,6 +7,10 @@ de design. Tudo guiado pelo Claude Code.
 > Pré-requisito: ter rodado o instalador da imersão e as skills carregadas
 > (`claude plugin update imersao` e reabrir o Claude Code).
 
+> **👉 Perdido? Rode `/imersao:pg-imersao-start`** a qualquer momento — a bússola te diz
+> em que passo você está e qual o próximo (sem fazer por você). É retomável: fechou tudo,
+> rodou de novo, ela reorienta.
+
 ---
 
 ## Visão geral

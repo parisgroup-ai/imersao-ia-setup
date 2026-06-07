@@ -58,7 +58,28 @@ Aí é só pedir em português, por exemplo:
 
 Você **não precisa decorar comandos nem nomes de skill** — descreva o que quer e o Claude usa a skill certa sozinho ("conserta meu CI", "auditoria de qualidade", "cria um README", "roda os testes").
 
-## 6. Atualizando as skills depois
+## 6. Construindo seu app de verdade (o projeto da imersão)
+
+O hello-world acima é só pra sentir o Claude Code. Pra construir o **app da imersão** —
+da ideia até um app funcionando, com banco de dados — existe um caminho guiado em **3
+passos**. Comece criando a pasta do seu app e abrindo o Claude nela:
+
+```bash
+mkdir ~/meu-app && cd ~/meu-app
+claude
+```
+
+Dentro do Claude, rode a **bússola** (digite `/` e escolha na lista, não precisa decorar):
+
+```text
+/imersao:pg-imersao-start
+```
+
+Ela mostra os 3 passos (**definir → desenhar → construir**) e te diz exatamente o próximo
+— sem fazer por você (quem constrói é você, pra aprender a lógica). Roteiro completo:
+[PROCESSO-IMERSAO.md](./PROCESSO-IMERSAO.md).
+
+## 7. Atualizando as skills depois
 
 Saiu skill nova durante a imersão? Atualize com:
 
