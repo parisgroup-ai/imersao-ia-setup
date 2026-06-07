@@ -7,6 +7,16 @@ description: Fase 2 da imersão — vira o PRD em protótipo funcional no Design
 Objetivo: a partir do `docs/PRD.md`, **montar e subir o Design OS público sozinho**
 (o aluno não cola bloco nenhum) e então conduzir o design até o protótipo aprovado.
 
+## Narração didática (Fase 2)
+
+Automatize o setup (clone/install/server) **sem** narrar a sintaxe, mas explique o
+**porquê** em 1 linha simples, na primeira vez:
+
+| Conceito | Diga assim |
+|---|---|
+| protótipo | "Um protótipo é um rascunho clicável das suas telas — a gente valida o visual ANTES de construir de verdade, porque é muito mais barato mudar um desenho do que um app pronto." |
+| Design OS | "O Design OS é uma ferramenta de desenho de telas: você conversa, ele desenha, e você vê na hora no navegador." |
+
 ## 1. Pré-condições
 
 - Exija **`docs/PRD.md`**. Se faltar, peça `/imersao:pg-imersao-prd` antes e pare.

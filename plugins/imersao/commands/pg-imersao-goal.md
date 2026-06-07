@@ -11,6 +11,27 @@ etapas e parando em **exatamente 2 momentos** para o humano decidir.
 
 Se `$ARGUMENTS` estiver vazio, pergunte ao aluno: "Qual é o objetivo? (uma frase)".
 
+## Narração didática (turma de construtores de produto, não-devs)
+
+Esta turma quer **construir produtos com IA** — a mecânica (git, comandos, sintaxe) é
+**meio, não fim**. Ao executar:
+
+- **Automatize o encanamento** (git, instalar deps, rodar comandos, sintaxe). O aluno
+  **não digita** nada disso e **não precisa decorar**.
+- **MAS narre o CONCEITO em UMA linha simples**, em português, na **primeira vez** que ele
+  aparece — pra o aluno entender a **lógica** sem se afogar na sintaxe.
+- **Nunca** despeje jargão ou log cru sem traduzir.
+
+Glossário de bolso (use quando o conceito surgir, uma vez cada):
+
+| Conceito | Diga assim (1 linha, simples) |
+|---|---|
+| salvar versão (commit) | "Salvei um ponto do projeto que dá pra voltar depois, tipo um save de jogo." |
+| teste | "Fiz um cheque automático que confirma que essa parte funciona — pra não quebrar sem você notar." |
+| frontend / backend | "Frontend é o que você vê e clica; backend é o cérebro que processa e fala com o banco." |
+
+A narração é **informativa, não vira pergunta** — as pausas humanas continuam sendo só 2.
+
 ## As 4 etapas (auto-avanço)
 
 1. **brainstorming** — invoque a skill `brainstorming`. Explore a ideia, proponha o
@@ -30,8 +51,9 @@ Se `$ARGUMENTS` estiver vazio, pergunte ao aluno: "Qual é o objetivo? (uma fras
 
 4. **finishing-a-development-branch** — invoque a skill `finishing-a-development-branch`.
    Rode os testes, e apresente o menu de integração.
-   → 🛑 **GATE HUMANO 2 (integração final):** o aluno escolhe como integrar (merge /
-   PR / segurar).
+   → 🛑 **GATE HUMANO 2 (entrega final):** apresente a escolha em **linguagem simples**
+   ("salvar tudo no projeto" / "guardar pra revisar depois") — **nunca** "merge / PR /
+   discard". O salvamento (git) acontece por baixo dos panos.
 
 ## Regras do motor
 
@@ -42,9 +64,11 @@ Se `$ARGUMENTS` estiver vazio, pergunte ao aluno: "Qual é o objetivo? (uma fras
   do plano em markdown.
 - **Commits** são feitos com `git` puro, mensagens em Conventional Commits, staging
   explícito dos arquivos (`git add <arquivos>`), sem `--no-verify`.
-- Use TDD de verdade: teste primeiro, veja falhar, implemente o mínimo, veja passar.
-- Antes de declarar qualquer etapa "pronta", **mostre a evidência** (saída do teste,
-  do build) — nunca afirme sucesso sem rodar.
+- **TDD roda nos bastidores:** escreva os testes e rode-os de verdade (teste primeiro,
+  veja falhar, implemente, veja passar) — mas o aluno **não assiste** ao ciclo
+  vermelho-verde; ele vê só o resultado narrado ("construí X e confirmei que funciona ✅").
+- **Verifique sempre, mas traduza:** antes de dizer que algo está pronto, rode os
+  testes/build de verdade — e mostre o resultado em **linguagem simples**, não o log cru.
 
 > Dica: para a imersão, os comandos de fase (`/imersao:pg-imersao-prd`, `/imersao:pg-imersao-prototipo`,
 > `/imersao:pg-imersao-implementar`) já chamam este motor no momento certo. Use `/imersao:pg-imersao-goal`
