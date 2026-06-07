@@ -62,7 +62,19 @@ Plugins são um recurso do **Claude Code**. Para usar as mesmas skills no **Code
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/sync-codex-skills.sh | bash
 ```
 
-## 3. Gerenciar skills
+## 3. Processo da Imersão (do PRD ao app)
+
+O plugin traz um **pipeline guiado** que leva da ideia a um app funcionando, em 3 fases sobre um motor autônomo (`/pg-imersao-goal`, com 2 gates humanos):
+
+| Comando | Fase | O que faz |
+|---|---|---|
+| `/pg-imersao-prd` | 1 | Ideia → `docs/PRD.md` (brainstorming guiado) |
+| `/pg-imersao-prototipo` | 2 | PRD → protótipo no **Design OS** público → export React + Tailwind |
+| `/pg-imersao-implementar` | 3 | Export + PRD → app **Next.js + Tailwind + shadcn/ui + Drizzle + Postgres (Docker)** |
+
+Passo a passo completo (aluno + instrutor): **[docs/PROCESSO-IMERSAO.md](docs/PROCESSO-IMERSAO.md)**.
+
+## 4. Gerenciar skills
 
 | Ação | Comando (dentro do Claude Code) | Comando (CLI) |
 |------|----------------------------------|----------------|
@@ -73,7 +85,7 @@ curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main
 
 `/plugin` sempre mostra a **lista completa e atualizada** das skills do plugin — não há tabela neste README para ficar desatualizada.
 
-## 4. Skills disponíveis
+## 5. Skills disponíveis
 
 Dezenas de skills curadas, organizadas por área. Use `/plugin` (ou veja `plugins/imersao/skills/`) para a lista completa e sempre atualizada. Um panorama:
 
@@ -86,7 +98,7 @@ Dezenas de skills curadas, organizadas por área. Use `/plugin` (ou veja `plugin
 - **i18n, SaaS & Lançamento** — `i18n-audit`, `i18n-maintenance`, `launch-audit`, `saas-bootstrap`, `saas-migration-audit`
 - **Produtividade & Time** — `tasknotes`, `sprint-report`, `weekly-metrics`, `session-close`, `team-plan`, `team-execute`, `team-reviewer`
 
-## 5. Formato das Skills
+## 6. Formato das Skills
 
 Cada skill é uma pasta `plugins/imersao/skills/<nome>/` com um `SKILL.md`. O frontmatter YAML precisa de **`name`** e **`description`** — é só isso que o Claude Code usa para descobrir e acionar a skill:
 

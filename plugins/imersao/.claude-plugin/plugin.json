@@ -1,7 +1,7 @@
 {
   "name": "imersao",
-  "version": "1.0.0",
-  "description": "Skills de IA curadas da Imersão IA da ParisGroup — auditoria, testes, arquitetura, devops, mobile, docs e mais. Funciona em qualquer projeto.",
+  "version": "1.1.0",
+  "description": "Skills de IA curadas da Imersão IA da ParisGroup + o processo guiado da imersão (PRD → protótipo no Design OS → implementação) via comandos /pg-imersao-*. Funciona em qualquer projeto.",
   "author": {
     "name": "ParisGroup",
     "email": "dev@parisgroup.ai"

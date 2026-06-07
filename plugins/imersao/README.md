@@ -26,6 +26,23 @@ Plugins são um recurso do Claude Code. Para usar essas skills no **Codex**, rod
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/sync-codex-skills.sh | bash
 ```
 
+## Processo da Imersão (comandos)
+
+O plugin traz um **pipeline guiado** que leva da ideia ao app funcionando, em 3 fases
+sobre um motor autônomo. Guia completo: [`docs/PROCESSO-IMERSAO.md`](../../docs/PROCESSO-IMERSAO.md).
+
+| Comando | Fase | Para quê |
+|---|---|---|
+| `/pg-imersao-prd` | 1 | Ideia → `docs/PRD.md` (via brainstorming guiado) |
+| `/pg-imersao-prototipo` | 2 | PRD → protótipo no **Design OS** público → export React+Tailwind |
+| `/pg-imersao-implementar` | 3 | Export + PRD → app **Next.js + Tailwind + shadcn/ui + Drizzle + Postgres (Docker)** |
+| `/pg-imersao-goal` | — | Motor autônomo (brainstorming → plano → execução → integração) com 2 gates humanos |
+
+As skills-base de método (`brainstorming`, `writing-plans`, `executing-plans`,
+`finishing-a-development-branch`, `test-driven-development`, `systematic-debugging`,
+`subagent-driven-development`, `verification-before-completion`) são vendorizadas aqui
+para que o pipeline funcione em qualquer projeto.
+
 ## Qual skill usar quando
 
 Alguns grupos de skills se parecem — este mapa desambigua (você normalmente só descreve o que quer e o Claude escolhe sozinho):
@@ -45,6 +62,8 @@ Alguns grupos de skills se parecem — este mapa desambigua (você normalmente s
 ```
 plugins/imersao/
 ├── .claude-plugin/plugin.json   # manifesto (nome, versão, autor)
+├── commands/
+│   └── pg-imersao-*.md          # comandos do processo da imersão
 └── skills/
     └── <nome>/SKILL.md          # uma skill por pasta
 ```
