@@ -311,6 +311,12 @@ else
 fi
 
 echo ""
+echo -e "${YELLOW}============================================================${NC}"
+echo -e "${YELLOW}  IMPORTANTE: feche e reabra o Claude Code UMA vez.${NC}"
+echo -e "${YELLOW}  Os comandos /imersao:* so aparecem DEPOIS de reabrir.${NC}"
+echo -e "${YELLOW}============================================================${NC}"
+
+echo ""
 echo -e "${BLUE}LEMBRETE — Falta fazer manualmente:${NC}"
 echo "  1. Criar conta no GitHub:   https://github.com/"
 echo "  2. Criar conta no Claude:   https://claude.ai/login  (plano Max \$100 ou \$200/mes)"

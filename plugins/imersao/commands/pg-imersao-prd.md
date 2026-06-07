@@ -1,38 +1,68 @@
 ---
-description: Fase 1 da imersão — transforma a ideia num PRD via brainstorming guiado.
-argument-hint: "<ideia do projeto>"
+description: Fase 1 da imersão — conversa rápida pra transformar sua ideia no documento do projeto.
+argument-hint: "<sua ideia em uma frase>"
 ---
 
-# /pg-imersao-prd — Fase 1: ideia → PRD
+# Fase 1 — sua ideia vira o documento do projeto
 
-Você vai conduzir o aluno da ideia bruta até um **PRD** (documento de produto) sólido,
-usando a skill `brainstorming`. A ideia inicial está em **$ARGUMENTS** (se vazia,
-comece perguntando "Em uma frase, o que você quer construir?").
+Conduza uma **conversa curta e amigável** (NÃO uma entrevista técnica) pra transformar a
+ideia do aluno num documento simples do projeto. O aluno é **iniciante, possivelmente
+não-programador** — fale 100% em **português coloquial, sem jargão**. A ideia inicial
+está em **$ARGUMENTS**.
 
-## Passo a passo
+## Regras de ouro (leia antes de começar)
 
-1. **Garanta o repositório do app.** Confirme que estamos dentro da pasta do projeto
-   (`meu-projeto/`). Se não houver repositório git aqui, ofereça `git init` antes de
-   seguir. (O protótipo do Design OS vai morar numa pasta separada — isso é a Fase 2.)
+- **NÃO invoque a skill `brainstorming` genérica** nesta fase. Conduza você mesmo, com o
+  roteiro abaixo. (Aquela skill é de engenharia: propõe arquitetura, salva em outro
+  caminho e levaria pro plano técnico — não é o que queremos aqui.)
+- **Sem "visual companion", sem propor "abordagens técnicas", sem falar de arquitetura.**
+  A parte visual é a Fase 2.
+- **Nunca diga ao aluno** estas palavras: "PRD", "spec", "hard-gate", "JTBD", "MVP",
+  "data shape", "repositório", "commit", "branch". Traduza tudo pro dia a dia.
+- **Uma pergunta por vez.** Prefira opções (a/b/c) a perguntas abertas.
 
-2. **Invoque a skill `brainstorming`** num diálogo guiado, amigável para iniciante,
-   **uma pergunta por vez**, cobrindo:
-   - **Problema:** que dor o produto resolve?
-   - **Usuário-alvo:** para quem é? (1 persona principal)
-   - **Jobs-to-be-done:** o que a pessoa quer realizar?
-   - **Escopo do MVP:** o que entra agora (in) e o que fica para depois (out)?
-   - **Telas/seções principais:** as 3–6 áreas do produto.
-   - **Data shape inicial:** as entidades principais e seus campos.
-   - **Critérios de sucesso:** como saber que funcionou?
+## Passo 1 — preparar a pasta (silencioso, sem falar de "git")
 
-3. 🛑 **GATE HUMANO (aprovar design):** apresente o design resumido e **espere o aluno
-   aprovar** antes de escrever o documento (hard-gate do brainstorming).
+Garanta que a pasta do projeto está pronta: se não houver repositório, rode `git init`
+por baixo dos panos e, se `git config user.name/user.email` estiverem vazios, defina um
+padrão (pra não estourar erro depois). Para o aluno, no máximo: "Já preparei a pasta do
+seu projeto."
 
-4. **Escreva `docs/PRD.md`** — a **fonte da verdade** do projeto — com as seções:
-   `Problema`, `Usuário`, `Jobs-to-be-done`, `Escopo do MVP (in/out)`,
-   `Telas/Seções`, `Data shape`, `Critérios de sucesso`.
+## Passo 2 — a conversa (3 a 4 perguntas, uma por vez)
 
-5. **Commit** do PRD: `git add docs/PRD.md && git commit -m "docs: PRD do projeto"`.
+Abra com: "Um documento de projeto é só um resumo do que a gente vai construir e pra
+quem — vamos montar isso juntos, conversando." Então pergunte, **uma por vez**:
 
-6. **Próximo passo:** diga ao aluno para rodar **`/pg-imersao-prototipo`** para virar
-   o PRD num protótipo funcional no Design OS.
+1. "Em uma frase, o que você quer construir?" (se já veio em `$ARGUMENTS`, só confirme)
+2. "Pra quem é? Quem vai usar?"
+3. "Quais as **3 a 5 telas ou áreas** principais? (ex.: tela de entrar, lista de X, cadastro de Y)"
+4. "O que **não** precisa entrar agora — pode ficar pra depois?"
+
+**Derive o resto sozinho** (o que cada pessoa quer fazer, que informações o app guarda,
+como saber que deu certo) a partir das respostas — **não pergunte isso diretamente**.
+Onde faltar algo, proponha um rascunho e deixe o aluno só **confirmar ou ajustar**.
+
+## Passo 3 — UM ponto de parada (o único momento de decisão)
+
+Mostre um resumo em bullets simples e pergunte de forma fechada:
+
+> "Esse é o resumo do seu projeto: [bullets]. Tá tudo certo? Responde **sim** que eu já
+> escrevo o documento, ou me diz o que mudar."
+
+Espere o "sim" (ou ajustes). **Não** crie um segundo ponto de revisão depois.
+
+## Passo 4 — salvar (silencioso)
+
+Escreva `docs/PRD.md` com seções claras: **Visão** (o que é, pra quem), **Telas/Áreas**,
+**O que o app guarda** (informações/entidades), **Fica pra depois**, **Como saber que deu
+certo**. Salve e guarde a primeira versão por baixo dos panos (git add + commit, sem
+mostrar o comando). Para o aluno: "Salvei e guardei a primeira versão do seu projeto. ✅"
+
+## Passo 5 — fechamento humano
+
+Conecte ao próximo **benefício concreto** (não a um "próximo comando"):
+
+> "Pronto! Esse documento é o **mapa** do seu projeto. Agora a gente transforma ele numa
+> **tela de verdade** que você vai poder ver e clicar. Quando quiser, é só pedir o próximo
+> passo — digite **`/`** e escolha **`imersao:pg-imersao-prototipo`** na lista (não precisa
+> decorar o nome)."

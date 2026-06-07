@@ -14,19 +14,19 @@ de design. Tudo guiado pelo Claude Code.
 ```
   IDEIA
     │
-    ▼   /pg-imersao-prd            (Fase 1 — brainstorming guiado)
+    ▼   /imersao:pg-imersao-prd            (Fase 1 — brainstorming guiado)
   docs/PRD.md
     │
-    ▼   /pg-imersao-prototipo      (Fase 2 — Design OS público)
+    ▼   /imersao:pg-imersao-prototipo      (Fase 2 — Design OS público)
   protótipo vivo (localhost:3000)  →  export (React + Tailwind)
     │
-    ▼   /pg-imersao-implementar    (Fase 3 — construir o app)
+    ▼   /imersao:pg-imersao-implementar    (Fase 3 — construir o app)
   APP FUNCIONANDO  (Next.js + Postgres em Docker)
 
-        └── motor: /pg-imersao-goal (autônomo, 2 gates humanos) ──┘
+        └── motor: /imersao:pg-imersao-goal (autônomo, 2 gates humanos) ──┘
 ```
 
-São **3 comandos** (um por fase) rodando sobre **um motor** (`/pg-imersao-goal`) que
+São **3 comandos** (um por fase) rodando sobre **um motor** (`/imersao:pg-imersao-goal`) que
 dirige o trabalho sozinho e só para 2 vezes para você decidir.
 
 ---
@@ -45,12 +45,12 @@ Manter separado evita misturar as dependências do Design OS com as do seu app.
 
 ---
 
-## Fase 1 — `/pg-imersao-prd` (ideia → PRD)
+## Fase 1 — `/imersao:pg-imersao-prd` (ideia → PRD)
 
 Dentro de `meu-projeto/`, rode:
 
 ```
-/pg-imersao-prd "um app pra agendar consultas do meu salão"
+/imersao:pg-imersao-prd "um app pra agendar consultas do meu salão"
 ```
 
 O Claude vai te entrevistar (uma pergunta por vez): problema, usuário, escopo do MVP,
@@ -61,12 +61,12 @@ telas, dados, critérios de sucesso. No fim ele te mostra o design.
 
 ---
 
-## Fase 2 — `/pg-imersao-prototipo` (PRD → protótipo)
+## Fase 2 — `/imersao:pg-imersao-prototipo` (PRD → protótipo)
 
 Dentro do Claude do app, rode:
 
 ```
-/pg-imersao-prototipo
+/imersao:pg-imersao-prototipo
 ```
 
 O comando **faz o setup do Design OS sozinho** — clona o repositório público numa
@@ -85,8 +85,9 @@ Nessa sessão, rode os comandos **do Design OS**, começando por `/product-visio
 `PRD.md` já foi copiado pra pasta), seguindo: roadmap → dados → `/design-tokens` →
 `/design-shell` → `/design-screen` (uma por seção) → `/sample-data`.
 
-🛑 **Gate 2 — revisar e ajustar.** Abra `http://localhost:3000`, veja o protótipo
-**vivo** e peça mudanças em **linguagem natural** ("aumenta o card", "tira esse campo").
+🛑 **Gate 2 — revisar e ajustar.** Na **aba do navegador que o Claude abriu pra você**,
+veja o protótipo **vivo** e peça mudanças em **linguagem natural** ("aumenta o card",
+"tira esse campo").
 Ele re-desenha só as telas afetadas. Quando estiver bom, rode o **`/export`** do Design
 OS → o pacote (componentes React + Tailwind + specs) vai para `../meu-projeto-design/export/`.
 
@@ -96,15 +97,15 @@ OS → o pacote (componentes React + Tailwind + specs) vai para `../meu-projeto-
 
 ---
 
-## Fase 3 — `/pg-imersao-implementar` (export → app completo)
+## Fase 3 — `/imersao:pg-imersao-implementar` (export → app completo)
 
 De volta em `meu-projeto/`:
 
 ```
-/pg-imersao-implementar
+/imersao:pg-imersao-implementar
 ```
 
-Isso dispara o motor `/pg-imersao-goal`, que monta o app a partir do protótipo + PRD. A
+Isso dispara o motor `/imersao:pg-imersao-goal`, que monta o app a partir do protótipo + PRD. A
 **primeira tarefa** já sobe a base com **banco em Docker**:
 
 - **Next.js** (App Router, TypeScript) + **Tailwind** + **shadcn/ui**
@@ -137,7 +138,7 @@ o que adiciona complexidade que não ajuda no objetivo da imersão.
 | Gate | Quando | O que você faz |
 |---|---|---|
 | Aprovar design | Fim da Fase 1 | Lê o resumo, aprova ou ajusta |
-| Revisar protótipo | Durante a Fase 2 | Olha `localhost:3000`, pede mudanças em linguagem natural |
+| Revisar protótipo | Durante a Fase 2 | Olha a aba do navegador que abriu, pede mudanças em linguagem natural |
 | Integração final | Fim da Fase 3 | Escolhe merge / PR / segurar |
 
 ---
@@ -155,10 +156,10 @@ esse ponto de pausa.
 
 | Comando | Fase | Para quê |
 |---|---|---|
-| `/pg-imersao-prd` | 1 | Ideia → `docs/PRD.md` |
-| `/pg-imersao-prototipo` | 2 | PRD → protótipo no Design OS → export |
-| `/pg-imersao-implementar` | 3 | Export + PRD → app funcionando |
-| `/pg-imersao-goal` | — | Dirigir um objetivo livre do início ao fim |
+| `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/PRD.md` |
+| `/imersao:pg-imersao-prototipo` | 2 | PRD → protótipo no Design OS → export |
+| `/imersao:pg-imersao-implementar` | 3 | Export + PRD → app funcionando |
+| `/imersao:pg-imersao-goal` | — | Dirigir um objetivo livre do início ao fim |
 
 ---
 

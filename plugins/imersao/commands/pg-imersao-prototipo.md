@@ -2,14 +2,14 @@
 description: Fase 2 da imersão — vira o PRD em protótipo funcional no Design OS público (setup automático).
 ---
 
-# /pg-imersao-prototipo — Fase 2: PRD → protótipo
+# /imersao:pg-imersao-prototipo — Fase 2: PRD → protótipo
 
 Objetivo: a partir do `docs/PRD.md`, **montar e subir o Design OS público sozinho**
 (o aluno não cola bloco nenhum) e então conduzir o design até o protótipo aprovado.
 
 ## 1. Pré-condições
 
-- Exija **`docs/PRD.md`**. Se faltar, peça `/pg-imersao-prd` antes e pare.
+- Exija **`docs/PRD.md`**. Se faltar, peça `/imersao:pg-imersao-prd` antes e pare.
 - A partir da pasta do app, derive a pasta-irmã do design (mantenha o `cwd` na raiz do
   app o tempo todo — **nunca** use `cd` solto; prefira `git -C`/`npm --prefix`):
 
@@ -85,4 +85,4 @@ aluno, **com o caminho e a URL reais já preenchidos** (resolva `$DESIGN_DIR` e 
 
 ## 5. Próximo passo
 
-Volte para a janela do Claude do **app** e rode **`/pg-imersao-implementar`**.
+Volte para a janela do Claude do **app** e rode **`/imersao:pg-imersao-implementar`**.

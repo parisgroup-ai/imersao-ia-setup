@@ -8,9 +8,10 @@ set -uo pipefail
 
 GREEN='\033[0;32m'; YELLOW='\033[1;33m'; RED='\033[0;31m'; BLUE='\033[0;34m'; NC='\033[0m'
 
-OK=0; FALTA=0
+OK=0; FALTA=0; AVISO=0
 ok()    { echo -e "  ${GREEN}OK${NC}   $1${2:+  ($2)}"; OK=$((OK + 1)); }
 falta() { echo -e "  ${RED}X${NC}    $1 — ${YELLOW}$2${NC}"; FALTA=$((FALTA + 1)); }
+aviso() { echo -e "  ${YELLOW}!${NC}    $1"; AVISO=$((AVISO + 1)); }
 
 # Garante brew/claude no PATH mesmo via curl|bash num shell mínimo
 [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null
@@ -63,12 +64,27 @@ else
   falta "Plugin 'imersao'" "instale o Claude Code primeiro"
 fi
 
+# Pronto pra usar (instalar não basta — precisa estar PRONTO)
+echo ""
+echo -e "${BLUE}Pronto pra usar:${NC}"
+# Docker REALMENTE rodando (não só instalado) — necessário na Fase 3
+if command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1; then
+  ok "Docker rodando"
+elif [ -d "/Applications/Docker.app" ]; then
+  aviso "Docker está PARADO — abra o app Docker Desktop e espere a baleia 🐳 na barra de cima parar de animar (precisa pra Fase 3)."
+fi
+# Lembretes que o check não consegue verificar sozinho:
+aviso "Logado no Claude Code? Rode 'claude' e faça login na 1ª vez — sem isso nada responde."
+aviso "Os comandos /imersao:* só aparecem depois de FECHAR e REABRIR o Claude Code uma vez."
+
 # Resumo
 echo ""
 echo -e "${BLUE}------------------------------------------------------------${NC}"
-echo -e "  ${GREEN}$OK OK${NC}  |  ${RED}$FALTA faltando${NC}"
-if [ "$FALTA" -eq 0 ]; then
+echo -e "  ${GREEN}$OK OK${NC}  |  ${RED}$FALTA faltando${NC}  |  ${YELLOW}$AVISO avisos${NC}"
+if [ "$FALTA" -eq 0 ] && [ "$AVISO" -eq 0 ]; then
   echo -e "  ${GREEN}Tudo certo! Bora pra imersão. 🚀${NC}"
+elif [ "$FALTA" -eq 0 ]; then
+  echo -e "  ${GREEN}Tudo instalado!${NC} ${YELLOW}Antes de usar, resolva os avisos ⚠ acima (login, reabrir o Claude, Docker).${NC}"
 else
   echo -e "  ${YELLOW}Veja os itens marcados com X acima.${NC}"
   echo -e "  Guia: https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/TROUBLESHOOTING.md"

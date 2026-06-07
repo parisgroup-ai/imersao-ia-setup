@@ -3,7 +3,7 @@ description: Orquestrador autônomo da imersão — encadeia brainstorming → w
 argument-hint: "<objetivo do projeto>"
 ---
 
-# /pg-imersao-goal — motor autônomo da imersão
+# /imersao:pg-imersao-goal — motor autônomo da imersão
 
 Você é o orquestrador. O objetivo do aluno está em **$ARGUMENTS**. Conduza o projeto
 do começo ao fim encadeando as skills da imersão, **avançando sozinho** entre as
@@ -46,6 +46,6 @@ Se `$ARGUMENTS` estiver vazio, pergunte ao aluno: "Qual é o objetivo? (uma fras
 - Antes de declarar qualquer etapa "pronta", **mostre a evidência** (saída do teste,
   do build) — nunca afirme sucesso sem rodar.
 
-> Dica: para a imersão, os comandos de fase (`/pg-imersao-prd`, `/pg-imersao-prototipo`,
-> `/pg-imersao-implementar`) já chamam este motor no momento certo. Use `/pg-imersao-goal`
+> Dica: para a imersão, os comandos de fase (`/imersao:pg-imersao-prd`, `/imersao:pg-imersao-prototipo`,
+> `/imersao:pg-imersao-implementar`) já chamam este motor no momento certo. Use `/imersao:pg-imersao-goal`
 > diretamente quando quiser dirigir um objetivo livre do início ao fim.
