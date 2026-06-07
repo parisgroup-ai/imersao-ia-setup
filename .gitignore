@@ -17,6 +17,8 @@ node_modules/
 
 # Claude Code (config local da máquina)
 .claude/settings.local.json
+.claude/session-brief.md
+.claude/session-journal.md
 
 # Logs
 *.log
