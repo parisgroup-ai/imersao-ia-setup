@@ -63,29 +63,36 @@ telas, dados, critérios de sucesso. No fim ele te mostra o design.
 
 ## Fase 2 — `/pg-imersao-prototipo` (PRD → protótipo)
 
-Primeiro, suba o **Design OS** (uma vez por projeto), numa pasta irmã:
-
-```bash
-git clone https://github.com/buildermethods/design-os.git ../meu-projeto-design
-cd ../meu-projeto-design
-git remote remove origin
-npm install
-npm run dev            # abre em http://localhost:3000
-```
-
-Com o servidor no ar, rode (de dentro do app, ou seguindo o que o comando indicar):
+Dentro do Claude do app, rode:
 
 ```
 /pg-imersao-prototipo
 ```
 
-O Claude lê o `PRD.md` e dirige o Design OS sozinho (visão → roadmap → dados → tokens →
-shell → telas → dados de exemplo).
+O comando **faz o setup do Design OS sozinho** — clona o repositório público numa
+pasta irmã, instala as dependências, sobe o servidor em `http://localhost:3000` e abre
+no navegador. **Você não cola nenhum bloco de comandos.** (Se a porta 3000 estiver
+ocupada, ele te avisa e usa outra.)
+
+Depois do setup, vem a **única parte manual** (inerente ao Design OS — os comandos de
+design pertencem a ele): abra **outro terminal** na pasta do design e abra o Claude lá:
+
+```bash
+cd ../meu-projeto-design && claude
+```
+
+Nessa sessão, rode os comandos **do Design OS**, começando por `/product-vision` (o
+`PRD.md` já foi copiado pra pasta), seguindo: roadmap → dados → `/design-tokens` →
+`/design-shell` → `/design-screen` (uma por seção) → `/sample-data`.
 
 🛑 **Gate 2 — revisar e ajustar.** Abra `http://localhost:3000`, veja o protótipo
 **vivo** e peça mudanças em **linguagem natural** ("aumenta o card", "tira esse campo").
-Ele re-desenha só as telas afetadas. Quando estiver bom, ele roda o **`/export`** →
-o pacote (componentes React + Tailwind + specs) vai para `../meu-projeto-design/export/`.
+Ele re-desenha só as telas afetadas. Quando estiver bom, rode o **`/export`** do Design
+OS → o pacote (componentes React + Tailwind + specs) vai para `../meu-projeto-design/export/`.
+
+> 💡 O servidor do Design OS roda **destacado** — você pode fechar a janela do Claude do
+> app à vontade que ele continua no ar. Pra parar depois:
+> `kill $(cat ../meu-projeto-design/.dev-server.pid)`.
 
 ---
 
