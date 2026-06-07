@@ -68,31 +68,43 @@ Automatize o setup (clone/install/server) **sem** narrar a sintaxe, mas explique
      `tail -30 "$DESIGN_DIR/dev.log"`.
 6. **Abrir no navegador** (macOS): `open "$URL"`.
 
-## 3. Handoff pro Design OS (a única parte manual — é inerente)
+## 3. Conduza o design — NESTA mesma sessão (NÃO abra um 2º Claude)
 
-Os comandos de design (`/product-vision`, `/design-screen`…) pertencem ao **próprio
-Design OS** e só existem com o Claude Code aberto **dentro da pasta dele**. Mostre ao
-aluno, **com o caminho e a URL reais já preenchidos** (resolva `$DESIGN_DIR` e `$URL`):
+O pulo do gato: **você (Claude) faz o trabalho de design daqui mesmo, na sessão do app.**
+O aluno conversa com **você** o tempo todo — **não** mande ele abrir uma segunda sessão
+do Claude. (O único terminal extra possível é o do servidor, que já subiu sozinho.)
 
-> ✅ **Design OS no ar** em `<URL real>` (rodando destacado — pode fechar esta janela à
-> vontade; pra parar o servidor depois: `kill $(cat <DESIGN_DIR>/.dev-server.pid)`).
->
-> Agora abra **outro terminal** e rode:
-> ```bash
-> cd <CAMINHO_REAL_DO_DESIGN> && claude
-> ```
-> Lá dentro, rode **`/product-vision`** (o `PRD.md` já está na pasta) e siga a sequência:
-> `/product-roadmap` → modelo de dados → `/design-tokens` → `/design-shell` →
-> `/design-screen` (uma por seção) → `/sample-data`. Digite `/` pra ver os comandos.
+**Como:** os comandos do Design OS (`product-vision`, `design-screen`…) são **arquivos de
+prompt** dentro do clone, em `$DESIGN_DIR/.claude/commands/` (procure a pasta `design-os`).
+**Leia cada arquivo e execute as instruções você mesmo**, escrevendo os arquivos de
+design onde o comando manda, dentro de `$DESIGN_DIR`. O servidor (já no ar) renderiza ao
+vivo a cada arquivo.
 
-## 4. Revisar, ajustar e exportar (na sessão do Design OS)
+⚠️ **Pra NÃO dar tela em branco:** siga o formato dos arquivos do Design OS **à risca**
+(nomes de pasta/seção, estrutura, manifestos). **Não improvise** o formato — o
+renderizador dele é exigente. Na dúvida, releia o arquivo de comando correspondente no
+clone antes de escrever.
 
-- 🛑 **Gate:** com o protótipo aberto no navegador, o aluno revisa e pede ajustes em
-  **linguagem natural** → re-rode apenas o `/design-screen` da tela afetada. Nunca
-  regenere telas já aprovadas. Loop até aprovar.
-- Rode o **`/export`** do Design OS → o pacote (componentes React + Tailwind + specs)
-  fica em `<pasta-design>/export/` (ou `design/product-plan.zip`).
+Siga a sequência (lendo o comando no clone antes de cada etapa), **narrando em 1 linha**:
+visão do produto → roadmap → modelo de dados → tokens → shell → telas (uma por seção) →
+dados de exemplo.
 
-## 5. Próximo passo
+> Se o servidor cair, o aluno reabre num terminal com `npm --prefix <DESIGN_DIR> run dev`
+> — isso é só o **servidor**, nunca um 2º Claude. Pra pará-lo:
+> `kill $(cat <DESIGN_DIR>/.dev-server.pid)`.
 
-Volte para a janela do Claude do **app** e rode **`/imersao:pg-imersao-implementar`**.
+## 4. Revisar e ajustar — na mesma conversa, em tempo real
+
+🛑 **Gate:** o aluno olha a **aba do navegador** e pede mudanças em **linguagem natural**
+("aumenta o card", "tira esse campo") **aqui mesmo, falando com você**. Você reescreve o
+arquivo da tela afetada e o servidor recarrega na hora. **Nunca** regenere telas já
+aprovadas. Loop até o aluno aprovar.
+
+## 5. Exportar e seguir
+
+- Aprovado? Execute o **export** do Design OS (leia o arquivo de comando de export no
+  clone e siga) → o pacote (componentes React + Tailwind + specs) fica em
+  `$DESIGN_DIR/export/` (ou `design/product-plan.zip`). Confirme que existe e diga o
+  caminho real ao aluno.
+- **Próximo passo:** você já está na sessão do app — é só rodar
+  **`/imersao:pg-imersao-implementar`** (ou pedir o próximo passo, ou `/imersao:pg-imersao-start`).

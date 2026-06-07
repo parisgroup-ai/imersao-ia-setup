@@ -78,25 +78,20 @@ pasta irmã, instala as dependências, sobe o servidor em `http://localhost:3000
 no navegador. **Você não cola nenhum bloco de comandos.** (Se a porta 3000 estiver
 ocupada, ele te avisa e usa outra.)
 
-Depois do setup, vem a **única parte manual** (inerente ao Design OS — os comandos de
-design pertencem a ele): abra **outro terminal** na pasta do design e abra o Claude lá:
-
-```bash
-cd ../meu-projeto-design && claude
-```
-
-Nessa sessão, rode os comandos **do Design OS**, começando por `/product-vision` (o
-`PRD.md` já foi copiado pra pasta), seguindo: roadmap → dados → `/design-tokens` →
-`/design-shell` → `/design-screen` (uma por seção) → `/sample-data`.
+Depois do setup, **tudo acontece nesta mesma conversa** — você **não** abre um segundo
+Claude. O próprio Claude do app conduz o Design OS (desenha as telas na ordem: visão →
+roadmap → dados → tokens → shell → telas → dados de exemplo) e o navegador atualiza ao
+vivo. Você só vai conversando e pedindo o que quiser.
 
 🛑 **Gate 2 — revisar e ajustar.** Na **aba do navegador que o Claude abriu pra você**,
 veja o protótipo **vivo** e peça mudanças em **linguagem natural** ("aumenta o card",
 "tira esse campo").
-Ele re-desenha só as telas afetadas. Quando estiver bom, rode o **`/export`** do Design
-OS → o pacote (componentes React + Tailwind + specs) vai para `../meu-projeto-design/export/`.
+Ele re-desenha só as telas afetadas, ali na conversa. Quando estiver bom, peça pra
+**exportar** → o pacote (componentes React + Tailwind + specs) vai para
+`../meu-projeto-design/export/`.
 
-> 💡 O servidor do Design OS roda **destacado** — você pode fechar a janela do Claude do
-> app à vontade que ele continua no ar. Pra parar depois:
+> 💡 O **servidor** do Design OS roda destacado (não cai sozinho). O **design** acontece
+> nesta conversa do Claude do app — é com ele que você fala. Pra parar o servidor depois:
 > `kill $(cat ../meu-projeto-design/.dev-server.pid)`.
 
 ---
