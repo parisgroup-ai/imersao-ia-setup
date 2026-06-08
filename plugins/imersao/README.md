@@ -36,7 +36,7 @@ sobre um motor autônomo. Guia completo: [`docs/PROCESSO-IMERSAO.md`](../../docs
 | Comando | Fase | Para quê |
 |---|---|---|
 | `/imersao:pg-imersao-start` | 👈 | **Comece aqui** — bússola: mostra os 3 passos e o próximo passo |
-| `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/PRD.md` (via brainstorming guiado) |
+| `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/plano-do-produto.md` (conversa guiada) |
 | `/imersao:pg-imersao-prototipo` | 2 | PRD → protótipo no **Design OS** público → export React+Tailwind |
 | `/imersao:pg-imersao-implementar` | 3 | Export + PRD → app **Next.js + Tailwind + shadcn/ui + Drizzle + Postgres (Docker)** |
 | `/imersao:pg-imersao-goal` | — | Motor autônomo (brainstorming → plano → execução → integração) com 2 gates humanos |

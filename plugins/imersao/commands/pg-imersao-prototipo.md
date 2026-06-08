@@ -4,7 +4,7 @@ description: "Fase 2 · DESENHAR — vira o PRD em protótipo funcional no Desig
 
 # /imersao:pg-imersao-prototipo — Fase 2: PRD → protótipo
 
-Objetivo: a partir do `docs/PRD.md`, **montar e subir o Design OS público sozinho**
+Objetivo: a partir do `docs/plano-do-produto.md`, **montar e subir o Design OS público sozinho**
 (o aluno não cola bloco nenhum) e então conduzir o design até o protótipo aprovado.
 
 ## Narração didática (Fase 2)
@@ -19,7 +19,7 @@ Automatize o setup (clone/install/server) **sem** narrar a sintaxe, mas explique
 
 ## 1. Pré-condições
 
-- Exija **`docs/PRD.md`**. Se faltar, peça `/imersao:pg-imersao-prd` antes e pare.
+- Exija **`docs/plano-do-produto.md`**. Se faltar, peça `/imersao:pg-imersao-prd` antes e pare.
 - A partir da pasta do app, derive a pasta-irmã do design (mantenha o `cwd` na raiz do
   app o tempo todo — **nunca** use `cd` solto; prefira `git -C`/`npm --prefix`):
 
@@ -46,7 +46,7 @@ Automatize o setup (clone/install/server) **sem** narrar a sintaxe, mas explique
    ```
 3. **Levar o PRD** pra dentro da pasta do design:
    ```bash
-   cp docs/PRD.md "$DESIGN_DIR/PRD.md"
+   cp docs/plano-do-produto.md "$DESIGN_DIR/plano-do-produto.md"
    ```
 4. **Subir o dev server DESTACADO** (sobrevive a fechar qualquer janela do Claude — use
    `nohup`, **não** o background do Bash do Claude):
@@ -106,7 +106,7 @@ arquivo e execute as instruções você mesmo**, escrevendo os arquivos de desig
 4. Na dúvida, **releia o arquivo de comando** correspondente no clone antes de escrever.
 
 Sequência canônica (lendo o comando no clone antes de cada etapa, **narrando em 1 linha**):
-`product-vision` (gera overview + roadmap + data-shape de uma vez — use o `docs/PRD.md`
+`product-vision` (gera overview + roadmap + data-shape de uma vez — use o `docs/plano-do-produto.md`
 como as "raw notes", não faça o aluno redigitar) → `design-tokens` → `design-shell` →
 **por seção:** `shape-section` (spec + dados + tipos) → `design-screen`. (`product-roadmap`,
 `data-shape`, `sample-data` são comandos de **atualização** — não use na primeira passada.)

@@ -21,8 +21,9 @@ records how it evolved from the original design so the provenance isn't lost.
 | 7 | Skills inventory framed as **~49 baseline + 17 vendored** | The plugin actually ships **~74 skill directories**; the 17 are a process-backbone subset added on top of an already-broad curated library. |
 | 8 | §10 promised a **PG-coupling grep-gate** and schema validation | Neither shipped — CI runs `validate-skills.sh` (frontmatter + folder-name parity only); `schema/skill-schema.yml` is unwired; standalone `railway-*`/`tasknotes` skills legitimately ship. |
 | 9 | Installer **unchanged** | Installer **was** touched by the beginner-usability quick-wins (commit `76c99ff`). |
+| 10 | Fase 1 = thin PRD (5 sections) via a short dialogue | Fase 1 folds in a deeper product-planning skill: ~6 essential questions (still jargon-free, derive-the-rest) producing a **richer 11-section product plan**, renamed to **`docs/plano-do-produto.md`** (also removes the "PRD" jargon leak the student used to see). |
 
-Version trail: `1.0.0` → `1.1.0` (pipeline ship) → `1.2.x` → `1.2.1` (bússola + narração + Fase-2 single-session collapse) → **`1.2.2`** (E2E hardening: real Design OS export path `product-plan/`, in-place scaffold, dev-server restart for new files, Fase-3 scaffold flags/`.env`/Postgres-readiness, start↔goal clarity). User-facing commands resolve under the plugin namespace as `/imersao:pg-imersao-*` (the bare `/pg-imersao-*` form does not resolve).
+Version trail: `1.0.0` → `1.1.0` (pipeline ship) → `1.2.x` → `1.2.1` (bússola + narração + Fase-2 single-session collapse) → **`1.2.2`** (E2E hardening: real Design OS export path `product-plan/`, in-place scaffold, dev-server restart for new files, Fase-3 scaffold flags/`.env`/Postgres-readiness, start↔goal clarity) → **`1.3.0`** (Fase 1 upgraded to a richer product plan; artifact renamed `docs/plano-do-produto.md`). User-facing commands resolve under the plugin namespace as `/imersao:pg-imersao-*` (the bare `/pg-imersao-*` form does not resolve).
 
 ## 1. Problem
 
@@ -94,7 +95,7 @@ FASE 1                 FASE 2                              FASE 3
 inline dialogue        Design OS, SAME Claude session       implementation goal
 (not the skill)        (Claude reads+runs its cmd files)        ↓
    ↓                       ↓                              working app
-docs/PRD.md            export/  OR  design/product-plan*.zip
+docs/plano-do-produto.md            export/  OR  design/product-plan*.zip
 (in meu-projeto/)      (in <app>-design/)                (in meu-projeto/)
 
         ░░░ engine: /imersao:pg-imersao-goal (autonomous, exactly 2 human gates) ░░░
@@ -104,8 +105,8 @@ docs/PRD.md            export/  OR  design/product-plan*.zip
 
 ```
 ~/www/
-  meu-projeto/            # the REAL app (Next.js). PRD.md lives here. Implementation happens here.
-    docs/PRD.md
+  meu-projeto/            # the REAL app (Next.js). plano-do-produto.md lives here. Implementation happens here.
+    docs/plano-do-produto.md
     docker-compose.yml    # Postgres 16 (added in Fase 3, Task 1)
     ...
   <app-basename>-design/  # clone of buildermethods/design-os. Prototype only. localhost:3000 (or next free port).
@@ -162,7 +163,7 @@ namespaces them as `/imersao:pg-imersao-*`.
 
 - **Role:** "Você é uma bússola, não um piloto automático." The documented starting
   command ("👈 COMECE AQUI"). It **never executes a phase** — it only orients.
-- **Does:** (1) detects state via shell probes — `PRD` = `docs/PRD.md` exists; `EXPORT`
+- **Does:** (1) detects state via shell probes — `PRD` = `docs/plano-do-produto.md` exists; `EXPORT`
   = `$DESIGN_DIR/export` dir **or** `$DESIGN_DIR/design/product-plan*.zip`; `APP` =
   `package.json` contains `"next"`; (2) always prints the 3-step map (DEFINIR → DESENHAR
   → CONSTRUIR); (3) emits the next concrete step from a 4-row state table; (4) explains
@@ -172,27 +173,31 @@ namespaces them as `/imersao:pg-imersao-*`.
 - **Does NOT:** invoke `/pg-imersao-prd|-prototipo|-implementar` itself — it points; the
   student types. This is deliberate pedagogy ("é assim que ele aprende a lógica").
 
-### 5.1 `/pg-imersao-prd` — Fase 1 (idea → PRD)
+### 5.1 `/pg-imersao-prd` — Fase 1 (idea → plano do produto)
 - **Precondition:** student is inside the app repo `meu-projeto/`. The command silently
   runs `git init` *and* backfills a default git `user.name`/`user.email` if missing (so a
   later commit won't error), surfacing only a plain "pasta preparada" message — it
   auto-prepares, it does not "offer".
 - **Does:** conducts a short, beginner-friendly **inline dialogue** — explicitly **NOT**
-  the generic `brainstorming` skill, which is suppressed here because it produces
-  engineering/architecture output and writes to a different path. Claude follows an
-  embedded 3–4 question script (idea, target user, 3–5 core screens/areas, what to defer)
-  and *derives* the rest (jobs-to-be-done, data shape, success criteria) rather than
-  asking directly. Runs jargon-free (banned-words list; the artifact is called "o
-  documento do projeto", never "PRD").
-- **Output:** `meu-projeto/docs/PRD.md` — the single source of truth.
+  the generic `brainstorming` skill (suppressed: it produces engineering/architecture
+  output). Claude asks ~6 essential questions one at a time (idea+problem, who uses it/roles,
+  3–6 core screens/areas, key actions + business rules, login/external deps, what to defer)
+  and **derives/proposes** the rest (user flows, empty/error states, data relationships,
+  success criteria). Runs jargon-free (banned-words list incl. "PRD", "MVP", "persona"; the
+  artifact is "o plano do produto" to the student). Folds in a product-planning skill so the
+  output is rich enough to seed Design OS (Fase 2) and the build (Fase 3).
+- **Output:** `meu-projeto/docs/plano-do-produto.md` — a **richer 11-section product plan**
+  (vision, users/roles, prioritized features, user flows incl. empty/error states, screen
+  map, data, access, external deps, business rules, phased delivery, open questions). The
+  single source of truth for Fases 2–3.
 - **Gate:** a single inline plain-language confirmation (student replies "sim" to a bullet
   summary) — *not* a brainstorming hard-gate, and explicitly only one approval point
-  ("Não crie um segundo ponto de revisão depois"). Then silently commits `docs/PRD.md`.
+  ("Não crie um segundo ponto de revisão depois"). Then silently commits `docs/plano-do-produto.md`.
 - **Handoff:** closes with a benefit-framed human handoff pointing the student to
   `/imersao:pg-imersao-prototipo` via the `/` picker (no command memorization).
 
 ### 5.2 `/pg-imersao-prototipo` — Fase 2 (PRD → prototype)
-- **Precondition:** `meu-projeto/docs/PRD.md` exists.
+- **Precondition:** `meu-projeto/docs/plano-do-produto.md` exists.
 - **Session model:** runs **entirely in the app's Claude session** — "Conduza o design —
   NESTA mesma sessão (NÃO abra um 2º Claude)". The app-session Claude drives Design OS by
   **reading the command files** under `$DESIGN_DIR/.claude/commands/` and executing their
@@ -203,7 +208,7 @@ namespaces them as `/imersao:pg-imersao-*`.
   `DESIGN_DIR="../$(basename "$PWD")-design"`; idempotent clone guard (handles
   already-cloned / partial-folder / absent → on a corrupt clone it aborts and tells the
   student to delete the folder); `npm --prefix` install only when `node_modules` is
-  missing; copies the PRD in (`cp docs/PRD.md "$DESIGN_DIR/PRD.md"`); starts the server
+  missing; copies the PRD in (`cp docs/plano-do-produto.md "$DESIGN_DIR/plano-do-produto.md"`); starts the server
   **detached** (`nohup … run dev > "$DESIGN_DIR/dev.log"`, PID at `$DESIGN_DIR/.dev-server.pid`);
   reads the **real port** from `dev.log` (3000 busy → 3001…); polls `curl` for HTTP 200
   (≈30 tries) and tails `dev.log` on failure. No `cd` is ever used.
@@ -225,7 +230,7 @@ namespaces them as `/imersao:pg-imersao-*`.
 
 ### 5.3 `/pg-imersao-implementar` — Fase 3 (export + PRD → working app)
 - **Precondition 1:** Design OS export exists (`export/` or `design/product-plan*.zip`) +
-  `docs/PRD.md`. Works from `meu-projeto/` (the session never left it — there's no
+  `docs/plano-do-produto.md`. Works from `meu-projeto/` (the session never left it — there's no
   separate design session to "return" from).
 - **Precondition 2 — Docker blindado:** runs `docker info` silently **before** firing the
   goal. OK → proceed. Fails → **never show the raw daemon error**; say in plain PT-BR "Pra
@@ -233,7 +238,7 @@ namespaces them as `/imersao:pg-imersao-*`.
   `docker info` responds OK. (This is distinct from, and earlier than, the in-plan Task 1
   health route + `docker compose up -d` step.)
 - **Does:** fires
-  `/imersao:pg-imersao-goal "implementar o app conforme docs/PRD.md e o export do Design OS em <path>"`.
+  `/imersao:pg-imersao-goal "implementar o app conforme docs/plano-do-produto.md e o export do Design OS em <path>"`.
 - **The goal then:**
   1. **brainstorming** — already satisfied; the PRD is treated as the approved spec.
   2. **writing-plans** — decomposes into TDD tasks. **Task 1 = scaffold**:
@@ -286,13 +291,13 @@ the directory from scratch.
 ## 7. Data flow
 
 ```
-idea ──(inline dialogue)──▶ docs/PRD.md ──(copied into <app>-design/)──▶ Design OS commands (same session)
+idea ──(inline dialogue)──▶ docs/plano-do-produto.md ──(copied into <app>-design/)──▶ Design OS commands (same session)
    ──▶ <app>-design/export/{components,specs,tokens,sample-data}   OR   <app>-design/design/product-plan*.zip
    ──(port + /imersao:pg-imersao-goal)──▶ meu-projeto/{app, drizzle, docker-compose}
    ──▶ docker compose up -d && npm run dev  ▶ working app
 ```
 
-PRD.md is the durable contract across all phases; the Design OS export (directory **or**
+plano-do-produto.md is the durable contract across all phases; the Design OS export (directory **or**
 zip) is the design contract; the goal turns both into code.
 
 ## 8. Error handling / failure modes
@@ -333,7 +338,7 @@ plugins/imersao/skills/                         NEW/UPDATED — adds 17 cleaned 
   design-usabilidade/ design-auditoria/ impeccable/ test-rigor-audit/
   repo-cleanup/ find-skills/ pr-lifecycle/ spell-check-pt-en/ prototype-first/
 docs/PROCESSO-IMERSAO.md                        NEW (PT-BR student/instructor playbook)
-plugins/imersao/.claude-plugin/plugin.json      version 1.0.0 → 1.2.2
+plugins/imersao/.claude-plugin/plugin.json      version 1.0.0 → 1.3.0
 plugins/imersao/README.md, README.md            updated (5 commands, bússola-first flow)
 instalar_imersao.sh                             CHANGED by beginner-usability quick-wins (76c99ff)
 ```

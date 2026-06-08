@@ -5,7 +5,7 @@ description: "Fase 3 · CONSTRUIR — implementa o app de ponta a ponta a partir
 # /imersao:pg-imersao-implementar — Fase 3: export + PRD → app completo
 
 Você vai construir o **app de verdade**, de ponta a ponta, a partir do protótipo
-exportado pelo Design OS e do `docs/PRD.md`, na stack pública da imersão.
+exportado pelo Design OS e do `docs/plano-do-produto.md`, na stack pública da imersão.
 
 ## Narração didática (construir, mas o aluno entende a lógica)
 
@@ -25,12 +25,12 @@ só o **o quê** e o **porquê**):
 
 ## Pré-condições
 
-1. Trabalhe **a partir da pasta do app** (a mesma do `docs/PRD.md`). Derive a pasta do
-   design e exija o **export** + o **`docs/PRD.md`**:
+1. Trabalhe **a partir da pasta do app** (a mesma do `docs/plano-do-produto.md`). Derive a pasta do
+   design e exija o **export** + o **`docs/plano-do-produto.md`**:
 
    ```bash
    APP="$(basename "$PWD")"; DESIGN_DIR="../${APP}-design"
-   [ -f docs/PRD.md ] || { echo "Falta docs/PRD.md — rode /imersao:pg-imersao-prd antes."; exit 1; }
+   [ -f docs/plano-do-produto.md ] || { echo "Falta docs/plano-do-produto.md — rode /imersao:pg-imersao-prd antes."; exit 1; }
    { [ -f "$DESIGN_DIR/product-plan.zip" ] || [ -d "$DESIGN_DIR/product-plan" ]; } \
      || { echo "Falta o export — rode /imersao:pg-imersao-prototipo antes."; exit 1; }
    ```
@@ -55,7 +55,7 @@ só o **o quê** e o **porquê**):
 3. Acione o motor autônomo:
 
    ```
-   /imersao:pg-imersao-goal "implementar o app conforme docs/PRD.md e o export do Design OS em $DESIGN_DIR/product-plan/ — montar o Next.js NA PRÓPRIA pasta do app (não num subdiretório novo)"
+   /imersao:pg-imersao-goal "implementar o app conforme docs/plano-do-produto.md e o export do Design OS em $DESIGN_DIR/product-plan/ — montar o Next.js NA PRÓPRIA pasta do app (não num subdiretório novo)"
    ```
 
 ## Como o plano DEVE começar (Task 1 — scaffold)

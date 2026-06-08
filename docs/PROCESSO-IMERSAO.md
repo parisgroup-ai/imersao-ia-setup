@@ -1,7 +1,7 @@
 # Processo da Imersão — da ideia ao app, de ponta a ponta
 
 Este é o guia do fluxo que vamos usar na imersão: você sai de uma **ideia** e chega num
-**app funcionando**, com banco de dados, passando por um **PRD** e por um **protótipo**
+**app funcionando**, com banco de dados, passando por um **plano do produto** e por um **protótipo**
 de design. Tudo guiado pelo Claude Code.
 
 > Pré-requisito: ter rodado o instalador da imersão e as skills carregadas
@@ -18,8 +18,8 @@ de design. Tudo guiado pelo Claude Code.
 ```
   IDEIA
     │
-    ▼   /imersao:pg-imersao-prd            (Fase 1 — brainstorming guiado)
-  docs/PRD.md
+    ▼   /imersao:pg-imersao-prd            (Fase 1 — conversa guiada)
+  docs/plano-do-produto.md
     │
     ▼   /imersao:pg-imersao-prototipo      (Fase 2 — Design OS público)
   protótipo vivo (localhost:3000)  →  export (React + Tailwind)
@@ -41,7 +41,7 @@ Você vai ter duas pastas lado a lado:
 
 ```
 ~/www/
-  meu-projeto/            ← o APP de verdade. O PRD mora aqui. É aqui que o app é construído.
+  meu-projeto/            ← o APP de verdade. O plano do produto mora aqui. É aqui que o app é construído.
   meu-projeto-design/     ← clone do Design OS. SÓ para prototipar. Roda em localhost:3000.
 ```
 
@@ -49,7 +49,7 @@ Manter separado evita misturar as dependências do Design OS com as do seu app.
 
 ---
 
-## Fase 1 — `/imersao:pg-imersao-prd` (ideia → PRD)
+## Fase 1 — `/imersao:pg-imersao-prd` (ideia → plano do produto)
 
 Dentro de `meu-projeto/`, rode:
 
@@ -57,11 +57,11 @@ Dentro de `meu-projeto/`, rode:
 /imersao:pg-imersao-prd "um app pra agendar consultas do meu salão"
 ```
 
-O Claude vai te entrevistar (uma pergunta por vez): problema, usuário, escopo do MVP,
-telas, dados, critérios de sucesso. No fim ele te mostra o design.
+O Claude vai **conversar** com você (uma pergunta por vez): o problema, quem usa, as telas
+principais, as regras e o que fica pra depois. Ele deriva o resto e te mostra um resumo.
 
 🛑 **Gate 1 — aprovar o design.** Você aprova (ou pede ajustes). Aí ele escreve o
-**`docs/PRD.md`** — a fonte da verdade do projeto.
+**`docs/plano-do-produto.md`** — a fonte da verdade do projeto.
 
 ---
 
@@ -88,7 +88,7 @@ veja o protótipo **vivo** e peça mudanças em **linguagem natural** ("aumenta 
 "tira esse campo").
 Ele re-desenha só as telas afetadas, ali na conversa. Quando estiver bom, peça pra
 **exportar** → o pacote (componentes React + Tailwind + specs) vai para
-`../meu-projeto-design/export/`.
+`../meu-projeto-design/product-plan/` (e o zip `product-plan.zip`).
 
 > 💡 O **servidor** do Design OS roda destacado (não cai sozinho). O **design** acontece
 > nesta conversa do Claude do app — é com ele que você fala. Pra parar o servidor depois:
@@ -104,7 +104,7 @@ De volta em `meu-projeto/`:
 /imersao:pg-imersao-implementar
 ```
 
-Isso dispara o motor `/imersao:pg-imersao-goal`, que monta o app a partir do protótipo + PRD. A
+Isso dispara o motor `/imersao:pg-imersao-goal`, que monta o app a partir do protótipo + plano. A
 **primeira tarefa** já sobe a base com **banco em Docker**:
 
 - **Next.js** (App Router, TypeScript) + **Tailwind** + **shadcn/ui**
@@ -155,9 +155,9 @@ esse ponto de pausa.
 
 | Comando | Fase | Para quê |
 |---|---|---|
-| `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/PRD.md` |
-| `/imersao:pg-imersao-prototipo` | 2 | PRD → protótipo no Design OS → export |
-| `/imersao:pg-imersao-implementar` | 3 | Export + PRD → app funcionando |
+| `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/plano-do-produto.md` |
+| `/imersao:pg-imersao-prototipo` | 2 | Plano → protótipo no Design OS → export |
+| `/imersao:pg-imersao-implementar` | 3 | Export + plano → app funcionando |
 | `/imersao:pg-imersao-goal` | — | Dirigir um objetivo livre do início ao fim |
 
 ---

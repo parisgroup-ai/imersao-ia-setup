@@ -13,7 +13,7 @@ ao aluno o mapa dos 3 passos, dizer **onde ele está** e **qual o próximo passo
 
 ```bash
 APP="$(basename "$PWD")"; DESIGN_DIR="../${APP}-design"
-[ -f docs/PRD.md ] && echo "PRD=sim" || echo "PRD=nao"
+[ -f docs/plano-do-produto.md ] && echo "PRD=sim" || echo "PRD=nao"
 { [ -f "$DESIGN_DIR/product-plan.zip" ] || [ -d "$DESIGN_DIR/product-plan" ]; } && echo "EXPORT=sim" || echo "EXPORT=nao"
 { [ -f package.json ] && grep -q '"next"' package.json 2>/dev/null; } && echo "APP=sim" || echo "APP=nao"
 ```
@@ -46,7 +46,7 @@ Use a tabela de estado:
 | PRD | EXPORT | APP | Você está em… | Diga ao aluno |
 |---|---|---|---|---|
 | não | — | — | **Passo 1 — Definir** | "Bora começar definindo seu app. Digite `/` e escolha **imersao:pg-imersao-prd**, e me conta sua ideia em uma frase." |
-| sim | não | — | **Passo 2 — Desenhar** | "Seu projeto já está definido (`docs/PRD.md` ✅). Agora vamos **desenhar** as telas: digite `/` e escolha **imersao:pg-imersao-prototipo**." |
+| sim | não | — | **Passo 2 — Desenhar** | "Seu projeto já está definido (`docs/plano-do-produto.md` ✅). Agora vamos **desenhar** as telas: digite `/` e escolha **imersao:pg-imersao-prototipo**." |
 | sim | sim | não | **Passo 3 — Construir** | "Telas desenhadas e exportadas ✅. Hora de **construir o app de verdade**: digite `/` e escolha **imersao:pg-imersao-implementar**." |
 | sim | sim | sim | **App em construção / pronto** | "Seu app já existe! Pra rodar: `docker compose up -d && npm run dev`. Quer continuar de onde parou ou ajustar alguma coisa?" |
 
