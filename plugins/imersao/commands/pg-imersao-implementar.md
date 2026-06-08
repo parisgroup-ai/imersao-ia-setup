@@ -68,7 +68,9 @@ re-aprova design**. O motor pula direto pro plano técnico e só pausa na **entr
    de travar), com **banco em Docker desde o dia 1**. Ordem que funciona:
 
    1. **Next.js NA PRÓPRIA pasta do app** (App Router, TS) — alvo `.`, nunca um
-      subdiretório novo (senão a bússola não acha o app):
+      subdiretório novo (senão a bússola não acha o app). O nome da pasta precisa ser
+      **minúsculo e sem espaços** (regra do npm); se não for, avise em português e peça pra
+      renomear antes de criar:
       ```bash
       npx --yes create-next-app@latest . --ts --tailwind --app --eslint \
         --no-src-dir --import-alias "@/*" --use-npm --yes --disable-git < /dev/null
@@ -97,8 +99,10 @@ re-aprova design**. O motor pula direto pro plano técnico e só pausa na **entr
    App no ar: `npm run dev`.
 
    **Deixe o app pronto pra publicar (Fase 4):** o `npm run build` precisa passar; o `start`
-   é `next start` (respeita a porta `PORT` que o Railway define — não force 3000); **commite
-   as migrations geradas** (vão pro GitHub e rodam no Railway no deploy); o `docker-compose.yml`
+   é `next start` (respeita a porta `PORT` que o Railway define — não force 3000); **rotas que
+   falam com o banco** levam `export const dynamic = 'force-dynamic'` (senão o `build` tenta
+   abrir o banco e quebra no Railway, onde o banco não existe na hora do build); **commite as
+   migrations geradas** (vão pro GitHub e rodam no Railway no deploy); o `docker-compose.yml`
    é **só pro banco local** — no Railway o Postgres é um serviço à parte.
 
 ## Tarefas seguintes

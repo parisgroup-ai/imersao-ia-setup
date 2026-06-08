@@ -30,6 +30,8 @@ Automatize a mecânica, **narre o conceito em 1 linha** na primeira vez (nunca a
   ```
 - As **migrations do Drizzle** precisam estar **commitadas** (a Fase 3 já commita) — é o
   que cria as tabelas no banco da nuvem no deploy.
+- O script `start` tem que ser o **`next start` padrão** (não fixe a porta com `-p 3000`) —
+  o Railway injeta a porta sozinho e o `next start` a respeita.
 
 ## 1. Guardar o código no GitHub
 
@@ -54,16 +56,18 @@ navegador**: o aluno clica, **você guia um passo de cada vez** (abra `open http
 1. **Criar o projeto a partir do repo:** "Em https://railway.app, faça login, clique em
    **New Project → Deploy from GitHub repo**, autorize o Railway a ver seu GitHub (uma vez)
    e escolha o repositório **`$APP`**."
-2. **Adicionar o banco:** "Dentro do projeto, clique em **New → Database → PostgreSQL** —
-   isso cria seu banco na nuvem." (É um banco **novo, na nuvem** — diferente do Postgres em
-   Docker do seu computador; o `docker-compose` era só pro local.)
-3. **Ligar o app ao banco:** "No serviço do **app**, vá em **Variables** e adicione
-   `DATABASE_URL` com o valor `${{Postgres.DATABASE_URL}}` (uma referência ao banco que
-   você acabou de criar)." Narre o porquê (a variável liga o app ao banco da nuvem).
+2. **Adicionar o banco:** "Dentro do projeto, clique em **Create (ou + New) → Database →
+   Add PostgreSQL** — isso cria seu banco na nuvem." (É um banco **novo, na nuvem** —
+   diferente do Postgres em Docker do seu computador; o `docker-compose` era só pro local.)
+3. **Ligar o app ao banco:** "No serviço do **app**, vá em **Variables → Add Reference**
+   (variável de referência) → escolha o serviço **Postgres** → **DATABASE_URL**. O Railway
+   insere `${{Postgres.DATABASE_URL}}` sozinho." (funciona porque o banco se chama `Postgres`
+   por padrão — se você renomeou, use o novo nome). Narre o porquê (liga o app ao banco da nuvem).
 4. **Criar as tabelas no deploy:** "No serviço do app, em **Settings → Deploy → Pre-deploy
    Command**, coloque `npx drizzle-kit migrate`." (roda as migrations no banco da nuvem
    antes do app subir — usa a mesma config do Drizzle da Fase 3, por isso elas precisam
-   estar commitadas).
+   estar commitadas; se reclamar que não acha o `drizzle-kit`, crie um script
+   `"db:migrate": "drizzle-kit migrate"` no `package.json` e use `npm run db:migrate`).
 5. **Gerar o link público:** "Em **Settings → Networking**, clique em **Generate Domain**."
    O Railway te dá uma URL tipo `seu-app.up.railway.app`.
 

@@ -143,7 +143,8 @@ No fim você tem uma **URL** que qualquer pessoa abre. E daí pra frente é só 
 Railway **republica sozinho** a cada mudança.
 
 > Pré-requisitos: conta no **GitHub** (autenticada com `gh auth login`) e no **Railway**
-> (plano pago). O app precisa **buildar** (`npm run build`).
+> (Hobby **$5/mês**, exige cartão; Trial grátis sem cartão pra testar). O app precisa
+> **buildar** (`npm run build`).
 
 ---
 

@@ -76,7 +76,7 @@ O plugin traz um **pipeline guiado** que leva da ideia a um app **no ar**, em 4 
 | `/imersao:pg-imersao-implementar` | 3 | Export + plano → app **Next.js + Tailwind + shadcn/ui + Drizzle + Postgres (Docker)** |
 | `/imersao:pg-imersao-publicar` | 4 | App → **no ar**: push pro GitHub + deploy no Railway |
 
-> **Contas:** Claude Max **$200/mês** (obrigatório), **GitHub** (grátis) e **Railway** (plano pago, pro deploy) — crie antes de começar.
+> **Contas:** Claude Max **$200/mês** (obrigatório), **GitHub** (grátis) e **Railway** (Hobby **$5/mês**, exige cartão — dá pra testar o deploy no Trial grátis sem cartão) — crie antes de começar.
 
 Passo a passo completo (aluno + instrutor): **[docs/PROCESSO-IMERSAO.md](docs/PROCESSO-IMERSAO.md)**.
 

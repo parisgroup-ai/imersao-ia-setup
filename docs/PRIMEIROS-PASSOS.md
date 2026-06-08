@@ -28,7 +28,7 @@ claude
 
 Na primeira vez ele pede login — siga o fluxo. **Assine o Claude Max $200/mês antes do dia 1** — o plano gratuito não aguenta a imersão. Sem login, o Claude não responde; as skills já ficam instaladas independentemente do login.
 
-> Você também vai precisar de uma conta no **GitHub** (grátis — autentique com `gh auth login`) e uma no **Railway** (plano pago) — é onde, no último passo, seu app sobe e vai pro ar. Crie as duas antes de começar.
+> Você também vai precisar de uma conta no **GitHub** (grátis — autentique com `gh auth login`) e uma no **Railway** (Hobby **$5/mês**, exige cartão; o Trial grátis sem cartão dá pra testar o deploy) — é onde, no último passo, seu app sobe e vai pro ar. Crie as duas antes de começar.
 
 ## 4. Confirme as skills
 
