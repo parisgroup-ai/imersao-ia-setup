@@ -253,14 +253,26 @@ fi
 # -----------------------------------------------------------
 echo -e "${BLUE}[8/$TOTAL]${NC} Instalando as skills da Imersao (plugin 'imersao')..."
 if command -v claude &>/dev/null; then
-  claude plugin marketplace add parisgroup-ai/imersao-ia-setup 2>/dev/null || true
-  claude plugin install imersao@imersao-ia 2>/dev/null || true
-  # Confirma de fato que o plugin ficou instalado (nao confia so no exit code)
-  if claude plugin list 2>/dev/null | grep -q 'imersao@imersao-ia'; then
-    ok "Skills da Imersao (plugin 'imersao')"
-  else
-    erro "Skills (plugin)" "no Claude Code rode: /plugin marketplace add parisgroup-ai/imersao-ia-setup e depois /plugin install imersao@imersao-ia"
+  PLUGIN_LOG="$(mktemp)"
+  PLUGIN_OK=""
+  # Tenta ate 2x: um Claude recem-instalado as vezes so registra o marketplace no 2o try.
+  # NAO esconde o erro (2>&1 pro log) pra poder mostrar a causa real se falhar.
+  for attempt in 1 2; do
+    claude plugin marketplace add parisgroup-ai/imersao-ia-setup >>"$PLUGIN_LOG" 2>&1
+    claude plugin install imersao@imersao-ia >>"$PLUGIN_LOG" 2>&1
+    if claude plugin list 2>/dev/null | grep -q 'imersao@imersao-ia'; then
+      ok "Skills da Imersao (plugin 'imersao')"
+      PLUGIN_OK=1
+      break
+    fi
+    [ "$attempt" = 1 ] && sleep 3
+  done
+  if [ -z "$PLUGIN_OK" ]; then
+    erro "Skills (plugin)" "auto-instalacao falhou — no Claude Code rode: /plugin marketplace add parisgroup-ai/imersao-ia-setup e depois /plugin install imersao@imersao-ia"
+    echo -e "${YELLOW}     (erro real abaixo — manda esse trecho pra gente se persistir):${NC}"
+    tail -6 "$PLUGIN_LOG" | sed 's/^/       /'
   fi
+  rm -f "$PLUGIN_LOG"
 else
   erro "Skills (plugin)" "Claude Code nao foi instalado — resolva o passo 6 e rode de novo"
 fi
