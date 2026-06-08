@@ -28,17 +28,18 @@ curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main
 
 ## Processo da Imersão (comandos)
 
-O plugin traz um **pipeline guiado** que leva da ideia ao app funcionando, em 3 fases
+O plugin traz um **pipeline guiado** que leva da ideia ao app **no ar**, em 4 fases
 sobre um motor autônomo. Guia completo: [`docs/PROCESSO-IMERSAO.md`](../../docs/PROCESSO-IMERSAO.md).
 
-> **Não sabe por onde começar? Rode `/imersao:pg-imersao-start`** — a bússola mostra os 3 passos e diz o próximo (sem executar nada por você).
+> **Não sabe por onde começar? Rode `/imersao:pg-imersao-start`** — a bússola mostra os 4 passos e diz o próximo (sem executar nada por você).
 
 | Comando | Fase | Para quê |
 |---|---|---|
-| `/imersao:pg-imersao-start` | 👈 | **Comece aqui** — bússola: mostra os 3 passos e o próximo passo |
+| `/imersao:pg-imersao-start` | 👈 | **Comece aqui** — bússola: mostra os 4 passos e o próximo passo |
 | `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/plano-do-produto.md` (conversa guiada) |
-| `/imersao:pg-imersao-prototipo` | 2 | PRD → protótipo no **Design OS** público → export React+Tailwind |
-| `/imersao:pg-imersao-implementar` | 3 | Export + PRD → app **Next.js + Tailwind + shadcn/ui + Drizzle + Postgres (Docker)** |
+| `/imersao:pg-imersao-prototipo` | 2 | Plano → protótipo no **Design OS** público → export React+Tailwind |
+| `/imersao:pg-imersao-implementar` | 3 | Export + plano → app **Next.js + Tailwind + shadcn/ui + Drizzle + Postgres (Docker)** |
+| `/imersao:pg-imersao-publicar` | 4 | App → **no ar**: push pro GitHub + deploy no Railway |
 | `/imersao:pg-imersao-goal` | — | Motor autônomo (brainstorming → plano → execução → integração) com 2 gates humanos |
 
 As skills-base de método (`brainstorming`, `writing-plans`, `executing-plans`,

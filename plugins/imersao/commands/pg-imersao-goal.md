@@ -10,8 +10,8 @@ do começo ao fim encadeando as skills da imersão, **avançando sozinho** entre
 etapas e parando em **exatamente 2 momentos** para o humano decidir.
 
 > **Isto é o motor, não um passo.** Na imersão você quase nunca digita `pg-imersao-goal`
-> direto — a **Fase 3 (`/imersao:pg-imersao-implementar`) liga ele sozinha**. Os 3 comandos
-> que o aluno digita são `prd` → `prototipo` → `implementar`. Use o `goal` direto só pra um
+> direto — a **Fase 3 (`/imersao:pg-imersao-implementar`) liga ele sozinha**. Os 4 comandos
+> que o aluno digita são `prd` → `prototipo` → `implementar` → `publicar`. Use o `goal` direto só pra um
 > objetivo livre, fora do trilho da imersão.
 
 Se `$ARGUMENTS` estiver vazio, pergunte ao aluno: "Qual é o objetivo? (uma frase)".

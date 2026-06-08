@@ -26,11 +26,14 @@ de design. Tudo guiado pelo Claude Code.
     │
     ▼   /imersao:pg-imersao-implementar    (Fase 3 — construir o app)
   APP FUNCIONANDO  (Next.js + Postgres em Docker)
+    │
+    ▼   /imersao:pg-imersao-publicar       (Fase 4 — colocar no ar)
+  APP NO AR  (GitHub + Railway, link público)
 
         └── motor: /imersao:pg-imersao-goal (autônomo, 2 gates humanos) ──┘
 ```
 
-São **3 comandos** (um por fase) rodando sobre **um motor** (`/imersao:pg-imersao-goal`) que
+São **4 comandos** (um por fase) rodando sobre **um motor** (`/imersao:pg-imersao-goal`) que
 dirige o trabalho sozinho e só para 2 vezes para você decidir.
 
 ---
@@ -123,6 +126,27 @@ ou segurar).
 
 ---
 
+## Fase 4 — `/imersao:pg-imersao-publicar` (app local → no ar)
+
+Com o app rodando no seu computador, é hora de **colocar no ar**:
+
+```
+/imersao:pg-imersao-publicar
+```
+
+Duas partes: o Claude **guarda seu código no GitHub** (cria o repositório e dá push) e
+depois te **guia no Railway** (alguns cliques no navegador) — criar o projeto a partir do
+seu GitHub, adicionar um **Postgres na nuvem**, ligar o app ao banco (`DATABASE_URL`),
+rodar as migrations no deploy e **gerar o link público**.
+
+No fim você tem uma **URL** que qualquer pessoa abre. E daí pra frente é só `git push`: o
+Railway **republica sozinho** a cada mudança.
+
+> Pré-requisitos: conta no **GitHub** (autenticada com `gh auth login`) e no **Railway**
+> (plano pago). O app precisa **buildar** (`npm run build`).
+
+---
+
 ## Por que Next.js (e não Vite + React)?
 
 Porque o app tem **banco de dados**. O Next.js entrega **frontend + backend + acesso ao
@@ -158,6 +182,7 @@ esse ponto de pausa.
 | `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/plano-do-produto.md` |
 | `/imersao:pg-imersao-prototipo` | 2 | Plano → protótipo no Design OS → export |
 | `/imersao:pg-imersao-implementar` | 3 | Export + plano → app funcionando |
+| `/imersao:pg-imersao-publicar` | 4 | App local → no ar (GitHub + Railway) |
 | `/imersao:pg-imersao-goal` | — | Dirigir um objetivo livre do início ao fim |
 
 ---

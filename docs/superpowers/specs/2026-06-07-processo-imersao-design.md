@@ -22,8 +22,9 @@ records how it evolved from the original design so the provenance isn't lost.
 | 8 | §10 promised a **PG-coupling grep-gate** and schema validation | Neither shipped — CI runs `validate-skills.sh` (frontmatter + folder-name parity only); `schema/skill-schema.yml` is unwired; standalone `railway-*`/`tasknotes` skills legitimately ship. |
 | 9 | Installer **unchanged** | Installer **was** touched by the beginner-usability quick-wins (commit `76c99ff`). |
 | 10 | Fase 1 = thin PRD (5 sections) via a short dialogue | Fase 1 folds in a deeper product-planning skill: ~6 essential questions (still jargon-free, derive-the-rest) producing a **richer 11-section product plan**, renamed to **`docs/plano-do-produto.md`** (also removes the "PRD" jargon leak the student used to see). |
+| 11 | Finish line = app **local** (non-goal: no deploy) | Adds **Fase 4 `pg-imersao-publicar`**: push to GitHub + deploy to **Railway** (GitHub-connected, Postgres, migrate-on-deploy). Finish line is now a **live URL**. Onboarding updated: Claude Max **$200**, GitHub + Railway required, Codex/ChatGPT dropped from required steps. |
 
-Version trail: `1.0.0` → `1.1.0` (pipeline ship) → `1.2.x` → `1.2.1` (bússola + narração + Fase-2 single-session collapse) → **`1.2.2`** (E2E hardening: real Design OS export path `product-plan/`, in-place scaffold, dev-server restart for new files, Fase-3 scaffold flags/`.env`/Postgres-readiness, start↔goal clarity) → **`1.3.0`** (Fase 1 upgraded to a richer product plan; artifact renamed `docs/plano-do-produto.md`). User-facing commands resolve under the plugin namespace as `/imersao:pg-imersao-*` (the bare `/pg-imersao-*` form does not resolve).
+Version trail: `1.0.0` → `1.1.0` (pipeline ship) → `1.2.x` → `1.2.1` (bússola + narração + Fase-2 single-session collapse) → **`1.2.2`** (E2E hardening: real Design OS export path `product-plan/`, in-place scaffold, dev-server restart for new files, Fase-3 scaffold flags/`.env`/Postgres-readiness, start↔goal clarity) → `1.3.0` (Fase 1 upgraded to a richer product plan; artifact renamed `docs/plano-do-produto.md`) → **`1.4.0`** (Fase 4 deploy to Railway + onboarding for GitHub/Railway/Claude-$200). User-facing commands resolve under the plugin namespace as `/imersao:pg-imersao-*` (the bare `/pg-imersao-*` form does not resolve).
 
 ## 1. Problem
 
@@ -55,11 +56,14 @@ layer.
 - A **narração didática** teaching layer cross-cutting every command: automate the
   plumbing, narrate the concept in one plain line (audience = non-dev product builders).
 - Deliver both a **process playbook (doc)** and the **slash commands** that run it.
+- Ship to production: a **Fase 4** deploys to **Railway** (GitHub-connected) so the finish
+  line is a live URL, not just a local app.
 
 **Non-goals**
 - Not using the ParisGroup Design OS fork (PageShell-coupled, private).
 - Not using pg-baseline `goal`/`new-product` (PG-coupled).
-- Not deploying to production (local end-to-end is the finish line for the bootcamp).
+- ~~Not deploying to production~~ — **revised (1.4.0):** Fase 4 (`pg-imersao-publicar`)
+  ships the app to Railway (GitHub-connected); a live URL is the finish line.
 
 > Note: the original non-goal "not changing the installer" did **not** hold — the
 > beginner-usability quick-wins (`76c99ff`) touched `instalar_imersao.sh`. Students
@@ -154,7 +158,7 @@ line** the first time it appears — the audience is non-dev product builders. C
   exactly **2** gates. TDD's red/green cycle runs behind the scenes ("o aluno não assiste
   ao ciclo vermelho-verde"); the student sees only narrated results.
 
-## 5. Components (the five commands)
+## 5. Components (the six commands)
 
 All live under `plugins/imersao/commands/`. Claude Code auto-discovers `commands/` and
 namespaces them as `/imersao:pg-imersao-*`.
@@ -259,6 +263,18 @@ See §4.3 (4-etapas contract, exactly 2 gates, no PG coupling) and §4.4 (narra�
 TDD runs behind the scenes; GATE 2 phrased as "salvar tudo no projeto / guardar pra
 revisar depois" — never "merge / PR / discard").
 
+### 5.5 `/pg-imersao-publicar` — Fase 4 (app local → live on Railway)
+- **Precondition:** the app builds (`npm run build`); GitHub + Railway accounts exist.
+- **Does:** (1) `gh auth login` if needed; (2) `gh repo create <app> --private --source=. --push`;
+  (3) guides the student through the Railway dashboard (GitHub-connected): New Project →
+  Deploy from GitHub repo → add a PostgreSQL service → set the app's `DATABASE_URL` to
+  `${{Postgres.DATABASE_URL}}` → Pre-deploy Command `npx drizzle-kit migrate` → Generate
+  Domain. Claude automates the git side; the Railway dashboard clicks are the student's,
+  guided one at a time.
+- **Output:** a public URL; every subsequent `git push` auto-redeploys.
+- **Narração:** GitHub = code in the cloud; deploy = público; Railway = roda na nuvem;
+  env var = config secreta.
+
 ## 6. Foundation skills vendored (clean) into `plugins/imersao/skills/`
 
 The plugin already ships a **broad curated skill library (~74 skill directories)**. This
@@ -325,11 +341,12 @@ zip) is the design contract; the goal turns both into code.
 ## 9. Files changed in this repo
 
 ```
-plugins/imersao/commands/                       NEW (five command files)
+plugins/imersao/commands/                       NEW (six command files)
   pg-imersao-start.md       (the bússola — entry point)
   pg-imersao-prd.md
   pg-imersao-prototipo.md
   pg-imersao-implementar.md
+  pg-imersao-publicar.md    (the deploy phase — Fase 4)
   pg-imersao-goal.md
 plugins/imersao/skills/                         NEW/UPDATED — adds 17 cleaned skills on top
   brainstorming/ writing-plans/ executing-plans/ finishing-a-development-branch/   of the existing
@@ -338,7 +355,7 @@ plugins/imersao/skills/                         NEW/UPDATED — adds 17 cleaned 
   design-usabilidade/ design-auditoria/ impeccable/ test-rigor-audit/
   repo-cleanup/ find-skills/ pr-lifecycle/ spell-check-pt-en/ prototype-first/
 docs/PROCESSO-IMERSAO.md                        NEW (PT-BR student/instructor playbook)
-plugins/imersao/.claude-plugin/plugin.json      version 1.0.0 → 1.3.0
+plugins/imersao/.claude-plugin/plugin.json      version 1.0.0 → 1.4.0
 plugins/imersao/README.md, README.md            updated (5 commands, bússola-first flow)
 instalar_imersao.sh                             CHANGED by beginner-usability quick-wins (76c99ff)
 ```

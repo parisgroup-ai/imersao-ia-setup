@@ -26,7 +26,9 @@ Abra o Claude Code:
 claude
 ```
 
-Na primeira vez ele pede login — siga o fluxo (plano **Max**). Sem login, o Claude não responde. As skills já ficam instaladas independentemente do login.
+Na primeira vez ele pede login — siga o fluxo. **Assine o Claude Max $200/mês antes do dia 1** — o plano gratuito não aguenta a imersão. Sem login, o Claude não responde; as skills já ficam instaladas independentemente do login.
+
+> Você também vai precisar de uma conta no **GitHub** (grátis — autentique com `gh auth login`) e uma no **Railway** (plano pago) — é onde, no último passo, seu app sobe e vai pro ar. Crie as duas antes de começar.
 
 ## 4. Confirme as skills
 
@@ -75,7 +77,7 @@ Dentro do Claude, rode a **bússola** (digite `/` e escolha na lista, não preci
 /imersao:pg-imersao-start
 ```
 
-Ela mostra os 3 passos (**definir → desenhar → construir**) e te diz exatamente o próximo
+Ela mostra os 4 passos (**definir → desenhar → construir → publicar**) e te diz exatamente o próximo
 — sem fazer por você (quem constrói é você, pra aprender a lógica). Roteiro completo:
 [PROCESSO-IMERSAO.md](./PROCESSO-IMERSAO.md).
 
