@@ -41,14 +41,14 @@ As skills são distribuídas como um **plugin do Claude Code** via marketplace. 
 O instalador já faz isso por você. Se quiser instalar manualmente (ou em outra máquina), dentro do **Claude Code** rode:
 
 ```text
-/plugin marketplace add parisgroup-ai/imersao-ia-setup
+/plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
 /plugin install imersao@imersao-ia
 ```
 
 Ou pelo terminal, com o CLI:
 
 ```bash
-claude plugin marketplace add parisgroup-ai/imersao-ia-setup
+claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
 claude plugin install imersao@imersao-ia
 ```
 

@@ -258,7 +258,7 @@ if command -v claude &>/dev/null; then
   # Tenta ate 2x: um Claude recem-instalado as vezes so registra o marketplace no 2o try.
   # NAO esconde o erro (2>&1 pro log) pra poder mostrar a causa real se falhar.
   for attempt in 1 2; do
-    claude plugin marketplace add parisgroup-ai/imersao-ia-setup >>"$PLUGIN_LOG" 2>&1
+    claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup >>"$PLUGIN_LOG" 2>&1
     claude plugin install imersao@imersao-ia >>"$PLUGIN_LOG" 2>&1
     if claude plugin list 2>/dev/null | grep -q 'imersao@imersao-ia'; then
       ok "Skills da Imersao (plugin 'imersao')"
@@ -268,7 +268,7 @@ if command -v claude &>/dev/null; then
     [ "$attempt" = 1 ] && sleep 3
   done
   if [ -z "$PLUGIN_OK" ]; then
-    erro "Skills (plugin)" "auto-instalacao falhou — no Claude Code rode: /plugin marketplace add parisgroup-ai/imersao-ia-setup e depois /plugin install imersao@imersao-ia"
+    erro "Skills (plugin)" "auto-instalacao falhou — no Claude Code rode: /plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup e depois /plugin install imersao@imersao-ia"
     echo -e "${YELLOW}     (erro real abaixo — manda esse trecho pra gente se persistir):${NC}"
     tail -6 "$PLUGIN_LOG" | sed 's/^/       /'
   fi

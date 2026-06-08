@@ -58,7 +58,7 @@ if command -v claude >/dev/null 2>&1; then
   if claude plugin list 2>/dev/null | grep -q 'imersao@imersao-ia'; then
     ok "Plugin 'imersao' instalado"
   else
-    falta "Plugin 'imersao'" "no Claude Code: /plugin marketplace add parisgroup-ai/imersao-ia-setup && /plugin install imersao@imersao-ia"
+    falta "Plugin 'imersao'" "no Claude Code: /plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup && /plugin install imersao@imersao-ia"
   fi
 else
   falta "Plugin 'imersao'" "instale o Claude Code primeiro"

@@ -24,7 +24,7 @@ claude plugin list
 Procure por `imersao@imersao-ia` na lista. Se aparecer, as skills da Imersão estão instaladas. Se **não** aparecer, oriente:
 
 ```text
-/plugin marketplace add parisgroup-ai/imersao-ia-setup
+/plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
 /plugin install imersao@imersao-ia
 ```
 

@@ -5,14 +5,14 @@ Skills de IA curadas da **Imersão IA da ParisGroup**. Empacotadas como um plugi
 ## Instalação (Claude Code)
 
 ```text
-/plugin marketplace add parisgroup-ai/imersao-ia-setup
+/plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
 /plugin install imersao@imersao-ia
 ```
 
 Ou, fora do Claude Code, pelo CLI:
 
 ```bash
-claude plugin marketplace add parisgroup-ai/imersao-ia-setup
+claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
 claude plugin install imersao@imersao-ia
 ```
 

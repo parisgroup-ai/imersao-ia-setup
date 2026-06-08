@@ -4,7 +4,7 @@
 #  Copia as skills do plugin 'imersao' para ~/.codex/skills/
 #
 #  Usuários de Claude Code NÃO precisam disto — usem o plugin:
-#    claude plugin marketplace add parisgroup-ai/imersao-ia-setup
+#    claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
 #    claude plugin install imersao@imersao-ia
 #
 #  Codex não suporta plugins, então sincronizamos por cópia.

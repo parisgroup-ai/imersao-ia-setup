@@ -20,7 +20,7 @@ O instalador já adiciona isso ao `~/.zprofile` — reabrir o terminal deve bast
 1. Reinicie o Claude Code (feche e abra de novo) — skills carregam ao reiniciar.
 2. Confira a instalação:
    ```text
-   /plugin marketplace add parisgroup-ai/imersao-ia-setup
+   /plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
    /plugin install imersao@imersao-ia
    ```
 3. Pelo terminal: `claude plugin list` deve mostrar `imersao@imersao-ia`.
@@ -68,7 +68,7 @@ Escolha **GitHub.com** → **HTTPS** → autenticar pelo navegador.
 
 ## Não é Mac (Windows / Linux)
 
-O instalador automático é **só para macOS**. Em Windows/Linux, instale manualmente: Node.js, Claude Code (`npm install -g @anthropic-ai/claude-code`) e o plugin (`claude plugin marketplace add parisgroup-ai/imersao-ia-setup` + `claude plugin install imersao@imersao-ia`). Fale com um mentor.
+O instalador automático é **só para macOS**. Em Windows/Linux, instale manualmente: Node.js, Claude Code (`npm install -g @anthropic-ai/claude-code`) e o plugin (`claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup` + `claude plugin install imersao@imersao-ia`). Fale com um mentor.
 
 ---
 

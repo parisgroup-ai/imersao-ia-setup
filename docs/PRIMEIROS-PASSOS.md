@@ -41,7 +41,7 @@ Dentro do Claude Code:
 Você deve ver **`imersao@imersao-ia`** na lista. Se não aparecer, instale:
 
 ```text
-/plugin marketplace add parisgroup-ai/imersao-ia-setup
+/plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
 /plugin install imersao@imersao-ia
 ```
 
