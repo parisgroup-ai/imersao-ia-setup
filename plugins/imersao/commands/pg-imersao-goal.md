@@ -39,10 +39,16 @@ A narração é **informativa, não vira pergunta** — as pausas humanas contin
 
 ## As 4 etapas (auto-avanço)
 
-1. **brainstorming** — invoque a skill `brainstorming`. Explore a ideia, proponha o
-   design e escreva o spec.
-   → 🛑 **GATE HUMANO 1 (aprovar design):** só avance quando o aluno aprovar o design
-   e o spec estiver escrito/commitado.
+1. **brainstorming** — *só se o design ainda NÃO estiver aprovado.*
+   - **Se já existe um design aprovado** (um `docs/plano-do-produto.md` + um protótipo
+     exportado — é o caso da Fase 3): **NÃO refaça o brainstorming nem peça aprovação de
+     design de novo.** O design já foi decidido (plano na Fase 1, protótipo na Fase 2);
+     trate o plano como o spec aprovado e **vá direto pra etapa 2.** (Aí a Fase 3 fica com
+     **1 gate só**: a entrega.)
+   - **Senão** (objetivo livre, sem design prévio): invoque a skill `brainstorming`,
+     proponha o design e escreva o spec.
+     → 🛑 **GATE HUMANO 1 (aprovar design):** só avance quando o aluno aprovar o design
+     e o spec estiver escrito/commitado.
 
 2. **writing-plans** — invoque a skill `writing-plans`. Quebre o spec em tarefas
    pequenas e testáveis (TDD). Salve o plano.
@@ -62,9 +68,10 @@ A narração é **informativa, não vira pergunta** — as pausas humanas contin
 
 ## Regras do motor
 
-- **Só 2 gates humanos:** o de aprovar design (etapa 1) e o de integração (etapa 4).
-  Entre as etapas, **não peça confirmação** — avance assim que a condição de término
-  da etapa for atingida.
+- **No máximo 2 gates humanos:** aprovar design (etapa 1) e integração (etapa 4). Quando
+  o design **já vem aprovado** (Fase 3: plano + protótipo), a etapa 1 é pulada e sobra
+  **só 1 gate** (a entrega). Entre as etapas, **não peça confirmação** — avance assim que
+  a condição de término da etapa for atingida.
 - Objetivo é **texto livre**. Não há roadmap, backlog ou persistência de tarefas além
   do plano em markdown.
 - **Commits** são feitos com `git` puro, mensagens em Conventional Commits, staging

@@ -23,8 +23,9 @@ records how it evolved from the original design so the provenance isn't lost.
 | 9 | Installer **unchanged** | Installer **was** touched by the beginner-usability quick-wins (commit `76c99ff`). |
 | 10 | Fase 1 = thin PRD (5 sections) via a short dialogue | Fase 1 folds in a deeper product-planning skill: ~6 essential questions (still jargon-free, derive-the-rest) producing a **richer 11-section product plan**, renamed to **`docs/plano-do-produto.md`** (also removes the "PRD" jargon leak the student used to see). |
 | 11 | Finish line = app **local** (non-goal: no deploy) | Adds **Fase 4 `pg-imersao-publicar`**: push to GitHub + deploy to **Railway** (GitHub-connected, Postgres, migrate-on-deploy). Finish line is now a **live URL**. Onboarding updated: Claude Max **$200**, GitHub + Railway required, Codex/ChatGPT dropped from required steps. |
+| 12 | Fase 3 fired a redundant 3rd "approve design" gate | Fase 3 now **skips the brainstorming gate** (design already locked by the plano + protótipo) → a single gate (final integration). Plus Fase 4 deploy-readiness hardening: `npm run build` passes, `next start` respects `PORT`, migrations committed, and the local `docker-compose` is distinguished from Railway's own Postgres service. |
 
-Version trail: `1.0.0` → `1.1.0` (pipeline ship) → `1.2.x` → `1.2.1` (bússola + narração + Fase-2 single-session collapse) → **`1.2.2`** (E2E hardening: real Design OS export path `product-plan/`, in-place scaffold, dev-server restart for new files, Fase-3 scaffold flags/`.env`/Postgres-readiness, start↔goal clarity) → `1.3.0` (Fase 1 upgraded to a richer product plan; artifact renamed `docs/plano-do-produto.md`) → **`1.4.0`** (Fase 4 deploy to Railway + onboarding for GitHub/Railway/Claude-$200). User-facing commands resolve under the plugin namespace as `/imersao:pg-imersao-*` (the bare `/pg-imersao-*` form does not resolve).
+Version trail: `1.0.0` → `1.1.0` (pipeline ship) → `1.2.x` → `1.2.1` (bússola + narração + Fase-2 single-session collapse) → **`1.2.2`** (E2E hardening: real Design OS export path `product-plan/`, in-place scaffold, dev-server restart for new files, Fase-3 scaffold flags/`.env`/Postgres-readiness, start↔goal clarity) → `1.3.0` (Fase 1 upgraded to a richer product plan; artifact renamed `docs/plano-do-produto.md`) → `1.4.0` (Fase 4 deploy to Railway + onboarding for GitHub/Railway/Claude-$200) → **`1.4.1`** (Fase 3 skips the redundant design gate; Fase 4 deploy-readiness hardening). User-facing commands resolve under the plugin namespace as `/imersao:pg-imersao-*` (the bare `/pg-imersao-*` form does not resolve).
 
 ## 1. Problem
 
@@ -140,6 +141,9 @@ brainstorming ──[GATE 1: design approved]──▶ writing-plans ──▶ e
   "Não há roadmap, backlog ou persistência"). Commit mechanics are inline and
   stack-generic (git puro, Conventional Commits, explicit staging, no `--no-verify`).
 - Free-text objective only (no roadmap persistence).
+- **GATE 1 is skipped when the design is already approved** (Fase 3: plano + protótipo) —
+  only the integration gate remains; the brainstorming gate runs solely for fresh
+  free-text objectives.
 - Per-task TDD failures chain into a 3-strike `systematic-debugging` pause.
 - The phase commands below are **playbooks** layered on this engine.
 
@@ -254,7 +258,8 @@ namespaces them as `/imersao:pg-imersao-*`.
   3. **executing-plans** — per-task TDD (Red → Green → Verify → Commit), chaining test
      failures into `systematic-debugging` (3-strike pause for instructor help).
   4. **finishing-a-development-branch** — run tests, commit / open PR.
-- **Gates:** plan-implicit approval + final integration (delegated to the goal engine).
+- **Gates:** the design is already approved (Fase 1 plano + Fase 2 protótipo), so the goal
+  **skips its brainstorming gate** — Fase 3 has a **single human gate** (final integration).
 - **Output:** app running locally end to end (`docker compose up -d` + `npm run dev`),
   Postgres in Docker, easy to tweak.
 
@@ -355,7 +360,7 @@ plugins/imersao/skills/                         NEW/UPDATED — adds 17 cleaned 
   design-usabilidade/ design-auditoria/ impeccable/ test-rigor-audit/
   repo-cleanup/ find-skills/ pr-lifecycle/ spell-check-pt-en/ prototype-first/
 docs/PROCESSO-IMERSAO.md                        NEW (PT-BR student/instructor playbook)
-plugins/imersao/.claude-plugin/plugin.json      version 1.0.0 → 1.4.0
+plugins/imersao/.claude-plugin/plugin.json      version 1.0.0 → 1.4.1
 plugins/imersao/README.md, README.md            updated (5 commands, bússola-first flow)
 instalar_imersao.sh                             CHANGED by beginner-usability quick-wins (76c99ff)
 ```

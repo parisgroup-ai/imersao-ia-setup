@@ -1,5 +1,5 @@
 ---
-description: "Fase 3 · CONSTRUIR — implementa o app de ponta a ponta a partir do export do Design OS + PRD."
+description: "Fase 3 · CONSTRUIR — implementa o app de ponta a ponta a partir do export do Design OS + plano."
 ---
 
 # /imersao:pg-imersao-implementar — Fase 3: export + PRD → app completo
@@ -52,10 +52,13 @@ só o **o quê** e o **porquê**):
 
 ## Disparar o motor
 
+O design **já foi aprovado** nas Fases 1 e 2 (plano + protótipo) — esta fase **não
+re-aprova design**. O motor pula direto pro plano técnico e só pausa na **entrega final**.
+
 3. Acione o motor autônomo:
 
    ```
-   /imersao:pg-imersao-goal "implementar o app conforme docs/plano-do-produto.md e o export do Design OS em $DESIGN_DIR/product-plan/ — montar o Next.js NA PRÓPRIA pasta do app (não num subdiretório novo)"
+   /imersao:pg-imersao-goal "implementar o app conforme docs/plano-do-produto.md e o export do Design OS em $DESIGN_DIR/product-plan/ — o design JÁ está aprovado (plano + protótipo), então PULE o brainstorming e vá direto pro plano técnico; só pause na entrega final. Monte o Next.js NA PRÓPRIA pasta do app (não num subdiretório novo)"
    ```
 
 ## Como o plano DEVE começar (Task 1 — scaffold)
@@ -92,6 +95,11 @@ só o **o quê** e o **porquê**):
    `DATABASE_URL` e avise o aluno em português que a porta padrão estava em uso.
 
    App no ar: `npm run dev`.
+
+   **Deixe o app pronto pra publicar (Fase 4):** o `npm run build` precisa passar; o `start`
+   é `next start` (respeita a porta `PORT` que o Railway define — não force 3000); **commite
+   as migrations geradas** (vão pro GitHub e rodam no Railway no deploy); o `docker-compose.yml`
+   é **só pro banco local** — no Railway o Postgres é um serviço à parte.
 
 ## Tarefas seguintes
 

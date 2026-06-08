@@ -28,6 +28,8 @@ Automatize a mecânica, **narre o conceito em 1 linha** na primeira vez (nunca a
   ```bash
   npm run build
   ```
+- As **migrations do Drizzle** precisam estar **commitadas** (a Fase 3 já commita) — é o
+  que cria as tabelas no banco da nuvem no deploy.
 
 ## 1. Guardar o código no GitHub
 
@@ -53,13 +55,15 @@ navegador**: o aluno clica, **você guia um passo de cada vez** (abra `open http
    **New Project → Deploy from GitHub repo**, autorize o Railway a ver seu GitHub (uma vez)
    e escolha o repositório **`$APP`**."
 2. **Adicionar o banco:** "Dentro do projeto, clique em **New → Database → PostgreSQL** —
-   isso cria seu banco na nuvem."
+   isso cria seu banco na nuvem." (É um banco **novo, na nuvem** — diferente do Postgres em
+   Docker do seu computador; o `docker-compose` era só pro local.)
 3. **Ligar o app ao banco:** "No serviço do **app**, vá em **Variables** e adicione
    `DATABASE_URL` com o valor `${{Postgres.DATABASE_URL}}` (uma referência ao banco que
    você acabou de criar)." Narre o porquê (a variável liga o app ao banco da nuvem).
 4. **Criar as tabelas no deploy:** "No serviço do app, em **Settings → Deploy → Pre-deploy
    Command**, coloque `npx drizzle-kit migrate`." (roda as migrations no banco da nuvem
-   antes do app subir).
+   antes do app subir — usa a mesma config do Drizzle da Fase 3, por isso elas precisam
+   estar commitadas).
 5. **Gerar o link público:** "Em **Settings → Networking**, clique em **Generate Domain**."
    O Railway te dá uma URL tipo `seu-app.up.railway.app`.
 
