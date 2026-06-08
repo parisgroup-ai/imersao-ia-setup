@@ -1,5 +1,5 @@
 ---
-description: Fase 2 da imersão — vira o PRD em protótipo funcional no Design OS público (setup automático).
+description: "Fase 2 · DESENHAR — vira o PRD em protótipo funcional no Design OS público (setup automático)."
 ---
 
 # /imersao:pg-imersao-prototipo — Fase 2: PRD → protótipo
@@ -75,19 +75,41 @@ O aluno conversa com **você** o tempo todo — **não** mande ele abrir uma seg
 do Claude. (O único terminal extra possível é o do servidor, que já subiu sozinho.)
 
 **Como:** os comandos do Design OS (`product-vision`, `design-screen`…) são **arquivos de
-prompt** dentro do clone, em `$DESIGN_DIR/.claude/commands/` (procure a pasta `design-os`).
-**Leia cada arquivo e execute as instruções você mesmo**, escrevendo os arquivos de
-design onde o comando manda, dentro de `$DESIGN_DIR`. O servidor (já no ar) renderiza ao
-vivo a cada arquivo.
+prompt** dentro do clone, em `$DESIGN_DIR/.claude/commands/design-os/`. **Leia cada
+arquivo e execute as instruções você mesmo**, escrevendo os arquivos de design dentro de
+`$DESIGN_DIR`.
 
-⚠️ **Pra NÃO dar tela em branco:** siga o formato dos arquivos do Design OS **à risca**
-(nomes de pasta/seção, estrutura, manifestos). **Não improvise** o formato — o
-renderizador dele é exigente. Na dúvida, releia o arquivo de comando correspondente no
-clone antes de escrever.
+⚠️ **Pra NÃO dar tela em branco** (o renderizador é exigente — siga à risca):
 
-Siga a sequência (lendo o comando no clone antes de cada etapa), **narrando em 1 linha**:
-visão do produto → roadmap → modelo de dados → tokens → shell → telas (uma por seção) →
-dados de exemplo.
+1. **Caminho-base:** quando um comando do Design OS disser `/product/...` ou `/src/...`,
+   isso é **relativo à raiz do clone** — escreva sempre em `$DESIGN_DIR/product/...` e
+   `$DESIGN_DIR/src/...` (NUNCA na pasta do app, NUNCA num `/product` absoluto do sistema).
+   O renderizador só acha arquivos nesses caminhos exatos:
+   - `$DESIGN_DIR/product/product-overview.md` (1ª linha = `# Nome do Produto` — obrigatório)
+   - `$DESIGN_DIR/product/product-roadmap.md` (formato numerado `### 1. Título`)
+   - `$DESIGN_DIR/product/data-shape/data-shape.md`
+   - `$DESIGN_DIR/product/design-system/colors.json` + `typography.json`
+   - `$DESIGN_DIR/product/shell/spec.md` + `$DESIGN_DIR/src/shell/components/*.tsx`
+   - por seção: `$DESIGN_DIR/product/sections/<id>/spec.md` + `data.json` + a tela em
+     `$DESIGN_DIR/src/sections/<id>/*.tsx` (**a tela vai em `src/`, não em `product/`**)
+2. **Nome da pasta da seção = slug sem acento:** o app gera o id tirando acentos e pondo
+   minúsculas-com-hífen (`Configurações` → `configuracoes`, `Relatórios & Métricas` →
+   `relatorios-and-metricas`). Use sempre o slug, senão a seção fica em branco.
+3. **Reinicie o servidor ao criar arquivos NOVOS:** o Design OS só passa a renderizar uma
+   tela/shell/seção nova depois de reiniciar o dev server (edições em arquivo já
+   renderizado recarregam sozinhas via HMR). Depois de escrever arquivos novos:
+   ```bash
+   kill "$(cat "$DESIGN_DIR/.dev-server.pid")" 2>/dev/null
+   nohup npm --prefix "$DESIGN_DIR" run dev > "$DESIGN_DIR/dev.log" 2>&1 &
+   echo $! > "$DESIGN_DIR/.dev-server.pid"; sleep 3
+   ```
+4. Na dúvida, **releia o arquivo de comando** correspondente no clone antes de escrever.
+
+Sequência canônica (lendo o comando no clone antes de cada etapa, **narrando em 1 linha**):
+`product-vision` (gera overview + roadmap + data-shape de uma vez — use o `docs/PRD.md`
+como as "raw notes", não faça o aluno redigitar) → `design-tokens` → `design-shell` →
+**por seção:** `shape-section` (spec + dados + tipos) → `design-screen`. (`product-roadmap`,
+`data-shape`, `sample-data` são comandos de **atualização** — não use na primeira passada.)
 
 > Se o servidor cair, o aluno reabre num terminal com `npm --prefix <DESIGN_DIR> run dev`
 > — isso é só o **servidor**, nunca um 2º Claude. Pra pará-lo:
@@ -97,14 +119,19 @@ dados de exemplo.
 
 🛑 **Gate:** o aluno olha a **aba do navegador** e pede mudanças em **linguagem natural**
 ("aumenta o card", "tira esse campo") **aqui mesmo, falando com você**. Você reescreve o
-arquivo da tela afetada e o servidor recarrega na hora. **Nunca** regenere telas já
-aprovadas. Loop até o aluno aprovar.
+arquivo da tela afetada — **ajuste em tela já existente recarrega sozinho** (HMR); só
+arquivo **novo** pede reiniciar o servidor (§3, passo 3). Se a aba abrir **em branco**,
+não é o servidor: releia o arquivo de design e confira o caminho/formato (§3). **Nunca**
+regenere telas já aprovadas. Loop até o aluno aprovar.
 
 ## 5. Exportar e seguir
 
-- Aprovado? Execute o **export** do Design OS (leia o arquivo de comando de export no
-  clone e siga) → o pacote (componentes React + Tailwind + specs) fica em
-  `$DESIGN_DIR/export/` (ou `design/product-plan.zip`). Confirme que existe e diga o
-  caminho real ao aluno.
+- Aprovado? Execute o **export** do Design OS (leia o arquivo de comando `export-product`
+  no clone e siga). **Reinicie o servidor** depois (o export gera arquivo novo) e confirme
+  o pacote: ele fica em **`$DESIGN_DIR/product-plan/`** (pasta) e **`$DESIGN_DIR/product-plan.zip`**
+  (na raiz do clone). Verifique e diga o caminho real ao aluno:
+  ```bash
+  ls -d "$DESIGN_DIR/product-plan" "$DESIGN_DIR/product-plan.zip" 2>/dev/null && echo "export OK"
+  ```
 - **Próximo passo:** você já está na sessão do app — é só rodar
   **`/imersao:pg-imersao-implementar`** (ou pedir o próximo passo, ou `/imersao:pg-imersao-start`).

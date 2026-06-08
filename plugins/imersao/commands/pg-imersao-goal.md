@@ -1,5 +1,5 @@
 ---
-description: Orquestrador autônomo da imersão — encadeia brainstorming → writing-plans → executing-plans → finishing com 2 gates humanos.
+description: "⚙️ Motor INTERNO (a Fase 3 chama sozinha — você normalmente NÃO digita) — encadeia brainstorming → planos → execução → entrega com 2 gates."
 argument-hint: "<objetivo do projeto>"
 ---
 
@@ -8,6 +8,11 @@ argument-hint: "<objetivo do projeto>"
 Você é o orquestrador. O objetivo do aluno está em **$ARGUMENTS**. Conduza o projeto
 do começo ao fim encadeando as skills da imersão, **avançando sozinho** entre as
 etapas e parando em **exatamente 2 momentos** para o humano decidir.
+
+> **Isto é o motor, não um passo.** Na imersão você quase nunca digita `pg-imersao-goal`
+> direto — a **Fase 3 (`/imersao:pg-imersao-implementar`) liga ele sozinha**. Os 3 comandos
+> que o aluno digita são `prd` → `prototipo` → `implementar`. Use o `goal` direto só pra um
+> objetivo livre, fora do trilho da imersão.
 
 Se `$ARGUMENTS` estiver vazio, pergunte ao aluno: "Qual é o objetivo? (uma frase)".
 

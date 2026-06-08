@@ -14,7 +14,7 @@ ao aluno o mapa dos 3 passos, dizer **onde ele está** e **qual o próximo passo
 ```bash
 APP="$(basename "$PWD")"; DESIGN_DIR="../${APP}-design"
 [ -f docs/PRD.md ] && echo "PRD=sim" || echo "PRD=nao"
-{ [ -d "$DESIGN_DIR/export" ] || ls "$DESIGN_DIR"/design/product-plan*.zip >/dev/null 2>&1; } && echo "EXPORT=sim" || echo "EXPORT=nao"
+{ [ -f "$DESIGN_DIR/product-plan.zip" ] || [ -d "$DESIGN_DIR/product-plan" ]; } && echo "EXPORT=sim" || echo "EXPORT=nao"
 { [ -f package.json ] && grep -q '"next"' package.json 2>/dev/null; } && echo "APP=sim" || echo "APP=nao"
 ```
 
@@ -34,6 +34,10 @@ Se você estiver numa pasta terminada em `-design`, avise: "Você está na pasta
 Explique, em 1 linha, **por que** essa ordem (reforça a metodologia): "A gente sempre
 **define** antes de desenhar, e **desenha** antes de construir — porque é muito mais
 barato mudar uma ideia no papel do que um app pronto."
+
+Deixe claro que **são só esses 3 comandos** que ele digita. Se ele perguntar do
+`pg-imersao-goal`: é o **motor interno** que a Fase 3 liga sozinha — ele **nunca**
+precisa chamá-lo.
 
 ## 3. Diga o próximo passo concreto (sem rodar)
 

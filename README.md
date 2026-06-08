@@ -71,7 +71,7 @@ O plugin traz um **pipeline guiado** que leva da ideia a um app funcionando, em 
 | Comando | Fase | O que faz |
 |---|---|---|
 | `/imersao:pg-imersao-start` | 👈 | **Comece aqui** — bússola dos 3 passos |
-| `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/PRD.md` (brainstorming guiado) |
+| `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/PRD.md` (conversa guiada) |
 | `/imersao:pg-imersao-prototipo` | 2 | PRD → protótipo no **Design OS** público → export React + Tailwind |
 | `/imersao:pg-imersao-implementar` | 3 | Export + PRD → app **Next.js + Tailwind + shadcn/ui + Drizzle + Postgres (Docker)** |
 

@@ -1,5 +1,5 @@
 ---
-description: Fase 3 da imersão — implementa o app de ponta a ponta a partir do export do Design OS + PRD.
+description: "Fase 3 · CONSTRUIR — implementa o app de ponta a ponta a partir do export do Design OS + PRD."
 ---
 
 # /imersao:pg-imersao-implementar — Fase 3: export + PRD → app completo
@@ -25,9 +25,22 @@ só o **o quê** e o **porquê**):
 
 ## Pré-condições
 
-1. Exija o **export do Design OS** em `../<projeto>-design/export/` e o **`docs/PRD.md`**.
-   Se faltar o export, peça para rodar **`/imersao:pg-imersao-prototipo`** antes. Trabalhe a
-   partir da pasta do **app** (`meu-projeto/`).
+1. Trabalhe **a partir da pasta do app** (a mesma do `docs/PRD.md`). Derive a pasta do
+   design e exija o **export** + o **`docs/PRD.md`**:
+
+   ```bash
+   APP="$(basename "$PWD")"; DESIGN_DIR="../${APP}-design"
+   [ -f docs/PRD.md ] || { echo "Falta docs/PRD.md — rode /imersao:pg-imersao-prd antes."; exit 1; }
+   { [ -f "$DESIGN_DIR/product-plan.zip" ] || [ -d "$DESIGN_DIR/product-plan" ]; } \
+     || { echo "Falta o export — rode /imersao:pg-imersao-prototipo antes."; exit 1; }
+   ```
+
+   Se o servidor do Design OS (Fase 2) ainda estiver no ar, **desligue-o** pra liberar a
+   porta do app (narre: "vou desligar o servidor do desenho que ficou aberto"):
+
+   ```bash
+   [ -f "$DESIGN_DIR/.dev-server.pid" ] && kill "$(cat "$DESIGN_DIR/.dev-server.pid")" 2>/dev/null; rm -f "$DESIGN_DIR/.dev-server.pid"
+   ```
 
 2. **Cheque o Docker ANTES de começar** — esta fase usa um banco Postgres em Docker. Rode
    `docker info` silenciosamente:
@@ -42,28 +55,43 @@ só o **o quê** e o **porquê**):
 3. Acione o motor autônomo:
 
    ```
-   /imersao:pg-imersao-goal "implementar o app conforme docs/PRD.md e o export do Design OS em ../<projeto>-design/export/"
+   /imersao:pg-imersao-goal "implementar o app conforme docs/PRD.md e o export do Design OS em $DESIGN_DIR/product-plan/ — montar o Next.js NA PRÓPRIA pasta do app (não num subdiretório novo)"
    ```
 
 ## Como o plano DEVE começar (Task 1 — scaffold)
 
-4. A **primeira tarefa** do plano gerado precisa montar o esqueleto **de forma não
-   interativa** (use flags que evitem prompts), com **banco em Docker desde o dia 1**:
+4. A **primeira tarefa** do plano monta o esqueleto **de forma não interativa** (todo
+   comando fecha o stdin com `< /dev/null` pra um prompt inesperado falhar rápido em vez
+   de travar), com **banco em Docker desde o dia 1**. Ordem que funciona:
 
-   - **Next.js** (App Router, TypeScript) — `create-next-app` não interativo
-   - **Tailwind CSS** + **shadcn/ui**
-   - **Drizzle ORM**
-   - **`docker-compose.yml`** com **Postgres 16**
-   - **`.env.example`** (com `DATABASE_URL`)
-   - **primeira migration** do Drizzle
-   - rota **`/api/health`** que faz um SELECT simples no banco
+   1. **Next.js NA PRÓPRIA pasta do app** (App Router, TS) — alvo `.`, nunca um
+      subdiretório novo (senão a bússola não acha o app):
+      ```bash
+      npx --yes create-next-app@latest . --ts --tailwind --app --eslint \
+        --no-src-dir --import-alias "@/*" --use-npm --yes --disable-git < /dev/null
+      ```
+   2. **shadcn/ui** (depois do Next — precisa do Tailwind e da pasta prontos):
+      ```bash
+      npx --yes shadcn@latest init --yes --defaults < /dev/null   # NÃO use --base-color (removido)
+      ```
+   3. **Drizzle ORM** + **`docker-compose.yml`** (Postgres 16, porta de host **5455** pra
+      fugir do 5432 ocupado) + **`.env.example`** E **`.env` de verdade** (`cp .env.example .env`,
+      com `DATABASE_URL` apontando pro Postgres do compose — o Drizzle e o Next leem `.env`,
+      **não** `.env.example`).
+   4. **Suba o banco e ESPERE ficar pronto** antes da migration (em máquina fria o Docker
+      baixa a imagem e o Postgres leva alguns segundos pra aceitar conexão):
+      ```bash
+      docker compose up -d
+      until docker compose exec -T db pg_isready -U app >/dev/null 2>&1; do sleep 1; done
+      ```
+   5. **primeira migration** do Drizzle (gerar + aplicar).
+   6. rota **`/api/health`** que faz um SELECT simples no banco.
 
-   E **suba o banco antes de qualquer feature**:
+   Se `docker compose up -d` reclamar de **porta ocupada** ("port is already allocated"),
+   **não** mostre o erro cru: troque a porta de host (5455 → 5456…), atualize o
+   `DATABASE_URL` e avise o aluno em português que a porta padrão estava em uso.
 
-   ```bash
-   docker compose up -d        # Postgres no ar
-   npm run dev                 # app no ar
-   ```
+   App no ar: `npm run dev`.
 
 ## Tarefas seguintes
 

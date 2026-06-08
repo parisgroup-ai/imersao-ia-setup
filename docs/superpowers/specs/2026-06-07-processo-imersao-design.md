@@ -22,7 +22,7 @@ records how it evolved from the original design so the provenance isn't lost.
 | 8 | §10 promised a **PG-coupling grep-gate** and schema validation | Neither shipped — CI runs `validate-skills.sh` (frontmatter + folder-name parity only); `schema/skill-schema.yml` is unwired; standalone `railway-*`/`tasknotes` skills legitimately ship. |
 | 9 | Installer **unchanged** | Installer **was** touched by the beginner-usability quick-wins (commit `76c99ff`). |
 
-Version trail: `1.0.0` → `1.1.0` (pipeline ship) → `1.2.x` → **`1.2.1`** (bússola + narração + Fase-2 single-session collapse). User-facing commands resolve under the plugin namespace as `/imersao:pg-imersao-*` (the bare `/pg-imersao-*` form does not resolve).
+Version trail: `1.0.0` → `1.1.0` (pipeline ship) → `1.2.x` → `1.2.1` (bússola + narração + Fase-2 single-session collapse) → **`1.2.2`** (E2E hardening: real Design OS export path `product-plan/`, in-place scaffold, dev-server restart for new files, Fase-3 scaffold flags/`.env`/Postgres-readiness, start↔goal clarity). User-facing commands resolve under the plugin namespace as `/imersao:pg-imersao-*` (the bare `/pg-imersao-*` form does not resolve).
 
 ## 1. Problem
 
@@ -333,7 +333,7 @@ plugins/imersao/skills/                         NEW/UPDATED — adds 17 cleaned 
   design-usabilidade/ design-auditoria/ impeccable/ test-rigor-audit/
   repo-cleanup/ find-skills/ pr-lifecycle/ spell-check-pt-en/ prototype-first/
 docs/PROCESSO-IMERSAO.md                        NEW (PT-BR student/instructor playbook)
-plugins/imersao/.claude-plugin/plugin.json      version 1.0.0 → 1.2.1
+plugins/imersao/.claude-plugin/plugin.json      version 1.0.0 → 1.2.2
 plugins/imersao/README.md, README.md            updated (5 commands, bússola-first flow)
 instalar_imersao.sh                             CHANGED by beginner-usability quick-wins (76c99ff)
 ```

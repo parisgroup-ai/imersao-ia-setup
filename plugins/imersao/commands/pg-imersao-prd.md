@@ -1,5 +1,5 @@
 ---
-description: Fase 1 da imersão — conversa rápida pra transformar sua ideia no documento do projeto.
+description: "Fase 1 · DEFINIR — conversa rápida pra transformar sua ideia no documento do projeto."
 argument-hint: "<sua ideia em uma frase>"
 ---
 
@@ -24,9 +24,16 @@ está em **$ARGUMENTS**.
 ## Passo 1 — preparar a pasta (silencioso, sem falar de "git")
 
 Garanta que a pasta do projeto está pronta: se não houver repositório, rode `git init`
-por baixo dos panos e, se `git config user.name/user.email` estiverem vazios, defina um
-padrão (pra não estourar erro depois). Para o aluno, no máximo: "Já preparei a pasta do
-seu projeto."
+por baixo dos panos. Em seguida, **só se** estiverem vazios, defina uma identidade git
+**local** (nunca `--global` — é só pra esta pasta, não mexa na identidade global do aluno):
+
+```bash
+git rev-parse --git-dir >/dev/null 2>&1 || git init -q
+git config user.name  >/dev/null 2>&1 || git config user.name  "Aluno Imersão"
+git config user.email >/dev/null 2>&1 || git config user.email "aluno@imersao.local"
+```
+
+Para o aluno, no máximo: "Já preparei a pasta do seu projeto."
 
 ## Passo 2 — a conversa (3 a 4 perguntas, uma por vez)
 
