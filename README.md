@@ -14,7 +14,7 @@ curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main
 
 - **Xcode Command Line Tools** — Git e compilador nativo
 - **Homebrew** — gerenciador de pacotes
-- **Node.js** — runtime JavaScript (necessário para Claude Code e Codex)
+- **Node.js** — runtime JavaScript (necessário para Claude Code, Codex e ToStudy CLI)
 - **GitHub CLI (`gh`)** — autenticação e operações no GitHub pelo terminal
 - **Ghostty** — terminal moderno e otimizado
 - **Docker Desktop** — containerização e orquestração
@@ -22,7 +22,8 @@ curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main
 - **Claude Desktop** — app desktop do Claude
 - **Claude Code** — CLI do Claude (npm)
 - **Codex CLI** — CLI do OpenAI Codex (npm)
-- **Skills da Imersão** — instaladas automaticamente como plugin do Claude Code (passo 8 do instalador)
+- **ToStudy CLI** — CLI dos cursos da imersão, `@tostudy-ai/cli` (npm)
+- **Skills da Imersão** — instaladas automaticamente como plugin do Claude Code (passo 9 do instalador)
 
 O script verifica cada item e pula os que já estão instalados. Ao final, **feche e reabra o terminal** (ou o Claude Code) para carregar tudo. Pode levar alguns minutos — siga as instruções na tela e forneça sua senha quando pedida.
 

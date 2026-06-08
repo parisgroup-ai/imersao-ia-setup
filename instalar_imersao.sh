@@ -25,7 +25,7 @@ RED='\033[0;31m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-TOTAL=9
+TOTAL=10
 
 # -----------------------------------------------------------
 # BLOQUEIO: nao pode rodar como root / sudo su
@@ -249,9 +249,24 @@ else
 fi
 
 # -----------------------------------------------------------
-# 8) Skills da Imersao (plugin do Claude Code)
+# 8) ToStudy CLI (npm, sem sudo) — cursos da imersao
 # -----------------------------------------------------------
-echo -e "${BLUE}[8/$TOTAL]${NC} Instalando as skills da Imersao (plugin 'imersao')..."
+echo -e "${BLUE}[8/$TOTAL]${NC} Verificando ToStudy CLI..."
+if command -v tostudy &>/dev/null; then
+  pular "ToStudy CLI"
+else
+  echo "  Instalando ToStudy CLI..."
+  if npm install -g @tostudy-ai/cli; then
+    ok "ToStudy CLI"
+  else
+    erro "ToStudy CLI" "rode: npm install -g @tostudy-ai/cli"
+  fi
+fi
+
+# -----------------------------------------------------------
+# 9) Skills da Imersao (plugin do Claude Code)
+# -----------------------------------------------------------
+echo -e "${BLUE}[9/$TOTAL]${NC} Instalando as skills da Imersao (plugin 'imersao')..."
 if command -v claude &>/dev/null; then
   PLUGIN_LOG="$(mktemp)"
   PLUGIN_OK=""
@@ -278,10 +293,10 @@ else
 fi
 
 # -----------------------------------------------------------
-# 9) Verificacao final
+# 10) Verificacao final
 # -----------------------------------------------------------
 echo ""
-echo -e "${BLUE}[9/$TOTAL]${NC} Verificacao final..."
+echo -e "${BLUE}[10/$TOTAL]${NC} Verificacao final..."
 echo -e "${BLUE}------------------------------------------------------------${NC}"
 
 verificar() {
@@ -310,6 +325,7 @@ verificar "Obsidian"        ""        "Obsidian.app"
 verificar "Claude Desktop"  ""        "Claude.app"
 verificar "Claude Code"     "claude"  ""
 verificar "Codex CLI"       "codex"   ""
+verificar "ToStudy CLI"     "tostudy" ""
 
 echo -e "${BLUE}------------------------------------------------------------${NC}"
 echo ""

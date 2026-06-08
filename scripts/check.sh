@@ -38,6 +38,7 @@ check_cmd "Node.js"      node   "brew install node"
 check_cmd "GitHub CLI"   gh     "brew install gh"
 check_cmd "Claude Code"  claude "npm install -g @anthropic-ai/claude-code"
 check_cmd "Codex CLI"    codex  "npm install -g @openai/codex"
+check_cmd "ToStudy CLI"  tostudy "npm install -g @tostudy-ai/cli"
 
 # Aplicativos (.app)
 echo ""

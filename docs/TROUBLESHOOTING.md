@@ -33,7 +33,7 @@ O instalador configura o npm pra instalar no seu usuário (`~/.npm-global`) just
 npm config set prefix "$HOME/.npm-global"
 echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.zprofile
 # reabra o terminal, depois:
-npm install -g @anthropic-ai/claude-code @openai/codex
+npm install -g @anthropic-ai/claude-code @openai/codex @tostudy-ai/cli
 ```
 
 Nunca use `sudo npm install -g` — quebra atualizações futuras.
