@@ -43,13 +43,14 @@ Nunca use `sudo npm install -g` — quebra atualizações futuras.
 A statusline da ParisGroup é instalada no passo 10 e ligada no seu `~/.claude/settings.json`. Se não aparecer:
 
 1. **Reabra o Claude Code** — a statusline só carrega ao (re)iniciar.
-2. **Não está instalada?** O comando `claude-statusline` deve existir. Se faltar:
+2. **Não está instalada?** O comando `claude-statusline` deve existir. Se faltar, baixe o script direto (é um único bash autocontido):
 
    ```bash
-   npm install -g github:parisgroup-ai/claude-statusline
+   curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/claude-statusline/main/bin/cc-statusline.sh \
+     -o ~/.npm-global/bin/claude-statusline && chmod +x ~/.npm-global/bin/claude-statusline
    ```
 
-   O pacote vive no GitHub Packages (exige token), mas o **repo é público** — por isso instalamos pela URL do Git, sem nenhuma credencial.
+   O pacote npm `@parisgroup-ai/claude-statusline` vive no GitHub Packages (exige token), por isso o instalador baixa o script direto do **repo público** — funciona sem nenhuma credencial. (`npm install -g github:…` não serve: instala um bin quebrado.)
 3. **Não está ligada no `settings.json`?** Adicione (ou rode o instalador de novo, que faz isso sozinho):
 
    ```json
@@ -61,7 +62,7 @@ A statusline da ParisGroup é instalada no passo 10 e ligada no seu `~/.claude/s
    brew install --cask font-meslo-lg-nerd-font
    ```
 
-   No **Ghostty** os ícones já funcionam; em outros terminais, selecione a fonte "MesloLGS Nerd Font". Sem fonte, use ASCII trocando o `command` por `CC_STATUSLINE_NO_ICONS=1 claude-statusline`.
+   No **Ghostty** os ícones já funcionam; em outros terminais, selecione uma fonte **MesloLG Nerd Font** (ex.: "MesloLGS Nerd Font"). Sem fonte, use ASCII trocando o `command` por `CC_STATUSLINE_NO_ICONS=1 claude-statusline`.
 
 ## Um app (Ghostty / Docker / Obsidian / Claude Desktop) não instalou
 

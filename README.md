@@ -25,7 +25,8 @@ curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main
 - **Codex CLI** — CLI do OpenAI Codex (npm)
 - **ToStudy CLI** — CLI dos cursos da imersão, `@tostudy-ai/cli` (npm)
 - **Skills da Imersão** — instaladas automaticamente como plugin do Claude Code (passo 9 do instalador)
-- **Statusline da ParisGroup** — statusline do Claude Code (contexto, modelo, git, custo), instalada do repo público e já ligada no `~/.claude/settings.json`
+- **jq** — processador de JSON de linha de comando (usado para ligar a statusline no `settings.json`)
+- **Statusline da ParisGroup** — statusline do Claude Code (contexto, modelo, git, custo), baixada do repo público e já ligada no `~/.claude/settings.json`
 
 O script verifica cada item e pula os que já estão instalados. Ao final, **feche e reabra o terminal** (ou o Claude Code) para carregar tudo. Pode levar alguns minutos — siga as instruções na tela e forneça sua senha quando pedida.
 

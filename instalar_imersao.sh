@@ -305,18 +305,25 @@ if command -v claude &>/dev/null; then
     brew install jq >/dev/null 2>&1 || true
   fi
 
-  # CLI da statusline: instala direto do repo PUBLICO (sem GitHub Packages/token).
-  # O pacote @parisgroup-ai/* vive no GitHub Packages (exige token); o repo e publico,
-  # entao instalamos pela URL git — funciona num Mac novo sem nenhuma credencial.
-  if command -v claude-statusline &>/dev/null; then
-    pular "Statusline (claude-statusline)"
+  # CLI da statusline: baixa o script (bash AUTOCONTIDO) direto do repo PUBLICO.
+  # Por que nao 'npm install -g'? O pacote @parisgroup-ai/* vive no GitHub Packages
+  # (exige token) E o 'npm install -g github:...' instala um bin quebrado (symlink
+  # pendurado). O script e um unico bash autocontido — baixar direto e robusto e sem token.
+  SL_DIR="$HOME/.npm-global/bin"
+  SL_BIN="$SL_DIR/claude-statusline"
+  SL_URL="https://raw.githubusercontent.com/parisgroup-ai/claude-statusline/main/bin/cc-statusline.sh"
+  SL_SMOKE='{"model":{"display_name":"x"},"cwd":"'"$HOME"'","workspace":{"current_dir":"'"$HOME"'"},"cost":{"total_cost_usd":0}}'
+  mkdir -p "$SL_DIR"
+  echo "  Baixando a statusline..."
+  SL_TMP="$(mktemp)"
+  # So instala se baixar E passar num smoke test real (roda com JSON no stdin, exit 0).
+  # Presenca/--version nao servem: --version travaria (le stdin) e presenca mascararia bin quebrado.
+  if curl -fsSL "$SL_URL" -o "$SL_TMP" && [ -s "$SL_TMP" ] && printf '%s' "$SL_SMOKE" | bash "$SL_TMP" >/dev/null 2>&1; then
+    mv "$SL_TMP" "$SL_BIN" && chmod +x "$SL_BIN"
+    ok "Statusline (claude-statusline)"
   else
-    echo "  Instalando a statusline (pode levar ~1 min — clona do GitHub)..."
-    if npm install -g github:parisgroup-ai/claude-statusline; then
-      ok "Statusline (claude-statusline)"
-    else
-      erro "Statusline (CLI)" "rode: npm install -g github:parisgroup-ai/claude-statusline"
-    fi
+    rm -f "$SL_TMP"
+    erro "Statusline (CLI)" "baixe manual: curl -fsSL $SL_URL -o $SL_BIN && chmod +x $SL_BIN"
   fi
 
   # Liga a statusline no ~/.claude/settings.json — so se ainda NAO houver uma
@@ -377,11 +384,13 @@ verificar "Claude Desktop"  ""        "Claude.app"
 verificar "Claude Code"     "claude"  ""
 verificar "Codex CLI"       "codex"   ""
 verificar "ToStudy CLI"     "tostudy" ""
-# Statusline: checagem por presenca (NAO usar verificar/--version — o script le stdin e travaria)
-if command -v claude-statusline &>/dev/null; then
+# Statusline: smoke test real (JSON no stdin, exit 0). NAO usar --version (le stdin, travaria);
+# so checar presenca mascararia um bin quebrado.
+if command -v claude-statusline &>/dev/null && \
+   printf '{"model":{"display_name":"x"},"cwd":"%s","workspace":{"current_dir":"%s"},"cost":{"total_cost_usd":0}}' "$HOME" "$HOME" | claude-statusline >/dev/null 2>&1; then
   echo -e "  ${GREEN}OK${NC}  Statusline PG  (claude-statusline)"
 else
-  echo -e "  ${RED}X${NC}   Statusline PG  — NAO ENCONTRADO"
+  echo -e "  ${RED}X${NC}   Statusline PG  — NAO ENCONTRADO ou nao executa"
 fi
 
 echo -e "${BLUE}------------------------------------------------------------${NC}"

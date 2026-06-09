@@ -69,8 +69,10 @@ fi
 # Statusline da ParisGroup (instalada + ligada no settings.json)
 echo ""
 echo -e "${BLUE}Statusline:${NC}"
-# Presenca por command -v — NUNCA rodar 'claude-statusline --version' (le stdin, travaria o check)
-if command -v claude-statusline >/dev/null 2>&1; then
+# Smoke test real (JSON no stdin, exit 0) — NUNCA 'claude-statusline --version' (le stdin, travaria);
+# so checar presenca mascararia um bin quebrado/corrompido.
+SL_SMOKE_JSON=$(printf '{"model":{"display_name":"x"},"cwd":"%s","workspace":{"current_dir":"%s"},"cost":{"total_cost_usd":0}}' "$HOME" "$HOME")
+if command -v claude-statusline >/dev/null 2>&1 && printf '%s' "$SL_SMOKE_JSON" | claude-statusline >/dev/null 2>&1; then
   ok "Statusline instalada" "claude-statusline"
   if command -v jq >/dev/null 2>&1 && [ -f "$HOME/.claude/settings.json" ] && jq -e '.statusLine' "$HOME/.claude/settings.json" >/dev/null 2>&1; then
     ok "Statusline ligada no settings.json"
@@ -78,7 +80,7 @@ if command -v claude-statusline >/dev/null 2>&1; then
     aviso "Statusline instalada mas NAO ligada — adicione \"statusLine\":{\"type\":\"command\",\"command\":\"claude-statusline\"} no ~/.claude/settings.json (ou rode o instalador de novo)."
   fi
 else
-  falta "Statusline PG" "npm install -g github:parisgroup-ai/claude-statusline"
+  falta "Statusline PG" "rode o instalador, ou: curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/claude-statusline/main/bin/cc-statusline.sh -o ~/.npm-global/bin/claude-statusline && chmod +x ~/.npm-global/bin/claude-statusline"
 fi
 
 # Pronto pra usar (instalar não basta — precisa estar PRONTO)
