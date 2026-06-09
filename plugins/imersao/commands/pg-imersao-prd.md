@@ -148,7 +148,10 @@ puxar a próxima). Cubra, derivando e propondo onde der:
 - **quem usa** (tipos de pessoa; o que cada um vê e faz);
 - as **3 a 6 telas/áreas** principais;
 - em cada área, o que a pessoa **faz** e que **regra** importa (ex.: só o dono edita);
-- precisa de **conta/login**? depende de algo **de fora** (pagamento, e-mail, mapa)?
+- precisa de **conta/login**? depende de algo **de fora** (IA, pagamento, e-mail, mapa)?
+  Se depender — principalmente de **IA** — narre 1 linha, sem assustar: "isso vai usar
+  **IA de verdade**; lá na construção você vai precisar de uma **chave** (custa centavos
+  por uso, separada da assinatura do Claude) — te aviso na hora certa, é rapidinho."
 - o que **não** precisa entrar agora.
 
 Onde faltar, **proponha um rascunho** e deixe o aluno **confirmar ou ajustar**. Seja
@@ -176,6 +179,10 @@ Depois, as seções do plano (só as que fizerem sentido, com o **nome do produt
 (incluindo tela vazia e erro), **Telas e navegação**, **Informações** (dados e relações),
 **Conta e permissões**, **Conexões de fora**, **Regras**, **Entrega por fases**, **Em
 aberto / futuro**.
+
+> Em **Conexões de fora**, registre cada conexão com: o que é, se **precisa de chave**, o
+> **custo aproximado** (ex.: "IA: centavos por uso") e uma nota de que a **Fase 3 resolve
+> isso com você** (criar a chave ou seguir em modo demonstração).
 
 > Não invente conteúdo que o aluno não validou — onde derivou, deixe claro que é rascunho.
 

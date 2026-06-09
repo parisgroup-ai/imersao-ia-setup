@@ -68,7 +68,13 @@ navegador**: o aluno clica, **você guia um passo de cada vez** (abra `open http
    antes do app subir — usa a mesma config do Drizzle da Fase 3, por isso elas precisam
    estar commitadas; se reclamar que não acha o `drizzle-kit`, crie um script
    `"db:migrate": "drizzle-kit migrate"` no `package.json` e use `npm run db:migrate`).
-5. **Gerar o link público:** "Em **Settings → Networking**, clique em **Generate Domain**."
+5. **Se o app usa chave de IA (ou outro serviço de fora):** "Ainda em **Variables**, clique
+   em **New Variable** e crie **`ANTHROPIC_API_KEY`**, colando o **valor da sua chave**
+   (aqui é o valor mesmo, não referência)." Narre o porquê: "o ar não lê o arquivo `.env`
+   do seu computador — a chave precisa ser colocada lá também." Se o aluno seguiu em
+   **modo demonstração**: diga com clareza que o app no ar fica em demonstração (com o
+   selo) até ele colocar a chave — e tá tudo bem publicar assim.
+6. **Gerar o link público:** "Em **Settings → Networking**, clique em **Generate Domain**."
    O Railway te dá uma URL tipo `seu-app.up.railway.app`.
 
 ## 3. Confirmar no ar
