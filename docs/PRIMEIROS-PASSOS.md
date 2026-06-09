@@ -63,7 +63,7 @@ Você **não precisa decorar comandos nem nomes de skill** — descreva o que qu
 ## 6. Construindo seu app de verdade (o projeto da imersão)
 
 O hello-world acima é só pra sentir o Claude Code. Pra construir o **app da imersão** —
-da ideia até um app funcionando, com banco de dados — existe um caminho guiado em **3
+da ideia até um app funcionando, com banco de dados — existe um caminho guiado em **4
 passos**. Comece criando a pasta do seu app e abrindo o Claude nela:
 
 ```bash
