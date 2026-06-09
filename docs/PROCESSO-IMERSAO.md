@@ -113,19 +113,30 @@ De volta em `meu-projeto/`:
 /imersao:pg-imersao-implementar
 ```
 
-Isso dispara o motor `/imersao:pg-imersao-goal`, que monta o app a partir do protótipo + plano. A
-**primeira tarefa** já sobe a base com **banco em Docker**:
+Isso dispara o motor `/imersao:pg-imersao-goal`, que monta o app a partir do protótipo + plano.
+
+**Antes de construir, a honestidade:** se o seu plano usa algo **de fora** (IA, pagamento,
+e-mail…), o Claude te avisa **antes** — pra IA, ele explica que precisa de uma **chave de
+API** (separada da assinatura do Claude; custa centavos por uso) e te dá a escolha: **criar
+a chave agora** (ele guia, ~5 min) ou seguir em **modo demonstração** (respostas de exemplo
+com um selo na tela; colar a chave depois vira real, sem mexer em código). Nada de
+funcionalidade fingida sem avisar.
+
+A **primeira tarefa** já sobe a base com **banco em Docker**:
 
 - **Next.js** (App Router, TypeScript) + **Tailwind** + **shadcn/ui**
 - **Drizzle ORM** + **Postgres 16 em Docker** (`docker-compose.yml`) + `.env`
 - primeira migration + rota `/api/health`
+- se o app usa **IA**: a integração real (ou a demonstração marcada) já nasce no formato certo
 
 ```bash
 docker compose up -d     # sobe o Postgres
 npm run dev              # sobe o app
 ```
 
-Depois ele porta os componentes, liga os dados e escreve testes — tarefa por tarefa.
+Depois ele porta os componentes, liga os dados e escreve testes — tarefa por tarefa. No
+fim, ele deixa um **`docs/o-que-e-real.md`** no projeto: o registro honesto do que está
+funcionando de verdade e do que está em demonstração (e o que falta pra ativar).
 
 🛑 **Gate final — integração.** No fim, você escolhe como fechar o trabalho (merge, PR
 ou segurar).

@@ -49,7 +49,7 @@ Use a tabela de estado:
 |---|---|---|---|---|---|
 | não | — | — | — | **Passo 1 — Definir** | "Bora começar: digite `/` e escolha **imersao:pg-imersao-prd** e me conta sua ideia em uma frase — ou, se essa pasta já tem um projeto, ele analisa o que tem e sugere caminhos. Ele ainda **pesquisa o mercado** pra ver se vale a pena." |
 | sim | não | não | — | **Passo 2 — Desenhar** | "Seu projeto já está definido (`docs/plano-do-produto.md` ✅). Agora vamos **desenhar** as telas: digite `/` e escolha **imersao:pg-imersao-prototipo**." |
-| sim | sim | não | — | **Passo 3 — Construir** | "Telas desenhadas e exportadas ✅. Hora de **construir o app de verdade**: digite `/` e escolha **imersao:pg-imersao-implementar**." |
+| sim | sim | não | — | **Passo 3 — Construir** | "Telas desenhadas e exportadas ✅. Hora de **construir o app de verdade**: digite `/` e escolha **imersao:pg-imersao-implementar**. Se seu app usa **IA**, ele já te ajuda com a **chave** nessa hora (de verdade ou modo demonstração — você escolhe)." |
 | sim | sim | sim | não | **Passo 4 — Publicar** | "Seu app já roda no seu computador ✅. Bora **colocar ele no ar**: digite `/` e escolha **imersao:pg-imersao-publicar**." |
 | sim | sim | sim | sim | **No ar 🎉** | "Seu app está **publicado**! Pra atualizar: me peça uma mudança e depois um `git push` — o Railway republica sozinho." |
 
@@ -61,6 +61,6 @@ Regras:
 - Fale 100% em **português simples**. Nunca despeje jargão.
 - Se o aluno perguntar "o que é cada passo?", explique cada um em 1 frase humana (definir
   = decidir o que, pra quem e se vale a pena (com pesquisa de mercado); desenhar = ver as telas antes de construir; construir = o
-  app funcionando com banco de dados).
+  app funcionando de verdade, com banco de dados — e com a chave de IA, se o app usar).
 - Esta bússola é **retomável**: se o aluno fechou tudo e voltou, é só rodar
   `/imersao:pg-imersao-start` de novo que ela diz onde ele parou.
