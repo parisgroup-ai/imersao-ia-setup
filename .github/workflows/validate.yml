@@ -12,5 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate marketplace, plugin manifest and skills frontmatter
         run: bash scripts/validate-skills.sh
+      - name: Invariantes da Fase 1 (pg-imersao-prd)
+        run: bash scripts/check-fase1.sh
       - name: Shellcheck (instalador + scripts)
         run: shellcheck -S warning instalar_imersao.sh scripts/*.sh
