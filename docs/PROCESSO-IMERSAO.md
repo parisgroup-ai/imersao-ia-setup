@@ -18,7 +18,7 @@ de design. Tudo guiado pelo Claude Code.
 ```
   IDEIA
     │
-    ▼   /imersao:pg-imersao-prd            (Fase 1 — conversa guiada)
+    ▼   /imersao:pg-imersao-prd            (Fase 1 — conversa + pesquisa de mercado)
   docs/plano-do-produto.md
     │
     ▼   /imersao:pg-imersao-prototipo      (Fase 2 — Design OS público)
@@ -52,7 +52,7 @@ Manter separado evita misturar as dependências do Design OS com as do seu app.
 
 ---
 
-## Fase 1 — `/imersao:pg-imersao-prd` (ideia → plano do produto)
+## Fase 1 — `/imersao:pg-imersao-prd` (ideia → plano do produto, com mercado)
 
 Dentro de `meu-projeto/`, rode:
 
@@ -60,11 +60,17 @@ Dentro de `meu-projeto/`, rode:
 /imersao:pg-imersao-prd "um app pra agendar consultas do meu salão"
 ```
 
-O Claude vai **conversar** com você (uma pergunta por vez): o problema, quem usa, as telas
-principais, as regras e o que fica pra depois. Ele deriva o resto e te mostra um resumo.
+(Ou rode numa pasta que **já tem um projeto**: ele detecta, pergunta, e **analisa o que já
+existe** pra sugerir o que dá pra construir ou melhorar.)
 
-🛑 **Gate 1 — aprovar o design.** Você aprova (ou pede ajustes). Aí ele escreve o
-**`docs/plano-do-produto.md`** — a fonte da verdade do projeto.
+O Claude faz três coisas: **(1)** entende sua ideia com poucas perguntas; **(2)**
+**pesquisa o mercado de verdade** — quem já faz parecido, se as pessoas pagam, e quanto dá
+pra economizar — e te dá um veredito honesto; **(3)** te mostra **2-3 caminhos** (direções)
+mais fortes e recomenda um, pra você escolher.
+
+🛑 **Escolha o caminho** e, no fim, **aprove o resumo**. Aí ele escreve dois arquivos:
+**`docs/plano-do-produto.md`** (a fonte da verdade) e **`docs/pesquisa-de-mercado.md`** (o
+que ele descobriu, com as fontes).
 
 ---
 

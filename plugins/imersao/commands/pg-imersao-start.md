@@ -47,7 +47,7 @@ Use a tabela de estado:
 
 | PLANO | EXPORT | APP | PUB | Você está em… | Diga ao aluno |
 |---|---|---|---|---|---|
-| não | — | — | — | **Passo 1 — Definir** | "Bora começar definindo seu app. Digite `/` e escolha **imersao:pg-imersao-prd**, e me conta sua ideia em uma frase." |
+| não | — | — | — | **Passo 1 — Definir** | "Bora começar: digite `/` e escolha **imersao:pg-imersao-prd** e me conta sua ideia em uma frase — ou, se essa pasta já tem um projeto, ele analisa o que tem e sugere caminhos. Ele ainda **pesquisa o mercado** pra ver se vale a pena." |
 | sim | não | não | — | **Passo 2 — Desenhar** | "Seu projeto já está definido (`docs/plano-do-produto.md` ✅). Agora vamos **desenhar** as telas: digite `/` e escolha **imersao:pg-imersao-prototipo**." |
 | sim | sim | não | — | **Passo 3 — Construir** | "Telas desenhadas e exportadas ✅. Hora de **construir o app de verdade**: digite `/` e escolha **imersao:pg-imersao-implementar**." |
 | sim | sim | sim | não | **Passo 4 — Publicar** | "Seu app já roda no seu computador ✅. Bora **colocar ele no ar**: digite `/` e escolha **imersao:pg-imersao-publicar**." |
@@ -60,7 +60,7 @@ Regras:
   **aponte**. O aluno digita.
 - Fale 100% em **português simples**. Nunca despeje jargão.
 - Se o aluno perguntar "o que é cada passo?", explique cada um em 1 frase humana (definir
-  = decidir o que e pra quem; desenhar = ver as telas antes de construir; construir = o
+  = decidir o que, pra quem e se vale a pena (com pesquisa de mercado); desenhar = ver as telas antes de construir; construir = o
   app funcionando com banco de dados).
 - Esta bússola é **retomável**: se o aluno fechou tudo e voltou, é só rodar
   `/imersao:pg-imersao-start` de novo que ela diz onde ele parou.
