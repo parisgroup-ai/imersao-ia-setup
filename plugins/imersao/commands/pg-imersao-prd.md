@@ -1,37 +1,36 @@
 ---
-description: "Fase 1 · DEFINIR — conversa guiada que transforma sua ideia no plano do produto."
-argument-hint: "<sua ideia em uma frase>"
+description: "Fase 1 · DEFINIR — conversa guiada que pesquisa o mercado, acha o ângulo mais forte e transforma sua ideia (ou o que você já tem) no plano do produto."
+argument-hint: "<sua ideia em uma frase — ou rode numa pasta que já tem um projeto>"
 ---
 
-# Fase 1 — sua ideia vira o plano do produto
+# Fase 1 — sua ideia (ou o que você já tem) vira o plano do produto
 
-Conduza uma **conversa curta e amigável** (NÃO uma entrevista técnica, NÃO um
-interrogatório) pra transformar a ideia do aluno num **plano do produto** claro. O aluno é
-**iniciante, possivelmente não-programador** — fale 100% em **português coloquial, sem
-jargão**. A ideia inicial está em **$ARGUMENTS**.
+Conduza uma **conversa curta e amigável** (NÃO um interrogatório técnico) pra transformar
+a ideia do aluno num **plano do produto** claro — agora com dois superpoderes: você
+**pesquisa o mercado de verdade** antes de desenhar, e oferece **alguns caminhos fortes**
+pra convergir no melhor. O aluno é **iniciante, possivelmente não-programador** — fale
+100% em **português coloquial, sem jargão**. A ideia inicial está em **$ARGUMENTS**.
 
-O foco é entender **O QUÊ construir** — a visão, quem usa, as funcionalidades, os fluxos e
-as regras. **Nada de tecnologia** (stack, banco, arquitetura, código): isso é das Fases 2 e 3.
+O foco é entender **O QUÊ construir** (visão, quem usa, funcionalidades, fluxos, regras)
+**e se vale a pena** (o mercado). **Nada de tecnologia** (stack, banco, código): isso é das
+Fases 2 e 3.
 
 ## Regras de ouro (leia antes de começar)
 
-- **NÃO invoque a skill `brainstorming` genérica** nesta fase. Conduza você mesmo, com o
-  roteiro abaixo. (Aquela skill é de engenharia: propõe arquitetura, salva em outro
-  caminho e levaria pro plano técnico — não é o que queremos aqui.)
-- **Sem arquitetura, sem "abordagens técnicas", sem código.** Tudo no nível do **produto**:
-  o que o usuário faz, o que ele vê, o que o sistema decide. A parte visual é a Fase 2.
-- **Poucas perguntas, uma por vez.** Faça só as **essenciais** (Passo 2) — todo o resto
-  você **deriva e propõe** pro aluno só **confirmar**. NUNCA despeje uma lista de 20
+- **NÃO invoque a skill `brainstorming` genérica.** Conduza você mesmo, com o roteiro abaixo.
+- **Sem arquitetura, sem código.** Tudo no nível do **produto** e do **mercado**. A parte
+  visual é a Fase 2.
+- **A profundidade fica no SEU trabalho, não em mais perguntas pro aluno.** Pesquise,
+  levante opções e **proponha** — o aluno responde pouco. NUNCA despeje uma lista de 20
   perguntas: isso afoga o iniciante.
-- **Nunca diga ao aluno** estas palavras: "PRD", "spec", "MVP", "persona", "requisito
-  funcional", "regra de negócio", "hard-gate", "commit", "branch". Traduza tudo pro dia a dia.
-- Prefira opções (a/b/c) a perguntas abertas. Tom amigável, encorajador, colaborativo.
+- **Zero jargão.** Nunca diga ao aluno: "PRD", "spec", "MVP", "persona", "TAM", "willingness
+  to pay", "moat", "PMF", "market sizing", "hard-gate", "commit", "branch". Traduza tudo
+  pro dia a dia.
+- **Verdade com caminho.** Se a pesquisa mostrar que a ideia é fraca, fale com tato — mas
+  **sempre** junto com 2-3 caminhos mais fortes pra escolher. **Nunca** um "não" sem saída.
+- Prefira opções (a/b/c) a perguntas abertas. Tom amigável, encorajador.
 
 ## Passo 1 — preparar a pasta (silencioso, sem falar de "git")
-
-Garanta que a pasta do projeto está pronta: se não houver repositório, rode `git init`
-por baixo dos panos. Em seguida, **só se** estiverem vazios, defina uma identidade git
-**local** (nunca `--global` — é só pra esta pasta, não mexa na identidade global do aluno):
 
 ```bash
 git rev-parse --git-dir >/dev/null 2>&1 || git init -q
@@ -41,72 +40,152 @@ git config user.email >/dev/null 2>&1 || git config user.email "aluno@imersao.lo
 
 Para o aluno, no máximo: "Já preparei a pasta do seu projeto."
 
-## Passo 2 — a conversa (poucas perguntas essenciais, uma por vez)
+## Passo 2 — de onde a gente parte: ideia do zero, ou o que já existe?
+
+Detecte se a pasta **já tem um projeto/conteúdo** (não conta `.git`, `.gitignore` nem
+arquivos que a própria imersão gera):
+
+```bash
+HAS_CTX=nao
+for sig in package.json pyproject.toml go.mod Cargo.toml composer.json pom.xml \
+           src app lib index.html README.md data; do
+  [ -e "$sig" ] && HAS_CTX=sim && break
+done
+echo "CONTEXTO=$HAS_CTX"
+```
+
+- **CONTEXTO=nao** → siga pro **Passo 3A** (ideia do zero).
+- **CONTEXTO=sim** → **pergunte uma vez** (detecta e confirma):
+  > "Vi que essa pasta **já tem coisa**. Quer que eu **olhe o que tem aqui e sugira o que
+  > dá pra construir ou melhorar**, ou você tem uma **ideia nova do zero**?"
+  - "ideia nova" → **Passo 3A** (ignore o que está na pasta como ponto de partida).
+  - "o que tem" → **Passo 3B** (modo análise).
+
+## Passo 3A — captar a ideia (modo "do zero")
 
 Abra com: "Um plano do produto é só um resumo claro do que a gente vai construir, pra quem
-e como funciona — vamos montar isso juntos, conversando." Então pergunte, **uma por vez**
-(use a resposta anterior pra puxar a próxima; se algo já veio em `$ARGUMENTS`, só confirme):
+e como funciona — e antes disso eu vou checar se a ideia tem mercado. Vamos montar juntos."
+
+Pergunte (uma por vez; se já veio em `$ARGUMENTS`, só confirme):
 
 1. "Em uma frase, o que você quer construir — e que **problema** isso resolve?"
-2. "Quem vai **usar**? Tem mais de um tipo de pessoa? (ex.: quem administra e quem só usa)"
-3. "Quais as **3 a 6 telas ou áreas** principais? (ex.: entrar, lista de X, cadastro de Y)"
-4. "Em cada área, o que a pessoa **faz** — e tem alguma **regra** importante? (ex.: só o
-   dono pode editar; não dá pra agendar no passado)"
-5. "Precisa de **conta/login**? Depende de algo **de fora** — pagamento, e-mail, mapa,
-   notificação?"
-6. "O que **não** precisa entrar agora — pode ficar pra depois?"
+2. **A lente de valor:** "Isso é mais pra você **vender** pra outras pessoas/empresas, ou
+   pra **usar no seu próprio dia a dia / negócio** (resolver uma dor interna)?"
+   - Se for interno: "Rapidinho — como você resolve isso hoje?"
 
-**Derive o resto sozinho** (o que cada pessoa quer alcançar; que informações o app guarda e
-como se relacionam; o que aparece quando **não há nada ainda** ou quando **dá erro**; como
-saber que deu certo) — **não pergunte item a item**. Onde faltar, **proponha um rascunho** e
-deixe o aluno só **confirmar ou ajustar**. Seja proativo: se a ideia implica algo não dito
-(uma tela vazia, um erro, uma permissão), levante de leve — sem afogar.
+Só isso por enquanto. As perguntas sobre telas, regras etc. vêm **depois** de escolher o
+caminho (Passo 6) — agora você vai pesquisar.
 
-## Passo 3 — UM ponto de parada (o único momento de decisão)
+## Passo 3B — analisar o que já existe (modo "em cima do que tem")
 
-Mostre um resumo em bullets simples e pergunte de forma fechada:
+Explore a pasta (leia o código/docs/dados que houver) e entenda **o que é** e **que ativos
+existem**. Narre em português simples, confirmando com o aluno:
 
-> "Esse é o resumo do seu produto: [bullets]. Tá tudo certo? Responde **sim** que eu já
-> escrevo o plano, ou me diz o que mudar."
+> "Dei uma olhada aqui. Entendi que isso é **[o quê]**, que já tem **[ativos: telas, dados,
+> integrações…]**. É isso mesmo?"
 
-Espere o "sim" (ou ajustes). **Não** crie um segundo ponto de revisão depois.
+Depois, a mesma **lente de valor** — mas aqui você pode **propor** a partir do que viu e só
+confirmar: "Pelo que vi, isso parece mais pra **[vender / uso interno]**, certo?"
 
-## Passo 4 — salvar o plano do produto (silencioso)
+## Passo 4 — pesquisar o mercado de verdade (você trabalha; o aluno espera)
 
-Escreva **`docs/plano-do-produto.md`** — um plano **claro, focado no produto** (zero
-tecnologia), em linguagem simples. Inclua só o que você de fato entendeu ou derivou — use
-o **nome do produto** no topo e só as seções que fizerem sentido pra ideia:
+Na **primeira vez**, narre o conceito em 1 linha:
 
-1. **Visão** — o que é, que problema resolve, pra quem, e o valor principal.
-2. **Quem usa** — os tipos de pessoa e o que cada uma pode **ver e fazer**.
-3. **Funcionalidades** — a lista, marcando o que é **essencial agora** vs **fica pra depois**.
-4. **Como o usuário usa (fluxos)** — o passo a passo das ações principais, incluindo o que
-   aparece quando **não há nada ainda** e quando **dá erro**.
-5. **Telas e navegação** — cada tela principal: pra que serve, o que mostra, o que dá pra
-   fazer ali, e como se chega/sai dela.
-6. **Informações** — que dados o app guarda (em linguagem do dia a dia) e como se
-   relacionam; o que é privado ou sensível.
-7. **Conta e permissões** — precisa entrar? quem vê e faz o quê.
-8. **Conexões de fora** — do que depende (pagamento, e-mail, mapa…), quando aparece na
-   jornada, e o que o usuário sente se aquilo falhar.
-9. **Regras** — o que o sistema precisa garantir; limites, exceções, e o que dizer quando
-   algo dá errado.
-10. **Entrega por fases** — Fase 1 (o essencial pra já valer a pena), Fase 2 (expansão),
-    Fase 3 (polimento).
-11. **Em aberto / futuro** — dúvidas que ainda precisam ser decididas e ideias que ficaram
-    pra depois.
+> "Antes de desenhar, vou **pesquisar o mercado** de verdade — ver quem já faz parecido, se
+> as pessoas pagam por isso, e quanto isso pode valer ou economizar. É barato descobrir
+> agora se vende, antes de construir."
 
-> Não invente conteúdo que o aluno não validou — onde derivou algo, deixe claro que é um
-> rascunho pra ele ajustar depois.
+Pesquise **estruturado e cético**, usando **WebSearch + WebFetch** (abra páginas de verdade,
+não só os trechos da busca; ~10-20 buscas focadas). Siga a **lente**:
 
-Salve e guarde a primeira versão por baixo dos panos (git add + commit, sem mostrar o
-comando). Para o aluno: "Salvei o plano do seu produto. ✅"
+- **Vender (mercado):** concorrentes diretos + substitutos (como resolvem hoje); preços e
+  modelos de cobrança (lidos das páginas reais); **evidência de que pagam** (avaliações,
+  reclamações, threads "alternativa ao X"); lacunas/diferenciação; riscos/barreiras.
+- **Usar interno (economia):** como o processo é feito hoje (custo em tempo/dinheiro/erro);
+  ferramentas existentes + impacto relatado; **benchmark de economia** (quanto operações
+  parecidas economizaram); esforço de adoção × retorno; riscos.
 
-## Passo 5 — fechamento humano
+**Passo cético (obrigatório):** depois de juntar, **tente refutar o sinal** — "qual o
+argumento mais forte de que isso **não** vende / **não** economiza de verdade?" — e
+incorpore o contra mais forte no veredito. (É o que separa pesquisa honesta de só procurar
+o que confirma.)
 
-Conecte ao próximo **benefício concreto** (não a um "próximo comando"):
+**Sem internet/busca:** **não invente** número com cara de fonte. Diga que é um **chute
+seu** e que o aluno deve confirmar depois.
 
-> "Pronto! Esse plano é o **mapa** do seu produto. Agora a gente transforma ele em **telas
-> de verdade** que você vai poder ver e clicar. Quando quiser, é só pedir o próximo passo —
-> digite **`/`** e escolha **`imersao:pg-imersao-prototipo`** na lista (não precisa decorar
-> o nome)."
+**Escala opcional:** se o aluno quiser mais, ofereça — "quer que eu vá **ainda mais fundo**?
+Posso fazer uma pesquisa bem mais detalhada, leva alguns minutos" — e aí sim use a skill
+`deep-research`.
+
+Escreva **`docs/pesquisa-de-mercado.md`** (PT simples, com as fontes): **Resumo** (o
+veredito), **Lente** (vender/economia e por quê), **Panorama** (concorrentes / processo
+atual; em modo análise, inclua "Análise do contexto existente"), **O sinal** (números +
+fontes), **Direções consideradas**, **Checagem cética** (o contra mais forte + a resposta),
+**Fontes** (links).
+
+Então dê ao aluno o **veredito digerível** (zero jargão, verdade com caminho):
+- **O panorama** — quem já faz / como se resolve hoje (2-3 bullets).
+- **O sinal** — é vendável? / quanto dá pra economizar? — com **pelo menos 1 número real +
+  a fonte**, honesto (inclua o contra mais forte). Emende direto nos caminhos (Passo 5).
+
+## Passo 5 — os caminhos: dar possibilidades e escolher o melhor
+
+Na **primeira vez**, narre: "**direção** é um jeito específico de recortar sua ideia —
+público, foco, ângulo. Vou te mostrar os mais fortes."
+
+Apresente **2-3 direções** lastreadas na pesquisa (em modo análise: "**o que dá pra fazer**
+com o que você já tem"). Cada uma com: **o que é** (1 linha), **por que esse ângulo é mais
+forte** (com base na pesquisa), e o **trade-off**. **Recomende uma, com o porquê.**
+
+🛑 **Escolha (1º ponto de decisão):** o aluno escolhe um caminho (ou ajusta). É a decisão
+central de **o que construir**. Espere a escolha.
+
+## Passo 6 — aprofundar no caminho escolhido (o plano do produto)
+
+Agora sim, aprofunde — **propondo rascunhos, não interrogando** (use a resposta anterior pra
+puxar a próxima). Cubra, derivando e propondo onde der:
+
+- **quem usa** (tipos de pessoa; o que cada um vê e faz);
+- as **3 a 6 telas/áreas** principais;
+- em cada área, o que a pessoa **faz** e que **regra** importa (ex.: só o dono edita);
+- precisa de **conta/login**? depende de algo **de fora** (pagamento, e-mail, mapa)?
+- o que **não** precisa entrar agora.
+
+Onde faltar, **proponha um rascunho** e deixe o aluno **confirmar ou ajustar**. Seja
+proativo com tela vazia, erro e permissão — sem afogar.
+
+## Passo 7 — o resumo (2º e último ponto de decisão)
+
+Mostre um resumo em bullets e pergunte fechado:
+
+> "Esse é o resumo do seu produto: [bullets]. Tá tudo certo? Responde **sim** que eu escrevo
+> o plano, ou me diz o que mudar."
+
+Espere o "sim" (ou ajustes).
+
+## Passo 8 — salvar (silencioso)
+
+Escreva **`docs/plano-do-produto.md`** — comece com uma seção nova no topo:
+
+- **Por que vale a pena** — 3-4 bullets: o caminho escolhido + o sinal de mercado (é
+  vendável? / quanto economiza?) + a aposta de valor. (Em modo análise, diga **em cima de
+  qual contexto existente** se constrói.)
+
+Depois, as seções do plano (só as que fizerem sentido, com o **nome do produto** no topo):
+**Visão**, **Quem usa**, **Funcionalidades** (essencial agora × depois), **Fluxos**
+(incluindo tela vazia e erro), **Telas e navegação**, **Informações** (dados e relações),
+**Conta e permissões**, **Conexões de fora**, **Regras**, **Entrega por fases**, **Em
+aberto / futuro**.
+
+> Não invente conteúdo que o aluno não validou — onde derivou, deixe claro que é rascunho.
+
+Confirme que **`docs/pesquisa-de-mercado.md`** (Passo 4) está salvo. Guarde a primeira
+versão por baixo dos panos (git add + commit, sem mostrar o comando). Para o aluno: "Salvei
+o plano do seu produto e a pesquisa de mercado. ✅"
+
+## Passo 9 — fechamento humano
+
+> "Pronto! Sua ideia não é só um palpite — ela passou por uma **checagem de mercado de
+> verdade**, e a gente escolheu o ângulo mais forte. Esse plano é o **mapa** do seu produto.
+> Agora a gente transforma ele em **telas de verdade** que você vê e clica. Quando quiser,
+> digite **`/`** e escolha **`imersao:pg-imersao-prototipo`** na lista."
