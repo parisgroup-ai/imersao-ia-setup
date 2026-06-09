@@ -38,6 +38,31 @@ npm install -g @anthropic-ai/claude-code @openai/codex @tostudy-ai/cli
 
 Nunca use `sudo npm install -g` — quebra atualizações futuras.
 
+## A statusline não aparece (ou aparece com quadradinhos)
+
+A statusline da ParisGroup é instalada no passo 10 e ligada no seu `~/.claude/settings.json`. Se não aparecer:
+
+1. **Reabra o Claude Code** — a statusline só carrega ao (re)iniciar.
+2. **Não está instalada?** O comando `claude-statusline` deve existir. Se faltar:
+
+   ```bash
+   npm install -g github:parisgroup-ai/claude-statusline
+   ```
+
+   O pacote vive no GitHub Packages (exige token), mas o **repo é público** — por isso instalamos pela URL do Git, sem nenhuma credencial.
+3. **Não está ligada no `settings.json`?** Adicione (ou rode o instalador de novo, que faz isso sozinho):
+
+   ```json
+   { "statusLine": { "type": "command", "command": "claude-statusline" } }
+   ```
+4. **Ícones viram quadradinhos (▯)?** Falta a Nerd Font:
+
+   ```bash
+   brew install --cask font-meslo-lg-nerd-font
+   ```
+
+   No **Ghostty** os ícones já funcionam; em outros terminais, selecione a fonte "MesloLGS Nerd Font". Sem fonte, use ASCII trocando o `command` por `CC_STATUSLINE_NO_ICONS=1 claude-statusline`.
+
 ## Um app (Ghostty / Docker / Obsidian / Claude Desktop) não instalou
 
 O instalador mostra `[ERRO]` no app que falhou. Instale manualmente:

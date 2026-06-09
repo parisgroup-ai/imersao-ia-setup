@@ -14,20 +14,24 @@ curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main
 
 - **Xcode Command Line Tools** — Git e compilador nativo
 - **Homebrew** — gerenciador de pacotes
-- **Node.js** — runtime JavaScript (necessário para Claude Code, Codex e ToStudy CLI)
+- **Node.js** — runtime JavaScript (necessário para Claude Code, Codex, ToStudy CLI e a statusline)
 - **GitHub CLI (`gh`)** — autenticação e operações no GitHub pelo terminal
 - **Ghostty** — terminal moderno e otimizado
 - **Docker Desktop** — containerização e orquestração
 - **Obsidian** — notas e base de conhecimento
 - **Claude Desktop** — app desktop do Claude
+- **Nerd Font (MesloLG)** — fonte com ícones, usada pela statusline
 - **Claude Code** — CLI do Claude (npm)
 - **Codex CLI** — CLI do OpenAI Codex (npm)
 - **ToStudy CLI** — CLI dos cursos da imersão, `@tostudy-ai/cli` (npm)
 - **Skills da Imersão** — instaladas automaticamente como plugin do Claude Code (passo 9 do instalador)
+- **Statusline da ParisGroup** — statusline do Claude Code (contexto, modelo, git, custo), instalada do repo público e já ligada no `~/.claude/settings.json`
 
 O script verifica cada item e pula os que já estão instalados. Ao final, **feche e reabra o terminal** (ou o Claude Code) para carregar tudo. Pode levar alguns minutos — siga as instruções na tela e forneça sua senha quando pedida.
 
 > O instalador configura o npm para instalar pacotes globais no seu usuário (`~/.npm-global`), evitando `sudo npm install -g` — que costuma quebrar atualizações futuras.
+
+> A **statusline** já vem ligada no seu `~/.claude/settings.json` (só é adicionada se você ainda não tiver uma). Para customizar segmentos, cores ou desligar, veja o [repositório da statusline](https://github.com/parisgroup-ai/claude-statusline).
 
 **Instalou e travou em algo?** Veja [docs/PRIMEIROS-PASSOS.md](docs/PRIMEIROS-PASSOS.md) (o que fazer depois do setup) e [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) (erros comuns). Para re-checar o ambiente a qualquer momento:
 

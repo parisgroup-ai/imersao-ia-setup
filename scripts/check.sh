@@ -39,6 +39,7 @@ check_cmd "GitHub CLI"   gh     "brew install gh"
 check_cmd "Claude Code"  claude "npm install -g @anthropic-ai/claude-code"
 check_cmd "Codex CLI"    codex  "npm install -g @openai/codex"
 check_cmd "ToStudy CLI"  tostudy "npm install -g @tostudy-ai/cli"
+check_cmd "jq"           jq      "brew install jq"
 
 # Aplicativos (.app)
 echo ""
@@ -63,6 +64,21 @@ if command -v claude >/dev/null 2>&1; then
   fi
 else
   falta "Plugin 'imersao'" "instale o Claude Code primeiro"
+fi
+
+# Statusline da ParisGroup (instalada + ligada no settings.json)
+echo ""
+echo -e "${BLUE}Statusline:${NC}"
+# Presenca por command -v — NUNCA rodar 'claude-statusline --version' (le stdin, travaria o check)
+if command -v claude-statusline >/dev/null 2>&1; then
+  ok "Statusline instalada" "claude-statusline"
+  if command -v jq >/dev/null 2>&1 && [ -f "$HOME/.claude/settings.json" ] && jq -e '.statusLine' "$HOME/.claude/settings.json" >/dev/null 2>&1; then
+    ok "Statusline ligada no settings.json"
+  else
+    aviso "Statusline instalada mas NAO ligada — adicione \"statusLine\":{\"type\":\"command\",\"command\":\"claude-statusline\"} no ~/.claude/settings.json (ou rode o instalador de novo)."
+  fi
+else
+  falta "Statusline PG" "npm install -g github:parisgroup-ai/claude-statusline"
 fi
 
 # Pronto pra usar (instalar não basta — precisa estar PRONTO)

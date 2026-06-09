@@ -25,7 +25,7 @@ RED='\033[0;31m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-TOTAL=10
+TOTAL=11
 
 # -----------------------------------------------------------
 # BLOQUEIO: nao pode rodar como root / sudo su
@@ -213,10 +213,12 @@ instalar_app() {
   fi
 }
 
-instalar_app "ghostty"         "Ghostty (terminal)"  "Ghostty.app"
-instalar_app "docker-desktop"  "Docker Desktop"      "Docker.app"
-instalar_app "obsidian"        "Obsidian (notas)"    "Obsidian.app"
-instalar_app "claude"          "Claude Desktop"      "Claude.app"
+instalar_app "ghostty"                  "Ghostty (terminal)"            "Ghostty.app"
+instalar_app "docker-desktop"           "Docker Desktop"                "Docker.app"
+instalar_app "obsidian"                 "Obsidian (notas)"              "Obsidian.app"
+instalar_app "claude"                   "Claude Desktop"                "Claude.app"
+# Nerd Font: necessaria pros icones da statusline da ParisGroup (passo 10). Font cask, sem .app.
+instalar_app "font-meslo-lg-nerd-font"  "Nerd Font (icones da statusline)"  ""
 
 # -----------------------------------------------------------
 # 6) Claude Code (npm, sem sudo)
@@ -293,10 +295,59 @@ else
 fi
 
 # -----------------------------------------------------------
-# 10) Verificacao final
+# 10) Statusline da ParisGroup (statusline do Claude Code)
+# -----------------------------------------------------------
+echo -e "${BLUE}[10/$TOTAL]${NC} Configurando a statusline da ParisGroup..."
+if command -v claude &>/dev/null; then
+  # jq: necessario pro merge seguro do settings.json (e usado pela propria statusline)
+  if ! command -v jq &>/dev/null; then
+    echo "  Instalando jq (dependencia da statusline)..."
+    brew install jq >/dev/null 2>&1 || true
+  fi
+
+  # CLI da statusline: instala direto do repo PUBLICO (sem GitHub Packages/token).
+  # O pacote @parisgroup-ai/* vive no GitHub Packages (exige token); o repo e publico,
+  # entao instalamos pela URL git — funciona num Mac novo sem nenhuma credencial.
+  if command -v claude-statusline &>/dev/null; then
+    pular "Statusline (claude-statusline)"
+  else
+    echo "  Instalando a statusline (pode levar ~1 min — clona do GitHub)..."
+    if npm install -g github:parisgroup-ai/claude-statusline; then
+      ok "Statusline (claude-statusline)"
+    else
+      erro "Statusline (CLI)" "rode: npm install -g github:parisgroup-ai/claude-statusline"
+    fi
+  fi
+
+  # Liga a statusline no ~/.claude/settings.json — so se ainda NAO houver uma
+  # (preserva o resto do arquivo e nao sobrescreve uma statusline customizada).
+  SETTINGS="$HOME/.claude/settings.json"
+  mkdir -p "$HOME/.claude"
+  [ -f "$SETTINGS" ] || echo '{}' > "$SETTINGS"
+  if command -v jq &>/dev/null && command -v claude-statusline &>/dev/null; then
+    if jq -e '.statusLine' "$SETTINGS" >/dev/null 2>&1; then
+      pular "Statusline ja configurada no settings.json"
+    else
+      TMP_SET="$(mktemp)"
+      if jq '.statusLine = {"type":"command","command":"claude-statusline"}' "$SETTINGS" > "$TMP_SET" 2>/dev/null && mv "$TMP_SET" "$SETTINGS"; then
+        ok "Statusline ligada no Claude Code (settings.json)"
+      else
+        rm -f "$TMP_SET"
+        erro "Statusline (settings.json)" "adicione \"statusLine\": {\"type\":\"command\",\"command\":\"claude-statusline\"} no ~/.claude/settings.json"
+      fi
+    fi
+  elif ! command -v jq &>/dev/null; then
+    erro "Statusline (settings.json)" "jq ausente — rode 'brew install jq' e adicione \"statusLine\": {\"type\":\"command\",\"command\":\"claude-statusline\"} no ~/.claude/settings.json"
+  fi
+else
+  erro "Statusline" "Claude Code nao foi instalado — resolva o passo 6 e rode de novo"
+fi
+
+# -----------------------------------------------------------
+# 11) Verificacao final
 # -----------------------------------------------------------
 echo ""
-echo -e "${BLUE}[10/$TOTAL]${NC} Verificacao final..."
+echo -e "${BLUE}[11/$TOTAL]${NC} Verificacao final..."
 echo -e "${BLUE}------------------------------------------------------------${NC}"
 
 verificar() {
@@ -326,6 +377,12 @@ verificar "Claude Desktop"  ""        "Claude.app"
 verificar "Claude Code"     "claude"  ""
 verificar "Codex CLI"       "codex"   ""
 verificar "ToStudy CLI"     "tostudy" ""
+# Statusline: checagem por presenca (NAO usar verificar/--version — o script le stdin e travaria)
+if command -v claude-statusline &>/dev/null; then
+  echo -e "  ${GREEN}OK${NC}  Statusline PG  (claude-statusline)"
+else
+  echo -e "  ${RED}X${NC}   Statusline PG  — NAO ENCONTRADO"
+fi
 
 echo -e "${BLUE}------------------------------------------------------------${NC}"
 echo ""
