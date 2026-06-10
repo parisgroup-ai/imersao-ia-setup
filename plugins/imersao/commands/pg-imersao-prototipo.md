@@ -140,7 +140,11 @@ narre: "suas N telas do plano viraram M áreas — todas mapeadas ✓".
 **Em cada seção:** a spec do `shape-section` **lista as telas do mapa** que a seção
 cobre (são views obrigatórias), e o `design-screen` deixa **cada uma demonstrável** — o
 aluno consegue ver cada tela no navegador (o Design OS suporta múltiplas views por
-seção: lista, detalhe, carregando, boas-vindas…). Terminou a seção? Marque as telas
+seção: lista, detalhe, carregando, boas-vindas…). **Como o renderizador expõe views:**
+cada arquivo `.tsx` direto em `src/sections/<id>/` vira um screen design navegável
+próprio na sidebar — tela extra (boas-vindas, carregando) ganha um arquivo top-level
+próprio (pode ser um wrapper de 1 arquivo fixando o estado, ex.: `status="loading"`);
+sub-componentes em `components/` **não** aparecem. Terminou a seção? Marque as telas
 dela como `desenhada` no mapa.
 
 > Se o servidor cair, o aluno reabre num terminal com `npm --prefix <DESIGN_DIR> run dev`
