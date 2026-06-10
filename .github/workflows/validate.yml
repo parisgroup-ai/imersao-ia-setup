@@ -14,6 +14,8 @@ jobs:
         run: bash scripts/validate-skills.sh
       - name: Invariantes da Fase 1 (pg-imersao-prd)
         run: bash scripts/check-fase1.sh
+      - name: Invariantes da Fase 2 (cobertura de telas no protótipo)
+        run: bash scripts/check-fase2.sh
       - name: Invariantes da Fase 3 (implementar + toques prd/publicar)
         run: bash scripts/check-fase3.sh
       - name: Invariantes da Fase 4 (gate de honestidade pré-publicar)
