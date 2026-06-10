@@ -151,6 +151,11 @@ Com o app rodando no seu computador, é hora de **colocar no ar**:
 /imersao:pg-imersao-publicar
 ```
 
+**Antes de publicar, a honestidade:** nada sai do seu computador sem você ver o quadro
+honesto do app — o Claude confere o `docs/o-que-e-real.md` (recria, se não existir),
+checa se ele bate com a realidade e, se algo estiver em demonstração, pergunta: publicar
+assim mesmo (com o selo), ativar a chave agora, ou segurar. App 100% real passa direto.
+
 Duas partes: o Claude **guarda seu código no GitHub** (cria o repositório e dá push) e
 depois te **guia no Railway** (alguns cliques no navegador) — criar o projeto a partir do
 seu GitHub, adicionar um **Postgres na nuvem**, ligar o app ao banco (`DATABASE_URL`),

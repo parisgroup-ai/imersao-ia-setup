@@ -50,7 +50,7 @@ Use a tabela de estado:
 | não | — | — | — | **Passo 1 — Definir** | "Bora começar: digite `/` e escolha **imersao:pg-imersao-prd** e me conta sua ideia em uma frase — ou, se essa pasta já tem um projeto, ele analisa o que tem e sugere caminhos. Ele ainda **pesquisa o mercado** pra ver se vale a pena." |
 | sim | não | não | — | **Passo 2 — Desenhar** | "Seu projeto já está definido (`docs/plano-do-produto.md` ✅). Agora vamos **desenhar** as telas: digite `/` e escolha **imersao:pg-imersao-prototipo**." |
 | sim | sim | não | — | **Passo 3 — Construir** | "Telas desenhadas e exportadas ✅. Hora de **construir o app de verdade**: digite `/` e escolha **imersao:pg-imersao-implementar**. Se seu app usa **IA**, ele já te ajuda com a **chave** nessa hora (de verdade ou modo demonstração — você escolhe)." |
-| sim | sim | sim | não | **Passo 4 — Publicar** | "Seu app já roda no seu computador ✅. Bora **colocar ele no ar**: digite `/` e escolha **imersao:pg-imersao-publicar**." |
+| sim | sim | sim | não | **Passo 4 — Publicar** | "Seu app já roda no seu computador ✅. Bora **colocar ele no ar**: digite `/` e escolha **imersao:pg-imersao-publicar**. E relaxa: **antes de ir pro ar**, ele te mostra o que é de verdade e o que está em demonstração — você dá o ok." |
 | sim | sim | sim | sim | **No ar 🎉** | "Seu app está **publicado**! Pra atualizar: me peça uma mudança e depois um `git push` — o Railway republica sozinho." |
 
 > Regra de desempate: se **APP=sim**, o app já existe — siga pra **Publicar** (ou **No ar**, se PUB=sim), mesmo que falte algum passo anterior. Nunca mande o aluno "voltar a desenhar" se o app já está construído.
