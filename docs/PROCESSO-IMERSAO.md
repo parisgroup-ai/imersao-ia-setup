@@ -92,6 +92,11 @@ Claude. O próprio Claude do app conduz o Design OS (desenha as telas na ordem: 
 roadmap → dados → tokens → shell → telas → dados de exemplo) e o navegador atualiza ao
 vivo. Você só vai conversando e pedindo o que quiser.
 
+**Nenhuma tela fica de fora:** o Claude monta um **mapa de telas** a partir do seu plano
+e confere, antes de exportar, que **cada tela do plano virou uma tela de verdade no
+protótipo** — se faltar alguma, ele desenha na hora (ou você diz que não precisa, e isso
+fica anotado no plano).
+
 🛑 **Gate 2 — revisar e ajustar.** Na **aba do navegador que o Claude abriu pra você**,
 veja o protótipo **vivo** e peça mudanças em **linguagem natural** ("aumenta o card",
 "tira esse campo").
