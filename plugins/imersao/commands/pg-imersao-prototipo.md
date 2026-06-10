@@ -16,10 +16,16 @@ Automatize o setup (clone/install/server) **sem** narrar a sintaxe, mas explique
 |---|---|
 | protótipo | "Um protótipo é um rascunho clicável das suas telas — a gente valida o visual ANTES de construir de verdade, porque é muito mais barato mudar um desenho do que um app pronto." |
 | Design OS | "O Design OS é uma ferramenta de desenho de telas: você conversa, ele desenha, e você vê na hora no navegador." |
+| mapa de telas | "O mapa de telas é a lista de tudo que você vai ver no protótipo — eu confiro no final que nenhuma tela do seu plano ficou de fora." |
 
 ## 1. Pré-condições
 
 - Exija **`docs/plano-do-produto.md`**. Se faltar, peça `/imersao:pg-imersao-prd` antes e pare.
+- **Monte o mapa de telas** a partir da seção **"Telas e navegação"** do plano: uma linha
+  por tela, status `pendente`. Plano **sem** essa seção? Derive um rascunho da seção
+  "Fluxos" e confirme com o aluno em **uma** pergunta leve ("seu plano não listou as
+  telas — pelo que entendi são essas: […]. Confere?"). **Nunca** siga com o mapa vazio.
+  Narre o conceito em 1 linha na primeira vez (tabela acima).
 - A partir da pasta do app, derive a pasta-irmã do design (mantenha o `cwd` na raiz do
   app o tempo todo — **nunca** use `cd` solto; prefira `git -C`/`npm --prefix`):
 
@@ -48,13 +54,26 @@ Automatize o setup (clone/install/server) **sem** narrar a sintaxe, mas explique
    ```bash
    cp docs/plano-do-produto.md "$DESIGN_DIR/plano-do-produto.md"
    ```
-4. **Subir o dev server DESTACADO** (sobrevive a fechar qualquer janela do Claude — use
+4. **Gravar o mapa de telas** na **raiz do clone** — nunca dentro de `product/` ou `src/`
+   (o renderizador não pode tropeçar nele). Escreva `$DESIGN_DIR/mapa-de-telas.md`:
+
+   ```markdown
+   # Mapa de telas — <nome do produto>
+
+   | # | Tela (do plano) | Seção no protótipo | Status |
+   |---|---|---|---|
+   | 1 | <tela 1> | (a definir) | pendente |
+   ```
+
+   `Status`: `pendente` → `desenhada` → ou `dispensada (<motivo do aluno>)`. O arquivo
+   sobrevive a queda de sessão — ao retomar, os status dizem onde o design parou.
+5. **Subir o dev server DESTACADO** (sobrevive a fechar qualquer janela do Claude — use
    `nohup`, **não** o background do Bash do Claude):
    ```bash
    nohup npm --prefix "$DESIGN_DIR" run dev > "$DESIGN_DIR/dev.log" 2>&1 &
    echo $! > "$DESIGN_DIR/.dev-server.pid"
    ```
-5. **Descobrir a porta real e confirmar que subiu.** O Design OS usa 3000 por padrão,
+6. **Descobrir a porta real e confirmar que subiu.** O Design OS usa 3000 por padrão,
    mas se estiver ocupada ele sobe em outra (ex.: 3001) — **leia a porta do log**, não
    assuma 3000:
    ```bash
@@ -66,7 +85,7 @@ Automatize o setup (clone/install/server) **sem** narrar a sintaxe, mas explique
    ```
    - Se `$c` ≠ 200 depois do loop, mostre o fim do log pro aluno entender o erro:
      `tail -30 "$DESIGN_DIR/dev.log"`.
-6. **Abrir no navegador** (macOS): `open "$URL"`.
+7. **Abrir no navegador** (macOS): `open "$URL"`.
 
 ## 3. Conduza o design — NESTA mesma sessão (NÃO abra um 2º Claude)
 
@@ -108,8 +127,21 @@ arquivo e execute as instruções você mesmo**, escrevendo os arquivos de desig
 Sequência canônica (lendo o comando no clone antes de cada etapa, **narrando em 1 linha**):
 `product-vision` (gera overview + roadmap + data-shape de uma vez — use o `docs/plano-do-produto.md`
 como as "raw notes", não faça o aluno redigitar) → `design-tokens` → `design-shell` →
-**por seção:** `shape-section` (spec + dados + tipos) → `design-screen`. (`product-roadmap`,
+**por seção — TODAS as seções do roadmap, sem pular nenhuma:** `shape-section` (spec + dados + tipos) → `design-screen`. (`product-roadmap`,
 `data-shape`, `sample-data` são comandos de **atualização** — não use na primeira passada.)
+
+**Cobertura do roadmap (na hora do `product-vision`):** passe o mapa de telas como
+restrição explícita — **toda tela do mapa fica atribuída a uma seção** do roadmap (uma
+seção pode agrupar mais de uma tela; o texto da seção nomeia as telas que cobre). Depois
+de gerar `product/product-roadmap.md`, **confira tela a tela**: ficou alguma de fora?
+Ajuste o roadmap **antes** de seguir. Atualize a coluna "Seção no protótipo" do mapa e
+narre: "suas N telas do plano viraram M áreas — todas mapeadas ✓".
+
+**Em cada seção:** a spec do `shape-section` **lista as telas do mapa** que a seção
+cobre (são views obrigatórias), e o `design-screen` deixa **cada uma demonstrável** — o
+aluno consegue ver cada tela no navegador (o Design OS suporta múltiplas views por
+seção: lista, detalhe, carregando, boas-vindas…). Terminou a seção? Marque as telas
+dela como `desenhada` no mapa.
 
 > Se o servidor cair, o aluno reabre num terminal com `npm --prefix <DESIGN_DIR> run dev`
 > — isso é só o **servidor**, nunca um 2º Claude. Pra pará-lo:
@@ -124,8 +156,17 @@ arquivo **novo** pede reiniciar o servidor (§3, passo 3). Se a aba abrir **em b
 não é o servidor: releia o arquivo de design e confira o caminho/formato (§3). **Nunca**
 regenere telas já aprovadas. Loop até o aluno aprovar.
 
+Aluno pediu uma **tela nova** durante a revisão? Acrescente a linha no mapa de telas — o
+gate do export confere contra o mapa **atual**, não contra o plano original.
+
 ## 5. Exportar e seguir
 
+- **Passo 0 — confira o mapa de telas (antes do export):** mostre o checklist
+  `tela do plano → onde está → ✓/✗`. Tem `✗`? Ofereça **desenhar agora**, ou o aluno
+  **dispensa** explicitamente ("essa não precisa") — registre `dispensada (<motivo>)` no
+  mapa **e** acrescente 1 linha em **"Em aberto / futuro"** do `docs/plano-do-produto.md`
+  do app (a Fase 3 não constrói tela dispensada). Tudo `✓`/`dispensada` → siga: mapa
+  100% coberto passa **sem pausa extra** (a tabela aparece numa tela só, e segue).
 - Aprovado? Execute o **export** do Design OS (leia o arquivo de comando `export-product`
   no clone e siga). **Reinicie o servidor** depois (o export gera arquivo novo) e confirme
   o pacote: ele fica em **`$DESIGN_DIR/product-plan/`** (pasta) e **`$DESIGN_DIR/product-plan.zip`**
