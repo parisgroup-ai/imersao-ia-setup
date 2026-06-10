@@ -16,5 +16,7 @@ jobs:
         run: bash scripts/check-fase1.sh
       - name: Invariantes da Fase 3 (implementar + toques prd/publicar)
         run: bash scripts/check-fase3.sh
+      - name: Invariantes da Fase 4 (gate de honestidade pré-publicar)
+        run: bash scripts/check-fase4.sh
       - name: Shellcheck (instalador + scripts)
         run: shellcheck -S warning instalar_imersao.sh scripts/*.sh
