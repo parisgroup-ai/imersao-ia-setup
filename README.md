@@ -40,7 +40,30 @@ O script verifica cada item e pula os que já estão instalados. Ao final, **fec
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-## 2. Skills de IA (plugin)
+## 2. Claude Code Setup (oficial) **antes** de plugins
+
+> **Ordem correta:** (1) Claude Code instalado e logado → (2) **Claude Code Setup** (plugin oficial Anthropic, se disponível no seu ambiente) → (3) **só então** plugins curados da imersão.  
+> Evite instalar dezenas de plugins aleatórios (“plugin soup”): o setup fica lento e você extrai pouco valor.
+
+Dentro do Claude Code (marketplace oficial Anthropic):
+
+```text
+/plugin
+```
+
+- Aba **Discover** / marketplace `claude-plugins-official`
+- Procure o plugin de **setup / configuração do projeto** (Claude Code Setup) e instale se aparecer na sua versão
+- Docs: https://code.claude.com/docs/en/discover-plugins
+
+Depois disso, instale **apenas** o plugin da imersão (abaixo). Lista curta recomendada na imersão:
+
+| Plugin | Quando |
+|--------|--------|
+| `imersao@imersao-ia` (este repo) | Sempre — pipeline da imersão |
+| GitHub (`github@claude-plugins-official`) | Se for usar Issues/PRs do terminal |
+| **Não** instale “packs” genéricos de dezenas de skills | Só com indicação do instrutor |
+
+## 3. Skills de IA (plugin da imersão)
 
 As skills são distribuídas como um **plugin do Claude Code** via marketplace. Não é preciso copiar pastas à mão: o Claude Code descobre cada skill automaticamente, e você atualiza ou desinstala com um comando.
 
@@ -68,7 +91,7 @@ Plugins são um recurso do **Claude Code**. Para usar as mesmas skills no **Code
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/sync-codex-skills.sh | bash
 ```
 
-## 3. Processo da Imersão (do PRD ao app)
+## 4. Processo da Imersão (do PRD ao app)
 
 O plugin traz um **pipeline guiado** que leva da ideia a um app **no ar**, em 4 fases sobre um motor autônomo (`/imersao:pg-imersao-goal`, com 2 gates humanos).
 
@@ -86,7 +109,7 @@ O plugin traz um **pipeline guiado** que leva da ideia a um app **no ar**, em 4 
 
 Passo a passo completo (aluno + instrutor): **[docs/PROCESSO-IMERSAO.md](docs/PROCESSO-IMERSAO.md)**.
 
-## 4. Gerenciar skills
+## 5. Gerenciar skills
 
 | Ação | Comando (dentro do Claude Code) | Comando (CLI) |
 |------|----------------------------------|----------------|
@@ -97,7 +120,7 @@ Passo a passo completo (aluno + instrutor): **[docs/PROCESSO-IMERSAO.md](docs/PR
 
 `/plugin` sempre mostra a **lista completa e atualizada** das skills do plugin — não há tabela neste README para ficar desatualizada.
 
-## 5. Skills disponíveis
+## 6. Skills disponíveis
 
 Dezenas de skills curadas, organizadas por área. Use `/plugin` (ou veja `plugins/imersao/skills/`) para a lista completa e sempre atualizada. Um panorama:
 

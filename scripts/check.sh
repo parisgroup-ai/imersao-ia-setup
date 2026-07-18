@@ -62,6 +62,13 @@ if command -v claude >/dev/null 2>&1; then
   else
     falta "Plugin 'imersao'" "no Claude Code: /plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup && /plugin install imersao@imersao-ia"
   fi
+  # Heurística: muitos plugins instalados costuma ser "plugin soup"
+  PLUGIN_COUNT=$(claude plugin list 2>/dev/null | grep -c '@' || true)
+  if [ "${PLUGIN_COUNT:-0}" -gt 8 ]; then
+    aviso "Muitos plugins Claude Code ($PLUGIN_COUNT) — prefira Setup oficial + lista curta (imersão; ver README §2)"
+  else
+    ok "Plugins Claude Code em quantidade razoavel" "${PLUGIN_COUNT:-0} linhas"
+  fi
 else
   falta "Plugin 'imersao'" "instale o Claude Code primeiro"
 fi
