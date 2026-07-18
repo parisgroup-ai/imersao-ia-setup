@@ -30,7 +30,10 @@ Na primeira vez ele pede login — siga o fluxo. **Assine o Claude Max $200/mês
 
 > Você também vai precisar de uma conta no **GitHub** (grátis — autentique com `gh auth login`) e uma no **Railway** (Hobby **$5/mês**, exige cartão; o Trial grátis sem cartão dá pra testar o deploy) — é onde, no último passo, seu app sobe e vai pro ar. Crie as duas antes de começar.
 
-## 4. Confirme as skills
+## 4. Setup oficial, depois skills da imersão
+
+**Ordem:** login no Claude → (opcional) plugin oficial de **Claude Code Setup** no marketplace Anthropic → **só então** o plugin `imersao@imersao-ia`.  
+Não instale dezenas de plugins aleatórios; na imersão a lista curta é: imersão (+ GitHub se o instrutor pedir).
 
 Dentro do Claude Code:
 
