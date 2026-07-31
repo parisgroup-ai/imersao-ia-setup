@@ -16,6 +16,19 @@ aviso() { echo -e "  ${YELLOW}!${NC}    $1"; AVISO=$((AVISO + 1)); }
 # Garante brew/claude no PATH mesmo via curl|bash num shell mínimo
 [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null
 [ -x /usr/local/bin/brew ] && eval "$(/usr/local/bin/brew shellenv)" 2>/dev/null
+
+# Bins globais do npm. O instalador FORCA o prefixo ~/.npm-global (passo 3), mas o
+# check.sh tambem roda solto — o README oferece 'curl .../scripts/check.sh | bash'
+# pra re-checar a qualquer momento, e nesse caminho a maquina pode ter outro
+# prefixo (ex.: /usr/local). Resolver pelo npm cobre os dois casos.
+npm_bin_dir() {
+  local prefix=""
+  command -v npm >/dev/null 2>&1 && prefix=$(npm config get prefix 2>/dev/null)
+  case "$prefix" in ""|undefined|null) prefix="$HOME/.npm-global" ;; esac
+  printf '%s/bin' "$prefix"
+}
+NPM_BIN_DIR=$(npm_bin_dir)
+[ -d "$NPM_BIN_DIR" ] && export PATH="$NPM_BIN_DIR:$PATH"
 [ -d "$HOME/.npm-global/bin" ] && export PATH="$HOME/.npm-global/bin:$PATH"
 
 echo ""
@@ -87,7 +100,9 @@ if command -v claude-statusline >/dev/null 2>&1 && printf '%s' "$SL_SMOKE_JSON" 
     aviso "Statusline instalada mas NAO ligada — adicione \"statusLine\":{\"type\":\"command\",\"command\":\"claude-statusline\"} no ~/.claude/settings.json (ou rode o instalador de novo)."
   fi
 else
-  falta "Statusline PG" "rode o instalador, ou: curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/claude-statusline/main/bin/cc-statusline.sh -o ~/.npm-global/bin/claude-statusline && chmod +x ~/.npm-global/bin/claude-statusline"
+  # mkdir -p antes do curl: o -o NAO cria diretorio, e o dir so existe se o
+  # instalador rodou. Sem isso a correcao impressa falha com 'curl: (23)'.
+  falta "Statusline PG" "rode o instalador, ou: mkdir -p $NPM_BIN_DIR && curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/claude-statusline/main/bin/cc-statusline.sh -o $NPM_BIN_DIR/claude-statusline && chmod +x $NPM_BIN_DIR/claude-statusline"
 fi
 
 # Pronto pra usar (instalar não basta — precisa estar PRONTO)
