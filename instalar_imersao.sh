@@ -49,6 +49,32 @@ if [[ "$EUID" -eq 0 ]] || [[ "$USER" == "root" ]]; then
   exit 1
 fi
 
+# -----------------------------------------------------------
+# BLOQUEIO: instalador one-shot e so macOS
+# Windows/Linux: docs/WINDOWS.md (e secao Linux parcial)
+# -----------------------------------------------------------
+OS_NAME="$(uname -s 2>/dev/null || echo unknown)"
+if [[ "$OS_NAME" != "Darwin" ]]; then
+  echo ""
+  echo -e "${RED}============================================================${NC}"
+  echo -e "${RED}   ESTE INSTALADOR E SO PARA macOS                         ${NC}"
+  echo -e "${RED}============================================================${NC}"
+  echo ""
+  echo -e "  Sistema detectado: ${YELLOW}${OS_NAME}${NC}"
+  echo ""
+  echo -e "  ${GREEN}Windows (suportado com WSL2):${NC}"
+  echo "  https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/WINDOWS.md"
+  echo ""
+  echo -e "  ${GREEN}Linux nativo (parcial):${NC}"
+  echo "  Instale Node.js, Docker, Claude Code e o plugin manualmente —"
+  echo "  veja TROUBLESHOOTING.md e fale com um mentor."
+  echo ""
+  echo -e "  ${GREEN}Diagnostico multi-OS (Mac/Windows/Linux):${NC}"
+  echo -e "     ${BLUE}curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash${NC}"
+  echo ""
+  exit 1
+fi
+
 echo ""
 echo -e "${BLUE}============================================================${NC}"
 echo -e "${BLUE}   INSTALADOR DA IMERSAO DE IA                              ${NC}"

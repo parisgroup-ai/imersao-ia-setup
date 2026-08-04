@@ -4,8 +4,9 @@ Este é o guia do fluxo que vamos usar na imersão: você sai de uma **ideia** e
 **app funcionando**, com banco de dados, passando por um **plano do produto** e por um **protótipo**
 de design. Tudo guiado pelo Claude Code.
 
-> Pré-requisito: ter rodado o instalador da imersão e as skills carregadas
-> (`claude plugin update imersao` e reabrir o Claude Code).
+> Pré-requisito: ambiente core ok (Mac: instalador · Windows: [WINDOWS.md](./WINDOWS.md))
+> e skills carregadas (`claude plugin update imersao` e reabrir o Claude Code).
+> Confira com `scripts/check.sh` (multi-OS).
 
 > **👉 Perdido? Rode `/imersao:pg-imersao-start`** a qualquer momento — a bússola te diz
 > em que passo você está e qual o próximo (sem fazer por você). É retomável: fechou tudo,

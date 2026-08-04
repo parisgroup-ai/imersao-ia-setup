@@ -1,22 +1,35 @@
 # Primeiros Passos — Imersão IA
 
-Você rodou o instalador e a barra encheu. E agora? Siga estes passos.
+Você rodou o instalador (Mac) **ou** o guia Windows. E agora? Siga estes passos.
 
 > Dica: dentro do Claude Code você pode só pedir **"primeiros passos"** ou **"instalei e agora"** — a skill `imersao-primeiros-passos` te guia interativamente.
 
+## 0. Qual SO você usa?
+
+| SO | Setup | Terminal do dia a dia |
+|---|---|---|
+| **macOS** | `instalar_imersao.sh` | Ghostty (ou Terminal.app) |
+| **Windows** | [WINDOWS.md](./WINDOWS.md) (WSL2) | **Ubuntu (WSL)** — não PowerShell |
+| **Linux** | Manual (core) | seu terminal |
+
+Mínimo: **16 GB de RAM**. Core do D1: Node + Claude Code logado + plugin imersão + Docker rodando + `gh` + Railway.
+
 ## 1. Abra um terminal novo
 
-Feche o terminal atual e abra de novo (de preferência o **Ghostty**, que o instalador instalou). Isso carrega o `PATH` atualizado — sem isso, comandos como `claude` e `brew` podem "não existir".
+**Mac:** feche e reabra (de preferência o **Ghostty**). Isso carrega o `PATH` — sem isso, `claude` e `brew` podem "não existir".
+
+**Windows:** abra o **Ubuntu** no menu Iniciar (WSL), não o PowerShell.
 
 ## 2. Confira que está tudo instalado
 
-Cole no terminal:
+Cole no terminal (Mac, WSL ou Linux):
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-Tudo verde = pronto. Algo vermelho? Veja o [TROUBLESHOOTING](./TROUBLESHOOTING.md).
+O check mostra o **perfil** (macOS / Windows/WSL / Linux). Tudo verde no core = pronto.  
+Algo vermelho? [TROUBLESHOOTING](./TROUBLESHOOTING.md) · Windows: [WINDOWS.md](./WINDOWS.md).
 
 ## 3. Faça login no Claude
 
