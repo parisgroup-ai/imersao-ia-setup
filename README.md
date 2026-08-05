@@ -2,43 +2,103 @@
 
 Repositório central da Imersão de IA. Contém o **instalador do ambiente** e um **plugin de skills de IA** curadas para turbinar seu desenvolvimento com Claude Code e Codex.
 
-## 1. Instalação do Ambiente
+## Comece aqui — escolha sua máquina
 
-Para configurar seu Mac com todas as ferramentas necessárias, cole o comando abaixo no Terminal:
+**Antes de tudo (qualquer SO):**
+
+1. Notebook com **≥ 16 GB de RAM** e **≥ 20 GB livres** (8 GB = peça empréstimo de Mac ao time)
+2. Contas: [Claude Max $200/mês](https://claude.ai) · [GitHub](https://github.com/signup) · [Railway](https://railway.app)
+3. Siga **só a coluna do seu SO** abaixo
+
+| Passo | 🍎 macOS (caminho ouro) | 🪟 Windows 10/11 | 🐧 Linux |
+|------:|---|---|---|
+| **1. SO / terminal** | Terminal ou Ghostty | Instale **WSL2 + Ubuntu** (não use só PowerShell) | Terminal nativo |
+| **2. Setup** | Cole o instalador (§1) | Siga o guia completo **[docs/WINDOWS.md](docs/WINDOWS.md)** | Core manual (§ abaixo) |
+| **3. Onde rodar o dia a dia** | Terminal no Mac | **Ubuntu (WSL)** | Terminal Linux |
+| **4. Conferir** | `check.sh` (§1) | `check.sh` **dentro do Ubuntu** | `check.sh` |
+| **5. Depois** | [PRIMEIROS-PASSOS](docs/PRIMEIROS-PASSOS.md) | Idem (perfil Windows/WSL no check) | Idem + mentor se travar |
+
+**Core obrigatório no D1 (todos os SOs):** Git · Node · Claude Code logado (Max) · plugin `imersao@imersao-ia` · Docker **rodando** · `gh auth login` · conta Railway.
+
+| SO | Status | Detalhe |
+|---|---|---|
+| **macOS** | Caminho ouro | 1 comando instala quase tudo |
+| **Windows + WSL2** | Suportado | Passo a passo em **[docs/WINDOWS.md](docs/WINDOWS.md)** |
+| **Linux nativo** | Parcial | Sem instalador one-shot — core à mão + mentor |
+
+O instalador automático **só roda no macOS**. Se rodar em Windows/Linux, ele **para na hora** e aponta para o guia certo (não quebra no meio).
+
+---
+
+## 1. Instalação — macOS
+
+No **Terminal** do Mac:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/instalar_imersao.sh | bash
 ```
 
-### O que será instalado:
+### O que o instalador coloca no Mac
 
 - **Xcode Command Line Tools** — Git e compilador nativo
 - **Homebrew** — gerenciador de pacotes
-- **Node.js** — runtime JavaScript (necessário para Claude Code, Codex, ToStudy CLI e a statusline)
-- **GitHub CLI (`gh`)** — autenticação e operações no GitHub pelo terminal
-- **Ghostty** — terminal moderno e otimizado
-- **Docker Desktop** — containerização e orquestração
-- **Obsidian** — notas e base de conhecimento
-- **Claude Desktop** — app desktop do Claude
-- **Nerd Font (MesloLG)** — fonte com ícones, usada pela statusline
-- **Claude Code** — CLI do Claude (npm)
-- **Codex CLI** — CLI do OpenAI Codex (npm)
-- **ToStudy CLI** — CLI dos cursos da imersão, `@tostudy-ai/cli` (npm)
-- **Skills da Imersão** — instaladas automaticamente como plugin do Claude Code (passo 9 do instalador)
-- **jq** — processador de JSON de linha de comando (usado para ligar a statusline no `settings.json`)
-- **Statusline da ParisGroup** — statusline do Claude Code (contexto, modelo, git, custo), baixada do repo público e já ligada no `~/.claude/settings.json`
+- **Node.js** — runtime JavaScript (Claude Code, Codex, ToStudy CLI, statusline)
+- **GitHub CLI (`gh`)**
+- **Ghostty** — terminal moderno
+- **Docker Desktop**
+- **Obsidian** · **Claude Desktop**
+- **Nerd Font (MesloLG)** · **jq**
+- **Claude Code** · **Codex CLI** · **ToStudy CLI** (npm)
+- **Plugin da Imersão** + **statusline ParisGroup**
 
-O script verifica cada item e pula os que já estão instalados. Ao final, **feche e reabra o terminal** (ou o Claude Code) para carregar tudo. Pode levar alguns minutos — siga as instruções na tela e forneça sua senha quando pedida.
+O script pula o que já está instalado. No fim: **feche e reabra o terminal** (ou o Claude Code). Pode pedir a senha do Mac.
 
-> O instalador configura o npm para instalar pacotes globais no seu usuário (`~/.npm-global`), evitando `sudo npm install -g` — que costuma quebrar atualizações futuras.
+> npm global vai para `~/.npm-global` (sem `sudo npm install -g`).
 
-> A **statusline** já vem ligada no seu `~/.claude/settings.json` (só é adicionada se você ainda não tiver uma). Para customizar segmentos, cores ou desligar, veja o [repositório da statusline](https://github.com/parisgroup-ai/claude-statusline).
-
-**Instalou e travou em algo?** Veja [docs/PRIMEIROS-PASSOS.md](docs/PRIMEIROS-PASSOS.md) (o que fazer depois do setup) e [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) (erros comuns). Para re-checar o ambiente a qualquer momento:
+### Conferir (Mac, Windows/WSL ou Linux)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
+
+O check mostra o **perfil** (macOS / Windows/WSL / Linux). Fora do Mac ele **não exige** Homebrew/Ghostty/statusline — só o core.
+
+Travou? [PRIMEIROS-PASSOS](docs/PRIMEIROS-PASSOS.md) · [TROUBLESHOOTING](docs/TROUBLESHOOTING.md)
+
+---
+
+## 1b. Instalação — Windows (resumo; guia completo no link)
+
+**Não** rode o `curl | bash` do Mac no PowerShell.
+
+Roteiro (detalhe em **[docs/WINDOWS.md](docs/WINDOWS.md)**):
+
+1. PowerShell **como Admin:** `wsl --install` → reinicie → abra **Ubuntu**
+2. Instale **Docker Desktop** e ligue **WSL Integration** na distro Ubuntu
+3. No **Ubuntu:** Node (nvm) · `gh` · `npm i -g @anthropic-ai/claude-code` · login `claude`
+4. Plugin: `claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup` + `claude plugin install imersao@imersao-ia`
+5. `check.sh` **dentro do Ubuntu**
+6. Dia a dia da imersão = sempre o terminal **Ubuntu (WSL)**
+
+---
+
+## 1c. Instalação — Linux (parcial)
+
+Sem instalador one-shot. Instale o **core**:
+
+```bash
+# exemplo Debian/Ubuntu — ajuste à sua distro
+sudo apt update && sudo apt install -y git curl build-essential
+# Node 22 (nvm recomendado), Docker Engine, gh
+npm install -g @anthropic-ai/claude-code @openai/codex @tostudy-ai/cli
+claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
+claude plugin install imersao@imersao-ia
+curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
+```
+
+Fale com um mentor se Docker ou o plugin falharem.
+
+---
 
 ## 2. Claude Code Setup (oficial) **antes** de plugins
 

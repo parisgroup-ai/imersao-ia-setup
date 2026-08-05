@@ -94,7 +94,21 @@ Escolha **GitHub.com** → **HTTPS** → autenticar pelo navegador.
 
 ## Não é Mac (Windows / Linux)
 
-O instalador automático é **só para macOS**. Em Windows/Linux, instale manualmente: Node.js, Claude Code (`npm install -g @anthropic-ai/claude-code`) e o plugin (`claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup` + `claude plugin install imersao@imersao-ia`). Fale com um mentor.
+O instalador automático (`instalar_imersao.sh`) é **só para macOS**. Se você colar o `curl | bash` no Windows, o script **para na hora** e aponta para o guia certo.
+
+| SO | O que fazer |
+|---|---|
+| **Windows 10/11** | Guia completo: **[WINDOWS.md](./WINDOWS.md)** (WSL2 + Docker Desktop + Claude Code + plugin + check) |
+| **Linux** | Instale o **core**: Node, Docker Engine, `gh`, Claude Code, plugin da imersão; rode o `check.sh` |
+
+Diagnóstico multi-OS (funciona em Mac, WSL e Linux):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
+```
+
+Fora do Mac, o check **não exige** Homebrew, Ghostty nem statusline — só o core da imersão.  
+Ainda travou? Mande o output do `check.sh` pro mentor.
 
 ---
 
