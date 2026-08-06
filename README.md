@@ -12,13 +12,15 @@ Repositório central da Imersão de IA. Contém o **instalador do ambiente** e u
 
 | Passo | 🍎 macOS (caminho ouro) | 🪟 Windows 10/11 | 🐧 Linux |
 |------:|---|---|---|
-| **1. SO / terminal** | Terminal ou Ghostty | Instale **WSL2 + Ubuntu** (não use só PowerShell) | Terminal nativo |
-| **2. Setup** | Cole o instalador (§1) | Siga o guia completo **[docs/WINDOWS.md](docs/WINDOWS.md)** | Core manual (§ abaixo) |
-| **3. Onde rodar o dia a dia** | Terminal no Mac | **Ubuntu (WSL)** | Terminal Linux |
+| **1. SO / ambiente** | Terminal p/ instalar; depois **Orca** | **WSL2 + Ubuntu** + **Orca** no Windows | Terminal + **Orca** |
+| **2. Setup** | Cole o instalador (§1) | Siga **[docs/WINDOWS.md](docs/WINDOWS.md)** | Core manual (§ abaixo) |
+| **3. Onde rodar o dia a dia** | **App Orca** (Claude Code dentro) | **Orca** + shell Ubuntu/WSL | **Orca** |
 | **4. Conferir** | `check.sh` (§1) | `check.sh` **dentro do Ubuntu** | `check.sh` |
-| **5. Depois** | [PRIMEIROS-PASSOS](docs/PRIMEIROS-PASSOS.md) | Idem (perfil Windows/WSL no check) | Idem + mentor se travar |
+| **5. Depois** | [ORCA](docs/ORCA.md) · [PRIMEIROS-PASSOS](docs/PRIMEIROS-PASSOS.md) | Idem | Idem + mentor se travar |
 
-**Core obrigatório no D1 (todos os SOs):** Git · Node · Claude Code logado (Max) · plugin `imersao@imersao-ia` · Docker **rodando** · `gh auth login` · conta Railway.
+**Ambiente padrão de trabalho = [Orca](https://www.onorca.dev/)** (ADE com app no celular). Ghostty no Mac é terminal **opcional**.
+
+**Core obrigatório no D1 (todos os SOs):** Git · Node · Claude Code logado (Max) · plugin `imersao@imersao-ia` · Docker **rodando** · `gh auth login` · conta Railway · **Orca instalado** (desktop; mobile recomendado).
 
 | SO | Status | Detalhe |
 |---|---|---|
@@ -44,14 +46,15 @@ curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main
 - **Homebrew** — gerenciador de pacotes
 - **Node.js** — runtime JavaScript (Claude Code, Codex, ToStudy CLI, statusline)
 - **GitHub CLI (`gh`)**
-- **Ghostty** — terminal moderno
+- **Orca** — **ambiente padrão** da imersão (agentes, worktrees, app no celular) — https://www.onorca.dev/
+- **Ghostty** — terminal opcional (não é o meio principal)
 - **Docker Desktop**
 - **Obsidian** · **Claude Desktop**
 - **Nerd Font (MesloLG)** · **jq**
 - **Claude Code** · **Codex CLI** · **ToStudy CLI** (npm)
 - **Plugin da Imersão** + **statusline ParisGroup**
 
-O script pula o que já está instalado. No fim: **feche e reabra o terminal** (ou o Claude Code). Pode pedir a senha do Mac.
+O script pula o que já está instalado. No fim: **abra o Orca**, rode o Claude Code **dentro dele**, e reabra o Claude uma vez se os comandos `/imersao:*` não aparecerem. Pode pedir a senha do Mac.
 
 > npm global vai para `~/.npm-global` (sem `sudo npm install -g`).
 
@@ -61,9 +64,9 @@ O script pula o que já está instalado. No fim: **feche e reabra o terminal** (
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-O check mostra o **perfil** (macOS / Windows/WSL / Linux). Fora do Mac ele **não exige** Homebrew/Ghostty/statusline — só o core.
+O check mostra o **perfil** (macOS / Windows/WSL / Linux). No Mac **exige Orca**. Ghostty e statusline: statusline continua core no Mac; Ghostty é opcional. Fora do Mac ele **não exige** Homebrew/statusline — só o core + lembrete do Orca.
 
-Travou? [PRIMEIROS-PASSOS](docs/PRIMEIROS-PASSOS.md) · [TROUBLESHOOTING](docs/TROUBLESHOOTING.md)
+Travou? [ORCA](docs/ORCA.md) · [PRIMEIROS-PASSOS](docs/PRIMEIROS-PASSOS.md) · [TROUBLESHOOTING](docs/TROUBLESHOOTING.md)
 
 ---
 
@@ -77,14 +80,15 @@ Roteiro (detalhe em **[docs/WINDOWS.md](docs/WINDOWS.md)**):
 2. Instale **Docker Desktop** e ligue **WSL Integration** na distro Ubuntu
 3. No **Ubuntu:** Node (nvm) · `gh` · `npm i -g @anthropic-ai/claude-code` · login `claude`
 4. Plugin: `claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup` + `claude plugin install imersao@imersao-ia`
-5. `check.sh` **dentro do Ubuntu**
-6. Dia a dia da imersão = sempre o terminal **Ubuntu (WSL)**
+5. No **Windows:** instale o **Orca** (desktop) em https://www.onorca.dev/download — ambiente padrão
+6. `check.sh` **dentro do Ubuntu**
+7. Dia a dia = **Orca** + shell com o core (Ubuntu/WSL). Celular: Orca Mobile pareado (recomendado). Guia: [docs/ORCA.md](docs/ORCA.md)
 
 ---
 
 ## 1c. Instalação — Linux (parcial)
 
-Sem instalador one-shot. Instale o **core**:
+Sem instalador one-shot. Instale o **core** + **Orca**:
 
 ```bash
 # exemplo Debian/Ubuntu — ajuste à sua distro
@@ -93,10 +97,11 @@ sudo apt update && sudo apt install -y git curl build-essential
 npm install -g @anthropic-ai/claude-code @openai/codex @tostudy-ai/cli
 claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
 claude plugin install imersao@imersao-ia
+# Orca (ambiente padrão): AppImage/.deb em https://www.onorca.dev/download
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-Fale com um mentor se Docker ou o plugin falharem.
+Fale com um mentor se Docker, Orca ou o plugin falharem. Guia do ambiente: [docs/ORCA.md](docs/ORCA.md).
 
 ---
 

@@ -6,34 +6,44 @@ Você rodou o instalador (Mac) **ou** o guia Windows. E agora? Siga estes passos
 
 ## 0. Qual SO você usa?
 
-| SO | Setup | Terminal do dia a dia |
+| SO | Setup | Onde trabalhar no dia a dia |
 |---|---|---|
-| **macOS** | `instalar_imersao.sh` | Ghostty (ou Terminal.app) |
-| **Windows** | [WINDOWS.md](./WINDOWS.md) (WSL2) | **Ubuntu (WSL)** — não PowerShell |
-| **Linux** | Manual (core) | seu terminal |
+| **macOS** | `instalar_imersao.sh` | **Orca** (padrão). Ghostty = terminal opcional. |
+| **Windows** | [WINDOWS.md](./WINDOWS.md) (WSL2) + Orca desktop | **Orca** + shell Ubuntu (WSL) |
+| **Linux** | Manual (core) + Orca | **Orca** |
 
-Mínimo: **16 GB de RAM**. Core do D1: Node + Claude Code logado + plugin imersão + Docker rodando + `gh` + Railway.
+Mínimo: **16 GB de RAM**.  
+Core do D1: Node + Claude Code logado + plugin imersão + Docker rodando + `gh` + Railway + **Orca**.
 
-## 1. Abra um terminal novo
+Guia do ambiente padrão: **[ORCA.md](./ORCA.md)** · site: https://www.onorca.dev/
 
-**Mac:** feche e reabra (de preferência o **Ghostty**). Isso carrega o `PATH` — sem isso, `claude` e `brew` podem "não existir".
+## 1. Abra o Orca (não só o Terminal)
 
-**Windows:** abra o **Ubuntu** no menu Iniciar (WSL), não o PowerShell.
+1. Abra o app **Orca** no computador.  
+2. Se o instalador acabou de rodar no **Mac**, feche e reabra o Orca (ou um terminal novo) para carregar o `PATH` — sem isso, `claude` e `brew` podem "não existir".  
+3. **Windows:** core no **Ubuntu (WSL)**; o app Orca roda no Windows e é o “escritório” da imersão.  
+4. No terminal **dentro do Orca**, confira:
+
+```bash
+claude --version
+```
+
+Ghostty no Mac é opcional — se preferir shell puro, ok, mas **em sala usamos Orca**.
 
 ## 2. Confira que está tudo instalado
 
-Cole no terminal (Mac, WSL ou Linux):
+Cole no terminal (Mac, WSL ou Linux — preferencialmente no Orca):
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-O check mostra o **perfil** (macOS / Windows/WSL / Linux). Tudo verde no core = pronto.  
-Algo vermelho? [TROUBLESHOOTING](./TROUBLESHOOTING.md) · Windows: [WINDOWS.md](./WINDOWS.md).
+O check mostra o **perfil** (macOS / Windows/WSL / Linux). Tudo verde no core + Orca no Mac = pronto.  
+Algo vermelho? [TROUBLESHOOTING](./TROUBLESHOOTING.md) · Windows: [WINDOWS.md](./WINDOWS.md) · Orca: [ORCA.md](./ORCA.md).
 
-## 3. Faça login no Claude
+## 3. Faça login no Claude (dentro do Orca)
 
-Abra o Claude Code:
+No terminal do Orca:
 
 ```bash
 claude
@@ -43,7 +53,20 @@ Na primeira vez ele pede login — siga o fluxo. **Assine o Claude Max $200/mês
 
 > Você também vai precisar de uma conta no **GitHub** (grátis — autentique com `gh auth login`) e uma no **Railway** (Hobby **$5/mês**, exige cartão; o Trial grátis sem cartão dá pra testar o deploy) — é onde, no último passo, seu app sobe e vai pro ar. Crie as duas antes de começar.
 
-## 4. Setup oficial, depois skills da imersão
+## 4. Celular (recomendado na imersão)
+
+Para usar o **computador em casa** e o **celular** para acompanhar/mandar o agente:
+
+1. Instale o **Orca Mobile**  
+   - iOS: [App Store](https://apps.apple.com/us/app/orca-ide/id6766130217) ou [TestFlight](https://testflight.apple.com/join/YjeGMQBA)  
+   - Android: APK em https://www.onorca.dev/download  
+2. No desktop Orca, use **Pair Desktop** / emparelhar.  
+3. Escaneie o QR no celular.  
+4. Deixe o PC ligado e o Orca aberto.
+
+Passo a passo: [ORCA.md](./ORCA.md#app-no-celular-companion).
+
+## 5. Setup oficial, depois skills da imersão
 
 **Ordem:** login no Claude → (opcional) plugin oficial de **Claude Code Setup** no marketplace Anthropic → **só então** o plugin `imersao@imersao-ia`.  
 Não instale dezenas de plugins aleatórios; na imersão a lista curta é: imersão (+ GitHub se o instrutor pedir).
@@ -63,7 +86,9 @@ Você deve ver **`imersao@imersao-ia`** na lista. Se não aparecer, instale:
 
 e reinicie o Claude Code (as skills carregam ao reiniciar).
 
-## 5. Seu primeiro projeto
+## 6. Seu primeiro projeto
+
+No Orca, abra um terminal na pasta do projeto (ou crie a pasta e abra no Orca):
 
 ```bash
 mkdir ~/meu-primeiro-projeto && cd ~/meu-primeiro-projeto
@@ -76,11 +101,11 @@ Aí é só pedir em português, por exemplo:
 
 Você **não precisa decorar comandos nem nomes de skill** — descreva o que quer e o Claude usa a skill certa sozinho ("conserta meu CI", "auditoria de qualidade", "cria um README", "roda os testes").
 
-## 6. Construindo seu app de verdade (o projeto da imersão)
+## 7. Construindo seu app de verdade (o projeto da imersão)
 
 O hello-world acima é só pra sentir o Claude Code. Pra construir o **app da imersão** —
 da ideia até um app funcionando, com banco de dados — existe um caminho guiado em **4
-passos**. Comece criando a pasta do seu app e abrindo o Claude nela:
+passos**. No Orca:
 
 ```bash
 mkdir ~/meu-app && cd ~/meu-app
@@ -97,7 +122,7 @@ Ela mostra os 4 passos (**definir → desenhar → construir → publicar**) e t
 — sem fazer por você (quem constrói é você, pra aprender a lógica). Roteiro completo:
 [PROCESSO-IMERSAO.md](./PROCESSO-IMERSAO.md).
 
-## 7. Atualizando as skills depois
+## 8. Atualizando as skills depois
 
 Saiu skill nova durante a imersão? Atualize com:
 
@@ -109,4 +134,4 @@ claude plugin update imersao
 
 ---
 
-**Travou em algo?** → [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) · ou chame um mentor. Bom proveito! 🚀
+**Travou em algo?** → [ORCA.md](./ORCA.md) · [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) · ou chame um mentor. Bom proveito! 🚀

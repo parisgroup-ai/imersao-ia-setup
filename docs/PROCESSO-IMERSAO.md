@@ -4,7 +4,7 @@ Este é o guia do fluxo que vamos usar na imersão: você sai de uma **ideia** e
 **app funcionando**, com banco de dados, passando por um **plano do produto** e por um **protótipo**
 de design. Tudo guiado pelo Claude Code.
 
-> Pré-requisito: ambiente core ok (Mac: instalador · Windows: [WINDOWS.md](./WINDOWS.md))
+> Pré-requisito: ambiente core ok (Mac: instalador · Windows: [WINDOWS.md](./WINDOWS.md)) e **Orca** como meio de trabalho ([ORCA.md](./ORCA.md)).
 > e skills carregadas (`claude plugin update imersao` e reabrir o Claude Code).
 > Confira com `scripts/check.sh` (multi-OS).
 

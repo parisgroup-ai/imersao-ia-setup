@@ -1,6 +1,8 @@
 # Troubleshooting — Imersão IA
 
-Soluções pras travadas mais comuns no setup. Antes de tudo: **feche e reabra o terminal** — resolve metade dos casos (carrega o `PATH` novo).
+Soluções pras travadas mais comuns no setup. Antes de tudo: **feche e reabra o Orca / o terminal** — resolve metade dos casos (carrega o `PATH` novo).
+
+**Ambiente padrão = [Orca](https://www.onorca.dev/).** Guia: [ORCA.md](./ORCA.md). Ghostty no Mac é opcional.
 
 ## `command not found: brew` (ou `claude`, `node`, `gh`)
 
@@ -62,14 +64,30 @@ A statusline da ParisGroup é instalada no passo 10 e ligada no seu `~/.claude/s
    brew install --cask font-meslo-lg-nerd-font
    ```
 
-   No **Ghostty** os ícones já funcionam; em outros terminais, selecione uma fonte **MesloLG Nerd Font** (ex.: "MesloLGS Nerd Font"). Sem fonte, use ASCII trocando o `command` por `CC_STATUSLINE_NO_ICONS=1 claude-statusline`.
+   No **Orca** e no **Ghostty** os ícones costumam funcionar; em outros terminais, selecione uma fonte **MesloLG Nerd Font** (ex.: "MesloLGS Nerd Font"). Sem fonte, use ASCII trocando o `command` por `CC_STATUSLINE_NO_ICONS=1 claude-statusline`.
 
-## Um app (Ghostty / Docker / Obsidian / Claude Desktop) não instalou
+## Orca não instalou / não abre
+
+No Mac:
+
+```bash
+brew install --cask stablyai/orca/orca
+```
+
+Ou baixe o DMG em https://www.onorca.dev/download.  
+Confira se existe `/Applications/Orca.app`.
+
+No Windows/Linux: use o instalador da página de download (não o `brew` do Mac).  
+Detalhes e pair no celular: [ORCA.md](./ORCA.md).
+
+## Um app (Orca / Ghostty / Docker / Obsidian / Claude Desktop) não instalou
 
 O instalador mostra `[ERRO]` no app que falhou. Instale manualmente:
 
 ```bash
-brew install --cask ghostty        # ou docker-desktop / obsidian / claude
+brew install --cask stablyai/orca/orca   # Orca (obrigatório na imersão)
+brew install --cask ghostty              # opcional
+# ou: docker-desktop / obsidian / claude
 ```
 
 Se o `brew` reclamar que já existe, o app provavelmente já está instalado — confira em `/Applications`.
@@ -98,8 +116,8 @@ O instalador automático (`instalar_imersao.sh`) é **só para macOS**. Se você
 
 | SO | O que fazer |
 |---|---|
-| **Windows 10/11** | Guia completo: **[WINDOWS.md](./WINDOWS.md)** (WSL2 + Docker Desktop + Claude Code + plugin + check) |
-| **Linux** | Instale o **core**: Node, Docker Engine, `gh`, Claude Code, plugin da imersão; rode o `check.sh` |
+| **Windows 10/11** | Guia: **[WINDOWS.md](./WINDOWS.md)** (WSL2 + Docker + Claude Code + plugin + **Orca** + check) |
+| **Linux** | Core (Node, Docker, `gh`, Claude Code, plugin) + **Orca** ([ORCA.md](./ORCA.md)); rode o `check.sh` |
 
 Diagnóstico multi-OS (funciona em Mac, WSL e Linux):
 
@@ -107,7 +125,7 @@ Diagnóstico multi-OS (funciona em Mac, WSL e Linux):
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-Fora do Mac, o check **não exige** Homebrew, Ghostty nem statusline — só o core da imersão.  
+No Mac o check **exige Orca**. Ghostty é opcional. Fora do Mac, não exige Homebrew/statusline — só o core + lembrete do Orca.  
 Ainda travou? Mande o output do `check.sh` pro mentor.
 
 ---

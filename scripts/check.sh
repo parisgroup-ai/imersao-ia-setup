@@ -56,7 +56,8 @@ if [ "$IS_WIN_NATIVE" -eq 1 ]; then
 fi
 
 if [ "$IS_WSL" -eq 1 ] || [ "$IS_LINUX" -eq 1 ]; then
-  aviso "Caminho suportado: core = Node + Claude Code + Docker + plugin (sem Homebrew/Ghostty)."
+  aviso "Caminho suportado: core = Node + Claude Code + Docker + plugin (sem Homebrew)."
+  aviso "Ambiente padrao de trabalho = Orca (desktop + app no celular). Instale em https://www.onorca.dev/download"
   if [ "$IS_WSL" -eq 1 ]; then
     aviso "Guia Windows: https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/WINDOWS.md"
   fi
@@ -100,20 +101,31 @@ check_cmd "Claude Code"  claude "npm install -g @anthropic-ai/claude-code"
 check_cmd "Codex CLI"    codex  "npm install -g @openai/codex"
 check_cmd "ToStudy CLI"  tostudy "npm install -g @tostudy-ai/cli"
 
-# Aplicativos — so checagem Mac de /Applications; em WSL/Linux = opcional
+# Aplicativos — Mac checa /Applications; WSL/Linux: Docker CLI + lembrete Orca
 echo ""
-echo -e "${BLUE}Aplicativos:${NC}"
+echo -e "${BLUE}Aplicativos / ambiente de trabalho:${NC}"
 if [ "$IS_MAC" -eq 1 ]; then
   check_app() {
     local nome="$1" app="$2" cask="$3"
     if [ -d "/Applications/$app" ]; then ok "$nome"; else falta "$nome" "brew install --cask $cask"; fi
   }
-  check_app "Ghostty"        "Ghostty.app"  "ghostty"
+  # Orca = padrao da imersao (ADE + companion no celular). Ghostty = terminal opcional.
+  if [ -d "/Applications/Orca.app" ]; then
+    ok "Orca (ambiente padrao)"
+  else
+    falta "Orca" "brew install --cask stablyai/orca/orca  — https://www.onorca.dev/download"
+  fi
+  if [ -d "/Applications/Ghostty.app" ]; then
+    ok "Ghostty (terminal opcional)"
+  else
+    aviso "Ghostty ausente (ok — o padrao e o Orca; se quiser: brew install --cask ghostty)"
+  fi
   check_app "Docker Desktop" "Docker.app"   "docker-desktop"
   check_app "Obsidian"       "Obsidian.app" "obsidian"
   check_app "Claude Desktop" "Claude.app"   "claude"
 else
-  aviso "Apps de Mac (Ghostty/Obsidian/Claude Desktop) nao sao obrigatorios neste SO"
+  aviso "No Windows/Linux: instale o Orca desktop (padrao) em https://www.onorca.dev/download"
+  aviso "Obsidian/Claude Desktop no host Windows sao opcionais; Ghostty e so Mac."
   if command -v docker >/dev/null 2>&1; then
     ok "Docker CLI presente"
   else
@@ -170,6 +182,8 @@ elif [ "$IS_WSL" -eq 1 ] || [ "$IS_LINUX" -eq 1 ]; then
   aviso "Docker nao esta rodando — no Windows: abra Docker Desktop e ligue a integracao WSL da Ubuntu."
 fi
 
+aviso "Ambiente padrao = Orca. Abra o app Orca e rode 'claude' la dentro (nao so no Terminal)."
+aviso "Celular: pareie Orca Mobile (iOS/Android) com o desktop — https://www.onorca.dev/download"
 aviso "Logado no Claude Code? Rode 'claude' e faca login na 1a vez — sem isso nada responde."
 aviso "Os comandos /imersao:* so aparecem depois de FECHAR e REABRIR o Claude Code uma vez."
 
