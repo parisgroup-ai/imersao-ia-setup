@@ -239,7 +239,21 @@ instalar_app() {
   fi
 }
 
-instalar_app "ghostty"                  "Ghostty (terminal)"            "Ghostty.app"
+# Orca = ambiente padrao da imersao (ADE): agentes, worktrees, celular.
+# Cask no tap oficial: stablyai/orca (https://www.onorca.dev/)
+if [[ -d "/Applications/Orca.app" ]] || brew list --cask orca &>/dev/null 2>&1; then
+  pular "Orca (ambiente padrao de trabalho)"
+else
+  echo "  Instalando Orca (ambiente padrao — Claude Code, worktrees, app no celular)..."
+  if brew install --cask stablyai/orca/orca; then
+    ok "Orca (ambiente padrao de trabalho)"
+  else
+    erro "Orca" "rode: brew install --cask stablyai/orca/orca  — ou baixe em https://www.onorca.dev/download"
+  fi
+fi
+
+# Ghostty = terminal opcional no Mac (quem prefere soh shell). O dia a dia e no Orca.
+instalar_app "ghostty"                  "Ghostty (terminal opcional)"   "Ghostty.app"
 instalar_app "docker-desktop"           "Docker Desktop"                "Docker.app"
 instalar_app "obsidian"                 "Obsidian (notas)"              "Obsidian.app"
 instalar_app "claude"                   "Claude Desktop"                "Claude.app"
@@ -403,7 +417,8 @@ verificar "Git"             "git"     ""
 verificar "Node.js"         "node"    ""
 verificar "Homebrew"        "brew"    ""
 verificar "GitHub CLI"      "gh"      ""
-verificar "Ghostty"         ""        "Ghostty.app"
+verificar "Orca"            ""        "Orca.app"
+verificar "Ghostty (opc.)"  ""        "Ghostty.app"
 verificar "Docker Desktop"  ""        "Docker.app"
 verificar "Obsidian"        ""        "Obsidian.app"
 verificar "Claude Desktop"  ""        "Claude.app"
@@ -432,26 +447,32 @@ fi
 
 echo ""
 echo -e "${YELLOW}============================================================${NC}"
-echo -e "${YELLOW}  IMPORTANTE: feche e reabra o Claude Code UMA vez.${NC}"
-echo -e "${YELLOW}  Os comandos /imersao:* so aparecem DEPOIS de reabrir.${NC}"
+echo -e "${YELLOW}  AMBIENTE PADRAO = ORCA (nao soh o Terminal/Ghostty).${NC}"
+echo -e "${YELLOW}  Abra o app Orca e rode o Claude Code DENTRO dele.${NC}"
+echo -e "${YELLOW}  Feche e reabra o Claude Code UMA vez (comandos /imersao:*).${NC}"
 echo -e "${YELLOW}============================================================${NC}"
 
 echo ""
 echo -e "${BLUE}LEMBRETE — Falta fazer manualmente (nesta ordem):${NC}"
 echo "  1. Assinar o Claude Max \$200/mes:  https://claude.ai"
 echo "     (o plano gratuito NAO aguenta a imersao — assine ANTES do dia 1)"
-echo "  2. Reabrir o terminal, rodar 'claude' e fazer login na 1a vez"
-echo "     (sem isso NADA responde; as skills do plugin carregam quando o Claude Code reinicia)"
-echo "  3. Criar conta no GitHub (gratis): https://github.com/"
-echo "     e autenticar no terminal:  gh auth login"
+echo "  2. Abrir o app Orca (Applications) — e o meio de trabalho da imersao"
+echo "     Dentro do Orca: abra um terminal do projeto e rode 'claude' (login na 1a vez)"
+echo "     (sem login NADA responde; skills carregam quando o Claude Code reinicia)"
+echo "  3. Celular (recomendado): instale Orca Mobile e pareie com este Mac"
+echo "     iOS App Store / TestFlight · Android APK — https://www.onorca.dev/download"
+echo "     Assim voce acompanha e manda o agente do celular com o PC em casa"
+echo "  4. Criar conta no GitHub (gratis): https://github.com/"
+echo "     e autenticar no terminal do Orca:  gh auth login"
 echo "     (no fim da imersao seu projeto SOBE pro GitHub)"
-echo "  4. Criar conta no Railway e assinar o Hobby (US\$5/mes, exige cartao): https://railway.app/"
+echo "  5. Criar conta no Railway e assinar o Hobby (US\$5/mes, exige cartao): https://railway.app/"
 echo "     (e onde seu app vai pro ar no fim; o Trial gratis de US\$5 sem cartao testa o"
 echo "      deploy, mas pra MANTER no ar precisa do Hobby — assine antes do dia 1)"
-echo "  5. Abrir o Docker Desktop 1x e esperar a baleia parar de animar"
+echo "  6. Abrir o Docker Desktop 1x e esperar a baleia parar de animar"
 echo "     (a Fase 3 usa o Docker pro banco de dados)"
 echo ""
 echo -e "${BLUE}PROXIMOS PASSOS:${NC}"
+echo "  - Guia do Orca:     https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/ORCA.md"
 echo "  - Guia do dia 1:    https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/PRIMEIROS-PASSOS.md"
 echo "  - Deu erro?         https://github.com/parisgroup-ai/imersao-ia-setup/blob/main/docs/TROUBLESHOOTING.md"
 echo "  - Conferir tudo:    curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash"

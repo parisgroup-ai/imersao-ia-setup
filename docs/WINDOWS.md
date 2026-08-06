@@ -1,7 +1,8 @@
 # Setup Windows — Imersão IA (ParisGroup)
 
 **Política:** Mac é o caminho ouro. **Windows 10/11 com WSL2 é suportado.**  
-Este guia cobre o **core** da imersão (Claude Code + Docker + plugin). Apps “de Mac” (Ghostty, statusline com Nerd Font via Homebrew) são opcionais.
+Este guia cobre o **core** da imersão (Claude Code + Docker + plugin) e o **ambiente padrão de trabalho: [Orca](https://www.onorca.dev/)**.  
+Ghostty / statusline com Nerd Font via Homebrew são coisas de Mac e **não** entram aqui.
 
 > Mínimo: **16 GB de RAM**, **20 GB livres**, Windows 10/11 64-bit.  
 > 8 GB de RAM: peça empréstimo de Mac ao time — Docker + Claude sofrem.
@@ -16,6 +17,8 @@ Este guia cobre o **core** da imersão (Claude Code + Docker + plugin). Apps “
 | Docker **rodando** | Docker Desktop com backend WSL2 |
 | `gh` autenticado | GitHub CLI no WSL |
 | Conta Railway | Navegador |
+| **Orca** (ambiente padrão) | App **Windows** em https://www.onorca.dev/download |
+| Orca Mobile (recomendado) | iOS / Android — pair com o desktop |
 
 ## Passo 0 — Contas (antes de instalar)
 
@@ -104,7 +107,7 @@ claude
 ```
 
 Na primeira vez, faça login (plano Max).  
-**Use o terminal Ubuntu (WSL)** para o dia a dia da imersão.
+O **shell** do core continua sendo o **Ubuntu (WSL)**; o **app onde você trabalha** na imersão é o **Orca** (passo 6b).
 
 ## Passo 6 — Plugin da imersão
 
@@ -130,6 +133,16 @@ claude plugin list
 
 Deve aparecer `imersao@imersao-ia`.
 
+## Passo 6b — Orca (ambiente padrão) + celular
+
+1. No **Windows** (não no Ubuntu), baixe e instale o Orca:  
+   https://www.onorca.dev/download → instalador Windows.  
+2. Abra o **Orca** e use-o como “escritório” da imersão (projeto + terminal + Claude).  
+3. No terminal do projeto, o PATH deve achar o `claude` instalado no WSL (o mentor ajuda na mesa se a integração de shell for a primeira vez).  
+4. **Celular (recomendado):** instale Orca Mobile (iOS App Store / TestFlight ou Android APK) e **pareie** com este PC — assim você acompanha e manda o agente com o computador em casa.  
+
+Guia completo: **[ORCA.md](./ORCA.md)**.
+
 ## Passo 7 — Diagnóstico
 
 No Ubuntu/WSL:
@@ -138,10 +151,13 @@ No Ubuntu/WSL:
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-O check detecta Windows/WSL e **não** exige Homebrew/Ghostty.  
+O check detecta Windows/WSL e **não** exige Homebrew/Ghostty/statusline.  
+Lembra de instalar o **Orca** no host Windows.  
 Itens **X** críticos: Git, Node, Claude, Docker rodando, plugin imersão, `gh`.
 
 ## Passo 8 — Primeiro projeto
+
+No Orca (ou no Ubuntu, se ainda estiver no shell puro):
 
 ```bash
 mkdir -p ~/meu-app && cd ~/meu-app
@@ -154,12 +170,13 @@ Depois:
 /imersao:pg-imersao-start
 ```
 
-## Terminal no Windows
+## Onde trabalhar no Windows
 
 | Opção | Uso |
 |---|---|
-| **Ubuntu (WSL)** | **Principal** — Claude Code, git, docker CLI |
-| Windows Terminal | Abra abas Ubuntu |
+| **Orca (desktop)** | **Padrão da imersão** — projeto, agentes, pair com celular |
+| **Ubuntu (WSL)** | Shell do **core** — Claude Code, git, docker CLI (pode ser aberto dentro do Orca) |
+| Windows Terminal | Abas Ubuntu se precisar fora do Orca |
 | PowerShell | Só para `wsl --install` e Docker Desktop |
 
 Não rode o instalador Mac (`instalar_imersao.sh`) no PowerShell — ele **aborta de propósito** e aponta para este guia.
@@ -188,10 +205,11 @@ Esperado. Use **este** guia, não o `curl | bash` do README Mac.
 
 ## Linux nativo (sem Windows)
 
-Sem instalador one-shot. Instale manualmente o core da tabela do topo (Node, Docker Engine, Claude Code, `gh`, plugin). Rode o `check.sh`. Fale com um mentor se algo falhar.
+Sem instalador one-shot. Instale manualmente o core da tabela do topo (Node, Docker Engine, Claude Code, `gh`, plugin) **e o Orca** (AppImage/`.deb` em https://www.onorca.dev/download). Rode o `check.sh`. Fale com um mentor se algo falhar. Ver [ORCA.md](./ORCA.md).
 
 ## Ajuda
 
+- [ORCA.md](./ORCA.md)  
 - [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)  
 - [PRIMEIROS-PASSOS.md](./PRIMEIROS-PASSOS.md)  
 - Mentor da imersão / grupo da turma  
