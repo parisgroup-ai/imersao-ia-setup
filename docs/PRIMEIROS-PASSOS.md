@@ -38,7 +38,8 @@ Cole no terminal (Mac, WSL ou Linux — preferencialmente no Orca):
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-O check mostra o **perfil** (macOS / Windows/WSL / Linux). Tudo verde no core + Orca no Mac = pronto.  
+O check mostra o **perfil** (macOS / Windows/WSL / Linux). Tudo verde no core (incl. **statusline**) + Orca no Mac = pronto.  
+Statusline com X? `curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh | bash`  
 Algo vermelho? [TROUBLESHOOTING](./TROUBLESHOOTING.md) · Windows: [WINDOWS.md](./WINDOWS.md) · Orca: [ORCA.md](./ORCA.md).
 
 ## 3. Faça login no Claude (dentro do Orca)

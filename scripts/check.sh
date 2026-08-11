@@ -90,11 +90,8 @@ else
   fi
   check_cmd "Node.js"      node   "instale via nvm: https://github.com/nvm-sh/nvm — ver docs/WINDOWS.md"
   check_cmd "GitHub CLI"   gh     "https://github.com/cli/cli#installation"
-  if command -v jq >/dev/null 2>&1; then
-    ok "jq" "$(jq --version 2>/dev/null | head -1)"
-  else
-    aviso "jq ausente (opcional fora do Mac; usado na statusline)"
-  fi
+  # jq e core em todo SO: a statusline PG depende dele no runtime
+  check_cmd "jq" jq "sudo apt install -y jq  (ou: curl -fsSL .../scripts/install-statusline.sh | bash)"
 fi
 
 check_cmd "Claude Code"  claude "npm install -g @anthropic-ai/claude-code"
@@ -152,23 +149,27 @@ else
   falta "Plugin 'imersao'" "instale o Claude Code primeiro"
 fi
 
-# Statusline — obrigatoria no Mac; opcional fora
+# Statusline — core em Mac, WSL e Linux (mesma barra do Claude Code)
 echo ""
 echo -e "${BLUE}Statusline:${NC}"
+SL_INSTALL_HINT="curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh | bash"
 SL_SMOKE_JSON=$(printf '{"model":{"display_name":"x"},"cwd":"%s","workspace":{"current_dir":"%s"},"cost":{"total_cost_usd":0}}' "$HOME" "$HOME")
-if command -v claude-statusline >/dev/null 2>&1 && printf '%s' "$SL_SMOKE_JSON" | claude-statusline >/dev/null 2>&1; then
+# Smoke: exit 0 e saida real (sem jq a statusline imprime '[install jq]' e exit 0)
+_SL_OUT=""
+if command -v claude-statusline >/dev/null 2>&1; then
+  _SL_OUT="$(printf '%s' "$SL_SMOKE_JSON" | claude-statusline 2>/dev/null || true)"
+fi
+if [ -n "$_SL_OUT" ] && [[ "$_SL_OUT" != *'[install jq]'* ]]; then
   ok "Statusline instalada" "claude-statusline"
-  if command -v jq >/dev/null 2>&1 && [ -f "$HOME/.claude/settings.json" ] && jq -e '.statusLine' "$HOME/.claude/settings.json" >/dev/null 2>&1; then
+  if [ -f "$HOME/.claude/settings.json" ] && command -v jq >/dev/null 2>&1 && jq -e '.statusLine' "$HOME/.claude/settings.json" >/dev/null 2>&1; then
+    ok "Statusline ligada no settings.json"
+  elif [ -f "$HOME/.claude/settings.json" ] && grep -q '"statusLine"' "$HOME/.claude/settings.json" 2>/dev/null; then
     ok "Statusline ligada no settings.json"
   else
-    aviso "Statusline instalada mas NAO ligada — adicione statusLine no ~/.claude/settings.json (ou rode o instalador no Mac)."
+    falta "Statusline NAO ligada" "rode: $SL_INSTALL_HINT"
   fi
 else
-  if [ "$IS_MAC" -eq 1 ]; then
-    falta "Statusline PG" "rode o instalador, ou: curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/claude-statusline/main/bin/cc-statusline.sh -o ~/.npm-global/bin/claude-statusline && chmod +x ~/.npm-global/bin/claude-statusline"
-  else
-    aviso "Statusline PG ausente (opcional no Windows/Linux)"
-  fi
+  falta "Statusline PG" "rode: $SL_INSTALL_HINT"
 fi
 
 # Pronto pra usar

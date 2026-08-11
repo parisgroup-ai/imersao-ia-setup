@@ -336,58 +336,33 @@ fi
 
 # -----------------------------------------------------------
 # 10) Statusline da ParisGroup (statusline do Claude Code)
+#     Fonte unica: scripts/install-statusline.sh (Mac/WSL/Linux).
+#     No one-shot via curl, o script local nao existe — baixa do GitHub.
 # -----------------------------------------------------------
 echo -e "${BLUE}[10/$TOTAL]${NC} Configurando a statusline da ParisGroup..."
-if command -v claude &>/dev/null; then
-  # jq: necessario pro merge seguro do settings.json (e usado pela propria statusline)
-  if ! command -v jq &>/dev/null; then
-    echo "  Instalando jq (dependencia da statusline)..."
-    brew install jq >/dev/null 2>&1 || true
-  fi
+SL_INSTALLER_URL="https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh"
+# Diretorio deste script quando rodado de um clone do repo (nao do curl|bash temp)
+_IMERS_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || true)"
+_SL_LOCAL="${_IMERS_SCRIPT_DIR}/scripts/install-statusline.sh"
+if [ ! -f "$_SL_LOCAL" ] && [ -f "${_IMERS_SCRIPT_DIR}/install-statusline.sh" ]; then
+  _SL_LOCAL="${_IMERS_SCRIPT_DIR}/install-statusline.sh"
+fi
 
-  # CLI da statusline: baixa o script (bash AUTOCONTIDO) direto do repo PUBLICO.
-  # Por que nao 'npm install -g'? O pacote @parisgroup-ai/* vive no GitHub Packages
-  # (exige token) E o 'npm install -g github:...' instala um bin quebrado (symlink
-  # pendurado). O script e um unico bash autocontido — baixar direto e robusto e sem token.
-  SL_DIR="$HOME/.npm-global/bin"
-  SL_BIN="$SL_DIR/claude-statusline"
-  SL_URL="https://raw.githubusercontent.com/parisgroup-ai/claude-statusline/main/bin/cc-statusline.sh"
-  SL_SMOKE='{"model":{"display_name":"x"},"cwd":"'"$HOME"'","workspace":{"current_dir":"'"$HOME"'"},"cost":{"total_cost_usd":0}}'
-  mkdir -p "$SL_DIR"
-  echo "  Baixando a statusline..."
-  SL_TMP="$(mktemp)"
-  # So instala se baixar E passar num smoke test real (roda com JSON no stdin, exit 0).
-  # Presenca/--version nao servem: --version travaria (le stdin) e presenca mascararia bin quebrado.
-  if curl -fsSL "$SL_URL" -o "$SL_TMP" && [ -s "$SL_TMP" ] && printf '%s' "$SL_SMOKE" | bash "$SL_TMP" >/dev/null 2>&1; then
-    mv "$SL_TMP" "$SL_BIN" && chmod +x "$SL_BIN"
-    ok "Statusline (claude-statusline)"
+if [ -f "$_SL_LOCAL" ]; then
+  if bash "$_SL_LOCAL"; then
+    ok "Statusline (install-statusline.sh local)"
   else
-    rm -f "$SL_TMP"
-    erro "Statusline (CLI)" "baixe manual: curl -fsSL $SL_URL -o $SL_BIN && chmod +x $SL_BIN"
-  fi
-
-  # Liga a statusline no ~/.claude/settings.json — so se ainda NAO houver uma
-  # (preserva o resto do arquivo e nao sobrescreve uma statusline customizada).
-  SETTINGS="$HOME/.claude/settings.json"
-  mkdir -p "$HOME/.claude"
-  [ -f "$SETTINGS" ] || echo '{}' > "$SETTINGS"
-  if command -v jq &>/dev/null && command -v claude-statusline &>/dev/null; then
-    if jq -e '.statusLine' "$SETTINGS" >/dev/null 2>&1; then
-      pular "Statusline ja configurada no settings.json"
-    else
-      TMP_SET="$(mktemp)"
-      if jq '.statusLine = {"type":"command","command":"claude-statusline"}' "$SETTINGS" > "$TMP_SET" 2>/dev/null && mv "$TMP_SET" "$SETTINGS"; then
-        ok "Statusline ligada no Claude Code (settings.json)"
-      else
-        rm -f "$TMP_SET"
-        erro "Statusline (settings.json)" "adicione \"statusLine\": {\"type\":\"command\",\"command\":\"claude-statusline\"} no ~/.claude/settings.json"
-      fi
-    fi
-  elif ! command -v jq &>/dev/null; then
-    erro "Statusline (settings.json)" "jq ausente — rode 'brew install jq' e adicione \"statusLine\": {\"type\":\"command\",\"command\":\"claude-statusline\"} no ~/.claude/settings.json"
+    erro "Statusline" "rode: bash scripts/install-statusline.sh"
   fi
 else
-  erro "Statusline" "Claude Code nao foi instalado — resolva o passo 6 e rode de novo"
+  echo "  Baixando instalador multi-OS da statusline..."
+  SL_INST_TMP="$(mktemp)"
+  if curl -fsSL "$SL_INSTALLER_URL" -o "$SL_INST_TMP" && [ -s "$SL_INST_TMP" ] && bash "$SL_INST_TMP"; then
+    ok "Statusline (install-statusline.sh remoto)"
+  else
+    erro "Statusline" "curl -fsSL $SL_INSTALLER_URL | bash"
+  fi
+  rm -f "$SL_INST_TMP"
 fi
 
 # -----------------------------------------------------------

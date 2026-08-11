@@ -1,8 +1,8 @@
 # Setup Windows — Imersão IA (ParisGroup)
 
 **Política:** Mac é o caminho ouro. **Windows 10/11 com WSL2 é suportado.**  
-Este guia cobre o **core** da imersão (Claude Code + Docker + plugin) e o **ambiente padrão de trabalho: [Orca](https://www.onorca.dev/)**.  
-Ghostty / statusline com Nerd Font via Homebrew são coisas de Mac e **não** entram aqui.
+Este guia cobre o **core** da imersão (Claude Code + Docker + plugin + **statusline**) e o **ambiente padrão de trabalho: [Orca](https://www.onorca.dev/)**.  
+Ghostty e Nerd Font via Homebrew são coisas de Mac (ícones da statusline no WSL usam ASCII se a fonte faltar — a barra **funciona** igual).
 
 > Mínimo: **16 GB de RAM**, **20 GB livres**, Windows 10/11 64-bit.  
 > 8 GB de RAM: peça empréstimo de Mac ao time — Docker + Claude sofrem.
@@ -14,6 +14,7 @@ Ghostty / statusline com Nerd Font via Homebrew são coisas de Mac e **não** en
 | Git + Node.js | Dentro do **WSL2 Ubuntu** (recomendado) ou nativo |
 | Claude Code logado (Max $200/mês) | npm global no WSL |
 | Plugin `imersao@imersao-ia` | CLI do Claude Code |
+| **Statusline ParisGroup** | `install-statusline.sh` no Ubuntu/WSL |
 | Docker **rodando** | Docker Desktop com backend WSL2 |
 | `gh` autenticado | GitHub CLI no WSL |
 | Conta Railway | Navegador |
@@ -133,6 +134,28 @@ claude plugin list
 
 Deve aparecer `imersao@imersao-ia`.
 
+## Passo 6a — Statusline do Claude Code (obrigatória)
+
+No **Ubuntu/WSL** (mesmo shell onde o `claude` funciona):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh | bash
+```
+
+O script:
+1. Instala `jq` (se faltar — pode pedir `sudo` uma vez)
+2. Baixa `claude-statusline` em `~/.npm-global/bin`
+3. Liga no `~/.claude/settings.json` com **path absoluto** (funciona no Orca mesmo sem PATH perfeito)
+
+**Feche e reabra** o Claude Code (ou o terminal no Orca) para a barra aparecer.
+
+Sem Nerd Font os ícones podem virar quadradinhos — a barra ainda funciona. Se quiser só ASCII:
+
+```bash
+# opcional: no settings.json use command com CC_STATUSLINE_NO_ICONS=1
+# ou rode o install de novo depois de instalar uma Nerd Font no host Windows
+```
+
 ## Passo 6b — Orca (ambiente padrão) + celular
 
 1. No **Windows** (não no Ubuntu), baixe e instale o Orca:  
@@ -151,9 +174,10 @@ No Ubuntu/WSL:
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-O check detecta Windows/WSL e **não** exige Homebrew/Ghostty/statusline.  
+O check detecta Windows/WSL e **não** exige Homebrew/Ghostty.  
+**Exige** statusline (core em todo SO). Se faltar: rode o passo 6a.  
 Lembra de instalar o **Orca** no host Windows.  
-Itens **X** críticos: Git, Node, Claude, Docker rodando, plugin imersão, `gh`.
+Itens **X** críticos: Git, Node, Claude, Docker rodando, plugin imersão, `gh`, **statusline**, `jq`.
 
 ## Passo 8 — Primeiro projeto
 
@@ -203,9 +227,26 @@ WSL ocupa espaço no `C:`. Libere 20+ GB. Em máquinas com 8 GB de RAM, peça em
 
 Esperado. Use **este** guia, não o `curl | bash` do README Mac.
 
+### Statusline não aparece
+
+No Ubuntu:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh | bash
+```
+
+Reabra o Claude. Detalhe: [TROUBLESHOOTING.md](./TROUBLESHOOTING.md).
+
 ## Linux nativo (sem Windows)
 
-Sem instalador one-shot. Instale manualmente o core da tabela do topo (Node, Docker Engine, Claude Code, `gh`, plugin) **e o Orca** (AppImage/`.deb` em https://www.onorca.dev/download). Rode o `check.sh`. Fale com um mentor se algo falhar. Ver [ORCA.md](./ORCA.md).
+Sem instalador one-shot. Instale manualmente o core da tabela do topo (Node, Docker Engine, Claude Code, `gh`, plugin, **statusline**) **e o Orca** (AppImage/`.deb` em https://www.onorca.dev/download):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh | bash
+curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
+```
+
+Fale com um mentor se algo falhar. Ver [ORCA.md](./ORCA.md).
 
 ## Ajuda
 

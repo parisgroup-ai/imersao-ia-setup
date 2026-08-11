@@ -40,7 +40,12 @@ Peça para abrir o **Orca** e, no terminal **dentro do Orca**, colar:
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-O check imprime o **perfil** (macOS / Windows/WSL / Linux). No Mac, **Orca** deve estar OK. Ghostty ausente = só aviso.
+O check imprime o **perfil** (macOS / Windows/WSL / Linux). No Mac, **Orca** deve estar OK. Ghostty ausente = só aviso.  
+**Statusline** e `jq` são core em Mac/WSL/Linux. Se o check marcar X na statusline:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh | bash
+```
 
 Confirme o plugin:
 
