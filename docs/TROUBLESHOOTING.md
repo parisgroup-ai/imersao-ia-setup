@@ -42,29 +42,32 @@ Nunca use `sudo npm install -g` — quebra atualizações futuras.
 
 ## A statusline não aparece (ou aparece com quadradinhos)
 
-A statusline da ParisGroup é instalada no passo 10 e ligada no seu `~/.claude/settings.json`. Se não aparecer:
+A statusline da ParisGroup é **core em Mac, WSL e Linux**. No Mac o one-shot instala no passo 10; nos outros SOs rode o instalador multi-OS. Ela fica em `~/.claude/settings.json` com **path absoluto** do binário.
 
-1. **Reabra o Claude Code** — a statusline só carrega ao (re)iniciar.
-2. **Não está instalada?** O comando `claude-statusline` deve existir. Se faltar, baixe o script direto (é um único bash autocontido):
+1. **Reabra o Claude Code** — a statusline só carrega ao (re)iniciar (no Orca: feche e abra de novo).
+2. **Instale / repare em um comando** (Mac, Ubuntu/WSL ou Linux):
 
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/claude-statusline/main/bin/cc-statusline.sh \
-     -o ~/.npm-global/bin/claude-statusline && chmod +x ~/.npm-global/bin/claude-statusline
+   curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh | bash
    ```
 
-   O pacote npm `@parisgroup-ai/claude-statusline` vive no GitHub Packages (exige token), por isso o instalador baixa o script direto do **repo público** — funciona sem nenhuma credencial. (`npm install -g github:…` não serve: instala um bin quebrado.)
-3. **Não está ligada no `settings.json`?** Adicione (ou rode o instalador de novo, que faz isso sozinho):
+   Isso instala `jq` se faltar, baixa o script público `claude-statusline` e liga o `statusLine` no settings.  
+   (O pacote npm `@parisgroup-ai/claude-statusline` no GitHub Packages exige token — **não** use `npm install -g`.)
+3. **Confira:**
 
-   ```json
-   { "statusLine": { "type": "command", "command": "claude-statusline" } }
+   ```bash
+   command -v claude-statusline
+   curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
    ```
-4. **Ícones viram quadradinhos (▯)?** Falta a Nerd Font:
+
+4. **Ícones viram quadradinhos (▯)?** Falta Nerd Font (no Mac):
 
    ```bash
    brew install --cask font-meslo-lg-nerd-font
    ```
 
-   No **Orca** e no **Ghostty** os ícones costumam funcionar; em outros terminais, selecione uma fonte **MesloLG Nerd Font** (ex.: "MesloLGS Nerd Font"). Sem fonte, use ASCII trocando o `command` por `CC_STATUSLINE_NO_ICONS=1 claude-statusline`.
+   No **Orca** e no **Ghostty** os ícones costumam funcionar. No WSL/Windows sem fonte, a barra ainda funciona; para forçar ASCII, no `~/.claude/settings.json` use um command com env, por exemplo:
+   `env CC_STATUSLINE_NO_ICONS=1 /caminho/absoluto/claude-statusline`.
 
 ## Orca não instalou / não abre
 
@@ -125,7 +128,8 @@ Diagnóstico multi-OS (funciona em Mac, WSL e Linux):
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-No Mac o check **exige Orca**. Ghostty é opcional. Fora do Mac, não exige Homebrew/statusline — só o core + lembrete do Orca.  
+No Mac o check **exige Orca**. Ghostty é opcional.  
+**Statusline e `jq` são core em Mac, WSL e Linux.** Fora do Mac não exige Homebrew — mas exige o core (incl. statusline) + lembrete do Orca.  
 Ainda travou? Mande o output do `check.sh` pro mentor.
 
 ---

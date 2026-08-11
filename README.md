@@ -64,7 +64,13 @@ O script pula o que já está instalado. No fim: **abra o Orca**, rode o Claude 
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
 
-O check mostra o **perfil** (macOS / Windows/WSL / Linux). No Mac **exige Orca**. Ghostty e statusline: statusline continua core no Mac; Ghostty é opcional. Fora do Mac ele **não exige** Homebrew/statusline — só o core + lembrete do Orca.
+O check mostra o **perfil** (macOS / Windows/WSL / Linux). No Mac **exige Orca**. **Statusline e `jq` são core em todo SO.** Ghostty é opcional (só Mac). Fora do Mac ele **não exige** Homebrew — core + statusline + lembrete do Orca.
+
+Só a statusline (Mac / WSL / Linux), se o check marcar X:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh | bash
+```
 
 Travou? [ORCA](docs/ORCA.md) · [PRIMEIROS-PASSOS](docs/PRIMEIROS-PASSOS.md) · [TROUBLESHOOTING](docs/TROUBLESHOOTING.md)
 
@@ -80,9 +86,10 @@ Roteiro (detalhe em **[docs/WINDOWS.md](docs/WINDOWS.md)**):
 2. Instale **Docker Desktop** e ligue **WSL Integration** na distro Ubuntu
 3. No **Ubuntu:** Node (nvm) · `gh` · `npm i -g @anthropic-ai/claude-code` · login `claude`
 4. Plugin: `claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup` + `claude plugin install imersao@imersao-ia`
-5. No **Windows:** instale o **Orca** (desktop) em https://www.onorca.dev/download — ambiente padrão
-6. `check.sh` **dentro do Ubuntu**
-7. Dia a dia = **Orca** + shell com o core (Ubuntu/WSL). Celular: Orca Mobile pareado (recomendado). Guia: [docs/ORCA.md](docs/ORCA.md)
+5. **Statusline (obrigatória):** `curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh | bash`
+6. No **Windows:** instale o **Orca** (desktop) em https://www.onorca.dev/download — ambiente padrão
+7. `check.sh` **dentro do Ubuntu**
+8. Dia a dia = **Orca** + shell com o core (Ubuntu/WSL). Celular: Orca Mobile pareado (recomendado). Guia: [docs/ORCA.md](docs/ORCA.md)
 
 ---
 
@@ -97,6 +104,8 @@ sudo apt update && sudo apt install -y git curl build-essential
 npm install -g @anthropic-ai/claude-code @openai/codex @tostudy-ai/cli
 claude plugin marketplace add https://github.com/parisgroup-ai/imersao-ia-setup
 claude plugin install imersao@imersao-ia
+# Statusline do Claude Code (core em todo SO)
+curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/install-statusline.sh | bash
 # Orca (ambiente padrão): AppImage/.deb em https://www.onorca.dev/download
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/check.sh | bash
 ```
