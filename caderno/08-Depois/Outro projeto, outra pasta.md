@@ -11,7 +11,7 @@ O método **não está preso** ao `~/founders-ai`. Uma pasta = um projeto. O cic
 
 1. Crie uma pasta nova (Finder ou `mkdir ~/nome-do-produto`).
 2. `cd` nessa pasta + `claude`.
-3. Diga: “Vamos repetir o ciclo: playbook → PRD com mapa de ondas → protótipo → onda 1 → no ar.”
+3. Fala: “vamos repetir o ciclo neste pasta nova” — ou **"onde eu estou?"**.
 4. Não misture dois produtos na mesma pasta.
 5. Este caderno vai junto — é o manual, não o vault da empresa.
 
@@ -19,10 +19,10 @@ O método **não está preso** ao `~/founders-ai`. Uma pasta = um projeto. O cic
 
 | Passo | O quê |
 |---|---|
-| Contexto | Playbook do processo real — [[Prompt 1 - Playbook]] |
-| Produto | Três caminhos, você escolhe, PRD com ondas — [[Prompt 2 - Brainstorming e PRD]] |
-| Planta | Design OS, telas com selo — [[Prompt 3 - Design OS]] |
-| Onda 1 | Plano + execução — [[Prompt 4 - Plano]] · [[Prompt 5 - Construir o MVP]] |
+| Contexto | “vamos fazer o playbook” |
+| Produto | “vamos escolher o produto e as ondas” |
+| Planta | “vamos desenhar o protótipo” |
+| Onda 1 | “vamos construir a onda 1” |
 | No ar | GitHub + Railway, se fizer sentido — [[Por que publicar]] |
 
 ## O que não se repete

@@ -36,4 +36,4 @@ O pacote vai para `product-plan/`. Depois você copia para o projeto do app.
 - Uma jornada principal. No máximo três áreas.
 - Outra pessoa precisa conseguir concluir a tarefa no protótipo.
 
-Prompt completo: [[Prompt 3 - Design OS]] · laboratório: [[Lab 4 - Prototipo]]
+O aluno fala **"vamos desenhar o protótipo"**. Laboratório: [[Lab 4 - Prototipo]]

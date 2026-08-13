@@ -4,11 +4,10 @@
 
 ## Passos
 
-1. Rode o [[Prompt 4 - Plano]] (`/writing-plans`).
-2. **Confirme a tabela de ondas** antes das tarefas. Sem isso, o plano não vale.
-3. Confira arquivos, ordem, testes, persistência e integrações da **onda 1**.
-4. Aprove o plano em `docs/superpowers/plans/`. A seção “Como continuar depois” lista a onda 2+.
-5. Rode o [[Prompt 5 - Construir o MVP]] (`/executing-plans`). **Não** use Goal nesta construção. Só a onda 1.
+1. Fala **"vamos construir a onda 1"** (`/imersao:pg-imersao-implementar`).
+2. **Confirme a tabela de ondas** quando o Claude mostrar. Sem isso, o plano não vale.
+3. Ele planeja e executa só a onda 1. A seção “Como continuar depois” lista a onda 2+.
+4. **Não** peça o Goal nesta construção.
 6. Execute em lotes curtos. Verifique cada lote. Quando houver código: o teste falha antes da implementação.
 7. Abra o app e conclua o fluxo principal.
 8. Crie um dado e releia depois de atualizar a página.

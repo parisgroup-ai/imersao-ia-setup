@@ -62,5 +62,6 @@ No encerramento, diga em voz alta: este app **continua**. Semana que vem, mesma 
 
 Pare. O plano do Dia 3 contém somente refinamentos. Volte ao arquivo curto e retire tarefas de construção inicial.
 
-Laboratórios: [[Lab 6 - Validar]] · [[Lab 7 - Refinar e apresentar]]  
-Prompt: [[Prompt 6 - Refinar]]
+Laboratórios: [[Lab 6 - Validar]] · [[Lab 7 - Refinar e apresentar]]
+
+O que falar: **"vamos refinar o que a validação mostrou"** e **"vamos publicar"**. [[Como falar com o Claude]]

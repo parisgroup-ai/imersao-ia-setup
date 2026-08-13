@@ -17,7 +17,7 @@ Não assista passivo. Cada bloco precisa virar evidência no seu playbook.
 1. Abra o curso.
 2. Faça o bloco.
 3. Aplique no seu processo.
-4. Consolide com o [[Prompt 1 - Playbook]].
+4. Fala **"vamos fazer o playbook"** para consolidar.
 
 Mapa das 20 aulas: [[Curso ToStudy - 20 aulas]].
 

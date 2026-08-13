@@ -46,27 +46,27 @@ Curso: [Playbook Executável de Operação](https://tostudy.ai/pt-BR/courses/pla
 
 1. Ambiente ok (`scripts/check.sh`) e pasta aberta no Orca.
 2. Percorra os três módulos do curso aplicando no **seu** processo.
-3. Consolide com o Prompt 1 e valide o playbook com outra pessoa.
-4. `/brainstorming` (Prompt 2): três caminhos, **você** escolhe.
-5. Aprove `projeto/docs/PRD.md` com **mapa de ondas** (visão, onda 1, ondas 2+,
-   fora do escopo). Fora do escopo é só o que nunca vamos fazer.
+3. Na pasta `playbook/`: **"vamos fazer o playbook"** (`/imersao:pg-imersao-playbook`).
+   Valide com outra pessoa.
+4. Na pasta `projeto/`: **"vamos escolher o produto e as ondas"**
+   (`/imersao:pg-imersao-prd`). Três caminhos, **você** escolhe.
+5. Aprove o plano com **mapa de ondas**. Fora do escopo é só o que nunca vamos fazer.
 
-Não abra o Design OS. Não rode `/writing-plans`. Prompts: `caderno/06-Prompts/`.
+Não peça o protótipo ainda. Como falar: `caderno/Como falar com o Claude.md`.
 
 ---
 
 ## Dia 2 — geração (só a onda 1)
 
-1. Copie o PRD para o Design OS. Telas com selo `onda 1` ou `depois`.
-2. Monte o **mapa de telas** a partir do plano: toda tela da onda 1 vira tela
-   demonstrável; tela `depois` pode ficar só no mapa, com selo.
-3. Outra pessoa executa a tarefa principal. Exporte `product-plan/`.
-4. `/writing-plans` (Prompt 4): **primeiro a tabela de ondas**, depois as tarefas
-   da onda 1. Sem a tabela confirmada, o plano não vale.
-5. `/executing-plans` (Prompt 5): constrói **somente** a onda 1.
-6. Dado persiste. Integração real ou demonstração com selo. `docs/o-que-e-real.md`.
+1. **"vamos desenhar o protótipo"** (`/imersao:pg-imersao-prototipo`). Telas com
+   selo `onda 1` ou `depois`.
+2. Monte o **mapa de telas**: toda tela da onda 1 vira tela demonstrável.
+3. Outra pessoa executa a tarefa principal. Exporte.
+4. **"vamos construir a onda 1"** (`/imersao:pg-imersao-implementar`). Primeiro a
+   tabela de ondas. Sem tabela, o plano não vale. Só a onda 1 é construída.
+5. Dado persiste. Integração real ou demonstração com selo. `docs/o-que-e-real.md`.
 
-Não use `/goal` para construir o MVP. Goal é do Dia 3, só para refinar.
+Não use Goal para construir o MVP. Goal é do Dia 3, só para refinar.
 
 ---
 
@@ -109,9 +109,9 @@ Nunca publique senha, dado de cliente ou chave.
 
 ## Atalho — os 4 comandos `/imersao:pg-imersao-*`
 
-Na sala o aluno **pode colar os prompts do caderno** ou disparar o comando.
-Os dois caminhos agora seguem o **mesmo** método: playbook → ondas → onda 1 →
-publicar. Goal **não** constrói o MVP.
+Na sala o aluno **fala** ou escolhe no `/`. Os comandos carregam o método:
+playbook → ondas → onda 1 → publicar. Goal **não** constrói o MVP.
+Não fica colando bloco.
 
 ```
   IDEIA
@@ -157,7 +157,8 @@ O Claude tenta 3 vezes. Depois **para e pede ajuda**. Isso é proposital.
 | Comando | Para quê |
 |---|---|
 | `/imersao:pg-imersao-start` | Bússola |
-| `/imersao:pg-imersao-prd` | Ideia → `docs/plano-do-produto.md` |
+| `/imersao:pg-imersao-playbook` | Rotina → `playbook.md` |
+| `/imersao:pg-imersao-prd` | Produto + mapa de ondas |
 | `/imersao:pg-imersao-prototipo` | Plano → protótipo → export |
 | `/imersao:pg-imersao-implementar` | Export + plano → app (onda 1) |
 | `/imersao:pg-imersao-publicar` | App local → no ar |

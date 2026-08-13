@@ -181,7 +181,7 @@ A onda 1 é o primeiro andar. O produto que você imaginou continua no plano (on
 
 **👉 Perdido no Claude?** `/imersao:pg-imersao-start` — a bússola diz o próximo passo, sem executar por você.
 
-Os comandos `/imersao:pg-imersao-prd` / `prototipo` / `implementar` / `publicar` seguem o **mesmo** método (ondas, onda 1, Goal só no Dia 3). Colar o prompt do caderno ou disparar o comando dá no mesmo.
+O aluno **fala** ou escolhe no `/` — não cola bloco. Comandos: `playbook` → `prd` → `prototipo` → `implementar` → `publicar`. Goal só no Dia 3, para refinar. Como: [`caderno/Como falar com o Claude.md`](caderno/Como%20falar%20com%20o%20Claude.md).
 
 > **Contas:** Claude Max **$200/mês** (obrigatório), **GitHub** (grátis) e **Railway** (Hobby **$5/mês**, exige cartão — dá pra testar o deploy no Trial grátis sem cartão) — crie antes de começar.
 

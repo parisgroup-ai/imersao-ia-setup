@@ -215,5 +215,4 @@ o plano do seu produto e a pesquisa de mercado. ✅"
 > "Pronto! Sua ideia passou por uma **checagem de mercado de verdade**, e o plano tem o
 > **mapa de ondas**: hoje a onda 1; o resto fica neste mesmo projeto, depois. Agora a
 > gente desenha as **telas** (onda 1 com selo, o resto marcado como depois). Quando
-> quiser, digite **`/`** e escolha **`imersao:pg-imersao-prototipo`** — ou cole o
-> Prompt 3 do caderno."
+> quiser, fala **vamos desenhar o protótipo** ou escolhe **`imersao:pg-imersao-prototipo`** no `/`."

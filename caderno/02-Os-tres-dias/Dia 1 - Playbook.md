@@ -29,7 +29,7 @@ Mantenha o curso, o playbook e o Claude Code abertos. Cada bloco do curso precis
 | 09:00–09:20 | Paris Group e mapa dos três dias | Você explica o caminho |
 | 09:20–09:40 | Ambiente | Curso e pasta certos abertos |
 | 09:40–11:35 | Curso — Módulo 1 | Processo, contexto, entradas e mapa |
-| 11:35–12:00 | Prompt 1 | Primeira versão de `playbook/playbook.md` |
+| 11:35–12:00 | Playbook no Claude | Primeira versão de `playbook/playbook.md` |
 | 12:00–13:00 | Almoço | — |
 | 13:00–14:20 | Curso — Módulo 2 | Playbook completo, com `[CONFIRMAR]` visível |
 | 14:20–14:35 | Pausa | — |
@@ -51,12 +51,12 @@ Escolha **uma** que você conhece bem e executa pessoalmente.
 
 Depois:
 
-1. No Módulo 1, recorte contexto, gatilho, entradas e mapa. Consolide com o [[Prompt 1 - Playbook]].
+1. No Módulo 1, recorte contexto, gatilho, entradas e mapa. Na pasta `playbook/`, fala **"vamos fazer o playbook"** (ou `/imersao:pg-imersao-playbook`).
 2. No Módulo 2, complete passos, decisões, exceções, escalação, saída e provas.
 3. No Módulo 3, defina QA, adoção e revisão. Faça o [[Checklist QA do playbook]] em dupla.
 4. Só a dupla marca `VALIDADO`. O agente pode dizer `PRONTO PARA REVISÃO HUMANA`. Isso não substitui o teste humano.
-5. Na pasta `projeto/`, rode o [[Prompt 2 - Brainstorming e PRD]]. Três ideias. Você escolhe uma.
-6. Aprove o PRD. **Não** abra o Design OS. **Não** rode `/writing-plans`.
+5. Na pasta `projeto/`, fala **"vamos escolher o produto e as ondas"** (`/imersao:pg-imersao-prd`). Três ideias. Você escolhe uma.
+6. Aprove o PRD. **Não** peça o protótipo ainda.
 
 ## Checklist de saída
 
@@ -70,8 +70,7 @@ Depois:
 - [ ] `projeto/docs/PRD.md` existe e foi aprovado por mim.
 - [ ] O PRD tem o [[O mapa de ondas]]: visão, onda 1, ondas 2+, fora do escopo.
 - [ ] O PRD cobre jornada, limites, estados e critérios de aceitação da onda 1.
-- [ ] O `/brainstorming` parou antes de `writing-plans`.
-- [ ] Não comecei o Design OS antes de aprovar o PRD.
+- [ ] Não pedi o protótipo antes de aprovar o plano.
 - [ ] Não incluí senha, token, chave, documento pessoal ou dado de cliente.
 
 Laboratórios do dia: [[Lab 1 - Ambiente]] · [[Lab 2 - Playbook]] · [[Lab 3 - PRD]]

@@ -24,10 +24,10 @@ O plano vai parecer menor do que o protótipo. Está certo. É a onda 1. O resto
 
 ## Onde o mapa aparece
 
-1. No PRD, no fim do Dia 1 — [[Prompt 2 - Brainstorming e PRD]]
-2. No protótipo, cada tela com selo `onda 1` ou `depois` — [[Prompt 3 - Design OS]]
-3. No plano técnico, **antes** das tarefas — [[Prompt 4 - Plano]]
-4. Na execução: só a onda 1 — [[Prompt 5 - Construir o MVP]]
+1. No plano, no fim do Dia 1 — “vamos escolher o produto e as ondas”
+2. No protótipo — “vamos desenhar o protótipo” (selo em cada tela)
+3. Na construção — “vamos construir a onda 1” (tabela antes das tarefas)
+4. Só a onda 1 é construída hoje
 
 Se o plano “comeu” o produto, o mapa falhou. Pare. Peça a tabela de novo. Não aceite um plano sem a seção **Como continuar depois**.
 

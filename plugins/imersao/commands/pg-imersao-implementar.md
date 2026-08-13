@@ -40,11 +40,11 @@ só o **o quê** e o **porquê**):
    APP="$(basename "$PWD")"
    if [ -f docs/PRD.md ]; then PLAN=docs/PRD.md
    elif [ -f docs/plano-do-produto.md ]; then PLAN=docs/plano-do-produto.md
-   else echo "Falta docs/PRD.md ou docs/plano-do-produto.md — rode o Prompt 2 ou /imersao:pg-imersao-prd."; exit 1; fi
+   else echo "Falta o plano — fala 'vamos escolher o produto e as ondas' ou /imersao:pg-imersao-prd."; exit 1; fi
    if [ -d ../projeto-design ]; then DESIGN_DIR="../projeto-design"
    else DESIGN_DIR="../${APP}-design"; fi
    { [ -f "$DESIGN_DIR/product-plan.zip" ] || [ -d "$DESIGN_DIR/product-plan" ] || [ -d product-plan ]; } \
-     || { echo "Falta o export — rode o Prompt 3 ou /imersao:pg-imersao-prototipo."; exit 1; }
+     || { echo "Falta o export — fala 'vamos desenhar o protótipo' ou /imersao:pg-imersao-prototipo."; exit 1; }
    echo "PLAN=$PLAN DESIGN=$DESIGN_DIR"
    ```
 

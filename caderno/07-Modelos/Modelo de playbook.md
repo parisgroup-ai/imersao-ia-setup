@@ -96,4 +96,4 @@ Uma condição que outra pessoa possa conferir.
 - [ ] Um terceiro revisou com o [[Checklist QA do playbook]].
 - [ ] Corrigi as lacunas e reconheço esta versão como fiel.
 
-Prompt que preenche isso com você: [[Prompt 1 - Playbook]].
+Quem preenche com você: fala **"vamos fazer o playbook"**.

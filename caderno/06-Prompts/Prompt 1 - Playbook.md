@@ -1,8 +1,9 @@
-# Prompt 1 — aplicar o curso e consolidar o playbook
+# Bastidor — playbook
 
-Use na pasta `playbook/` durante o curso [Playbook Executável de Operação](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao).
+O aluno **não cola isto**. Ele fala **"vamos fazer o playbook"** ou escolhe
+`/imersao:pg-imersao-playbook`.
 
-Cole o bloco inteiro.
+Texto que o comando carrega (mentor / se o comando falhar):
 
 ```text
 Estou percorrendo o curso Playbook Executável de Operação, Do Contexto à Automação na ToStudy e quero aplicar cada bloco a uma rotina real do meu trabalho.

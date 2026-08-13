@@ -4,7 +4,7 @@
 
 ## Passos
 
-1. Rode o [[Prompt 6 - Refinar]] com o arquivo do plano curto.
+1. Fala **"vamos refinar o que a validação mostrou"** (`/imersao:pg-imersao-goal`).
 2. Confirme que o Goal **não** repete brainstorming, PRD, Design OS nem a construção do MVP.
 3. Acompanhe cada reajuste e a prova.
 4. Faça regressão: fluxo, persistência, integrações, testes, tipos e build.

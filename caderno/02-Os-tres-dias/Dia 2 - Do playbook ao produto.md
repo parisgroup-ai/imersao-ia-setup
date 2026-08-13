@@ -65,6 +65,6 @@ Modelo: [[Modelo o-que-e-real]].
 - Não usar `/goal` para construir o MVP — isso é do Dia 3, só para refinar.
 - Não publicar, fazer push ou criar conta sem autorização.
 
-Prompts do dia: [[Prompt 3 - Design OS]] · [[Prompt 4 - Plano]] · [[Prompt 5 - Construir o MVP]]
+O que falar hoje: **"vamos desenhar o protótipo"** e depois **"vamos construir a onda 1"**. Como: [[Como falar com o Claude]].
 
 Laboratórios: [[Lab 4 - Prototipo]] · [[Lab 5 - MVP]]

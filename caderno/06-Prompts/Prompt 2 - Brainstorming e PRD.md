@@ -1,6 +1,7 @@
-# Prompt 2 — playbook para PRD
+# Bastidor — produto e ondas
 
-Use na pasta `projeto/`, depois de validar o playbook. Cole o bloco inteiro.
+O aluno **não cola isto**. Ele fala **"vamos escolher o produto e as ondas"** ou
+escolhe `/imersao:pg-imersao-prd`.
 
 ```text
 /brainstorming

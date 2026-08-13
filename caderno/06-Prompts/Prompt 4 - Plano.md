@@ -1,10 +1,8 @@
-# Prompt 4 — export para plano executável
+# Bastidor — plano da onda 1
 
-Use na pasta `projeto/`, depois de copiar o `product-plan/` exportado pelo Design OS.
-
-Este é o prompt que evita o BO da turma: o plano parece menor que o produto imaginado. **Primeiro o mapa de ondas. Depois as tarefas da onda 1.**
-
-Cole o bloco inteiro.
+O aluno **não cola isto**. Ele fala **"vamos construir a onda 1"**
+(`/imersao:pg-imersao-implementar`). O comando já exige a tabela de ondas antes
+das tarefas.
 
 ```text
 /writing-plans

@@ -117,6 +117,7 @@ claude
 ```
 
 Manual: [`caderno/Comece aqui.md`](../caderno/Comece%20aqui.md).
+Como falar (sem colar): [`caderno/Como falar com o Claude.md`](../caderno/Como%20falar%20com%20o%20Claude.md).
 
 Dentro do Claude, a **bússola** (digite `/` e escolha):
 

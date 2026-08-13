@@ -43,7 +43,7 @@ do produto em `projeto/`.
 ```
 🗺️  Sua jornada — o método da sala (3 dias):
 
-   Dia 1  CONTEXTO   curso + playbook + PRD com mapa de ondas
+   Dia 1  CONTEXTO   curso + playbook + produto com mapa de ondas
    Dia 2  GERAÇÃO    protótipo + plano + onda 1 (MVP) funcionando
    Dia 3  ENTREGA    validar + refinar + apresentar + publicar
 
@@ -56,29 +56,26 @@ para o produto inteiro não sumir.”
 
 Aponte o caderno:
 
+- como falar (sem colar) → `caderno/Como falar com o Claude.md`
 - mapa de ondas → `caderno/01-O-metodo/O mapa de ondas.md`
-- prompts oficiais → `caderno/06-Prompts/`
 - por que Railway → `caderno/05-Guias/Por que publicar.md`
 
-Os comandos `/imersao:pg-imersao-prd` / `prototipo` / `implementar` / `publicar`
-seguem o **mesmo** método do caderno (ondas, onda 1). Goal só no Dia 3, com
-`--plan`, para **refinar** — nunca para construir o MVP.
+O aluno **não cola** texto longo. Ele **fala** ou escolhe no `/`.
 
 ---
 
 ## 3. Diga o próximo passo concreto (sem rodar)
 
-Use a tabela. Prefira os **prompts do caderno**. O atalho `/imersao:pg-imersao-*`
-fica entre parênteses.
+Use a tabela. Mande **falar** ou **escolher no `/`**. Nunca "cole este bloco".
 
 | PLAYBOOK | PLANO | EXPORT | APP | PUB | Você está em… | Diga ao aluno |
 |---|---|---|---|---|---|---|
-| não | não | — | — | — | **Dia 1 — contexto** | "Abre o curso na ToStudy e o Prompt 1 do caderno na pasta `playbook/`. Tire o processo da cabeça. Sem playbook não tem produto." |
-| sim | não | — | — | — | **Dia 1 — PRD** | "Playbook ok. Na pasta `projeto/`, cole o Prompt 2 (`/brainstorming`). Três caminhos, você escolhe. O PRD precisa do **mapa de ondas**: visão, onda 1, ondas 2+. (Atalho: `/imersao:pg-imersao-prd`.)" |
-| — | sim | não | não | — | **Dia 2 — desenhar** | "PRD aprovado. Agora o protótipo: Prompt 3, telas com selo `onda 1` ou `depois`. Ele cobre **todas as telas do plano** da onda 1 — nenhuma da onda 1 fica de fora; as `depois` levam selo. (Atalho: `/imersao:pg-imersao-prototipo`.)" |
-| — | sim | sim | não | — | **Dia 2 — construir onda 1** | "Telas exportadas. Cole o Prompt 4: **primeiro a tabela de ondas**, depois as tarefas. Sem tabela, o plano não vale. Depois o Prompt 5 (`/executing-plans`) constrói **só a onda 1**. (Atalho: `/imersao:pg-imersao-implementar`.)" |
-| — | sim | sim | sim | não | **Dia 3 — validar e publicar** | "Onda 1 roda no seu computador. Valide com uma pessoa, refine com `/goal --plan` se precisar, depois publique. **Antes de ir pro ar**, o quadro honesto (`o-que-e-real.md`) — você dá o ok. Por que publicar: prova, uso, manutenção. (Atalho: `/imersao:pg-imersao-publicar`.)" |
-| — | sim | sim | sim | sim | **No ar + depois** | "Seu app tem endereço. Continua **nesta pasta** (onda 2). Produto novo = pasta nova. `git push` republica no Railway." |
+| não | não | — | — | — | **Dia 1 — contexto** | "Abre o curso na ToStudy. Na pasta `playbook/`, fala **vamos fazer o playbook** — ou `/` → **imersao:pg-imersao-playbook**. Sem playbook não tem produto." |
+| sim | não | — | — | — | **Dia 1 — PRD** | "Playbook ok. Na pasta `projeto/`, fala **vamos escolher o produto e as ondas** — ou `/` → **imersao:pg-imersao-prd**. Três caminhos, você escolhe. O plano precisa do mapa de ondas." |
+| — | sim | não | não | — | **Dia 2 — desenhar** | "Plano aprovado. Fala **vamos desenhar o protótipo** — ou `/` → **imersao:pg-imersao-prototipo**. Ele cobre **todas as telas do plano** da onda 1; as `depois` levam selo." |
+| — | sim | sim | não | — | **Dia 2 — construir onda 1** | "Telas prontas. Fala **vamos construir a onda 1** — ou `/` → **imersao:pg-imersao-implementar**. Primeiro a tabela de ondas; sem tabela o plano não vale." |
+| — | sim | sim | sim | não | **Dia 3 — validar e publicar** | "Onda 1 roda no seu computador. Valide com uma pessoa. Se precisar refinar: **vamos refinar o que a validação mostrou** (`imersao:pg-imersao-goal`). Depois **vamos publicar** (`imersao:pg-imersao-publicar`). **Antes de ir pro ar**, o quadro honesto — você dá o ok." |
+| — | sim | sim | sim | sim | **No ar + depois** | "Seu app tem endereço. Continua **nesta pasta** — fala **quero a onda 2: [nome]**. Produto novo = pasta nova." |
 
 > Regra de desempate: se **APP=sim**, o app já existe — siga para validar/publicar
 > (ou “No ar”), mesmo que falte um passo anterior. Nunca mande “voltar a desenhar”
@@ -86,7 +83,8 @@ fica entre parênteses.
 
 Regras:
 - **Não invoque** os comandos `/imersao:pg-imersao-*` você mesmo — só **aponte**.
-- Se o plano “comeu” o produto (sumiu a visão): mande reabrir o Prompt 4 e a
-  nota `O mapa de ondas`. Não aceite plano sem “Como continuar depois”.
+- Se o plano “comeu” o produto: mande falar **mostra o mapa de ondas de novo**
+  (ou rodar de novo o `implementar` só no passo da tabela). Não aceite plano sem
+  “Como continuar depois”.
 - Se perguntar “posso fazer outro app?”: sim. Outra pasta. Mesmo ciclo.
 - Esta bússola é **retomável**: fechou tudo, rodou de novo, ela reorienta.

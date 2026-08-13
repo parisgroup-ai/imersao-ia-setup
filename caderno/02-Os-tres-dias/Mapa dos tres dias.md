@@ -49,7 +49,7 @@ A sala costuma ir das **9h às 18h**, com almoço das 12h às 13h e duas pausas 
 
 ## Se você se perder
 
-1. Abra o laboratório do bloco em que está — [[Como usar os laboratorios]].
-2. Cole o prompt do dia — [[Biblioteca de prompts]].
+1. Fala **"onde eu estou?"** — [[Como falar com o Claude]].
+2. Abra o laboratório do bloco — [[Como usar os laboratorios]].
 3. Confira a prova em [[Entregas e provas]].
 4. Se o computador travar: [[Se travou]].

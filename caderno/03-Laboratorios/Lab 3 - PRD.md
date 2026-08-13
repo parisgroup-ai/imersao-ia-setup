@@ -5,7 +5,7 @@
 ## Passos
 
 1. Marque no playbook: dores, atrasos, retrabalho e decisões repetitivas.
-2. Na pasta `projeto/`, rode o [[Prompt 2 - Brainstorming e PRD]].
+2. Na pasta `projeto/`, fala **"vamos escolher o produto e as ondas"** (`/imersao:pg-imersao-prd`).
 3. Compare **três** possibilidades por valor, frequência, tamanho e dependências.
 4. **Você** escolhe. O agente recomenda. Ele não escolhe por você.
 5. Defina um usuário, uma tarefa, dados, regras, estados e integrações obrigatórias.

@@ -16,7 +16,8 @@ Este caderno mora no repositório da imersão (`imersao-ia-setup/caderno/`). Atu
 
 - O método dos três dias, em linguagem simples
 - Os 7 laboratórios, com prova no fim de cada um
-- Os 6 prompts oficiais, prontos para colar (com **mapa de ondas**)
+- Como falar com o Claude (sem colar bloco)
+- Comandos da sala (`playbook` → `prd` → `prototipo` → `implementar` → `publicar`)
 - Por que publicar, como continuar ESTE app, como abrir OUTRO projeto
 - Modelos (playbook, QA, pasta do projeto, o-que-e-real)
 - Guias para continuar sozinho

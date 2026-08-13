@@ -7,7 +7,7 @@
 ## Passos
 
 1. No Módulo 1, recorte uma rotina real: contexto, gatilho, entradas e mapa.
-2. Use o [[Prompt 1 - Playbook]] para consolidar `playbook/playbook.md`.
+2. Fala **"vamos fazer o playbook"** (ou `/imersao:pg-imersao-playbook`) para consolidar `playbook/playbook.md`.
 3. No Módulo 2, complete passos, decisões, exceções, escalação, saída e provas.
 4. No Módulo 3, defina QA, adoção, feedback e revisão.
 5. Entregue o arquivo a outra pessoa. Ela lê e narra **sem** a sua explicação.

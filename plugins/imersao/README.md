@@ -40,13 +40,13 @@ Dia 3  entrega    validar → refinar → publicar
 
 > **Perdido? Rode `/imersao:pg-imersao-start`** — a bússola mostra os 3 dias e o próximo passo (sem executar nada).
 
-Os comandos abaixo seguem o **mesmo** método da sala (ondas, onda 1, Goal só no Dia 3).
-Dá para colar o prompt do caderno ou disparar o comando.
+O aluno **fala** ou escolhe no `/`. Não cola bloco.
 
 | Comando | Para quê |
 |---|---|
 | `/imersao:pg-imersao-start` | 👈 Bússola da sala |
-| `/imersao:pg-imersao-prd` | Atalho: ideia → `docs/plano-do-produto.md` |
+| `/imersao:pg-imersao-playbook` | Dia 1: processo → `playbook.md` |
+| `/imersao:pg-imersao-prd` | Dia 1: produto + mapa de ondas |
 | `/imersao:pg-imersao-prototipo` | Atalho: plano → protótipo → export |
 | `/imersao:pg-imersao-implementar` | Atalho: export → app (onda 1) |
 | `/imersao:pg-imersao-publicar` | Atalho: app → no ar (GitHub + Railway) |

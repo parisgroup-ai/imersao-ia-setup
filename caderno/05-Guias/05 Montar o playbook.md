@@ -6,7 +6,7 @@ Sempre que quiser tirar mais um processo da cabeça, repita o Dia 1. O playbook 
 
 Descreva o processo como descreveria a um funcionário novo: o que ele faz, para quem, com quais regras e quem é o responsável.
 
-Use o [[Modelo de playbook]] ou o [[Prompt 1 - Playbook]].
+Use o [[Modelo de playbook]] ou fala **"vamos fazer o playbook"**.
 
 ## 2. Mapeie o AS-IS e o TO-BE
 
