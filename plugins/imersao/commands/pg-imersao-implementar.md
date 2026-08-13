@@ -1,11 +1,14 @@
 ---
-description: "Fase 3 · CONSTRUIR — implementa o app de ponta a ponta a partir do export do Design OS + plano, com funcionalidade de verdade (real ou demonstração explícita — você decide)."
+description: "Dia 2 · CONSTRUIR — onda 1 (MVP) com writing-plans + executing-plans. O resto do produto fica no plano, na mesma pasta."
 ---
 
-# /imersao:pg-imersao-implementar — Fase 3: export + PRD → app completo
+# /imersao:pg-imersao-implementar — Dia 2: export + plano → onda 1 funcionando
 
-Você vai construir o **app de verdade**, de ponta a ponta, a partir do protótipo
-exportado pelo Design OS e do `docs/plano-do-produto.md`, na stack pública da imersão.
+Você vai construir a **onda 1** (o MVP de hoje), a partir do protótipo exportado e do
+plano (`docs/PRD.md` ou `docs/plano-do-produto.md`), na stack pública da imersão.
+
+**Não use `/imersao:pg-imersao-goal` para construir.** Goal na sala é só no Dia 3, para
+**refinar**. Aqui: tabela de ondas → `/writing-plans` → `/executing-plans` só da onda 1.
 **E "de verdade" quer dizer de verdade:** nada de funcionalidade fingida sem avisar. O que
 depender de serviço de fora (IA, pagamento, e-mail…) é **real ou demonstração explícita**
 — e o aluno decide isso ANTES de você construir (item 3).
@@ -13,8 +16,8 @@ depender de serviço de fora (IA, pagamento, e-mail…) é **real ou demonstraç
 ## Narração didática (construir, mas o aluno entende a lógica)
 
 Esta fase tem a mecânica mais técnica (banco, migration, testes). Siga a regra da
-imersão: **automatize a mecânica, narre o conceito em 1 linha**. O `/imersao:pg-imersao-goal`
-já carrega o glossário base; aqui vão os conceitos específicos da Fase 3 — explique cada
+imersão: **automatize a mecânica, narre o conceito em 1 linha**. Aqui vão os conceitos
+específicos desta fase — explique cada
 um **na primeira vez** que aparecer, em português simples (nunca narre a sintaxe/flags,
 só o **o quê** e o **porquê**):
 
@@ -30,14 +33,19 @@ só o **o quê** e o **porquê**):
 
 ## Pré-condições
 
-1. Trabalhe **a partir da pasta do app** (a mesma do `docs/plano-do-produto.md`). Derive a pasta do
-   design e exija o **export** + o **`docs/plano-do-produto.md`**:
+1. Trabalhe **a partir da pasta do app** (a mesma do plano). Na sala: `~/founders-ai/projeto`.
+   Derive o plano e a pasta do design:
 
    ```bash
-   APP="$(basename "$PWD")"; DESIGN_DIR="../${APP}-design"
-   [ -f docs/plano-do-produto.md ] || { echo "Falta docs/plano-do-produto.md — rode /imersao:pg-imersao-prd antes."; exit 1; }
-   { [ -f "$DESIGN_DIR/product-plan.zip" ] || [ -d "$DESIGN_DIR/product-plan" ]; } \
-     || { echo "Falta o export — rode /imersao:pg-imersao-prototipo antes."; exit 1; }
+   APP="$(basename "$PWD")"
+   if [ -f docs/PRD.md ]; then PLAN=docs/PRD.md
+   elif [ -f docs/plano-do-produto.md ]; then PLAN=docs/plano-do-produto.md
+   else echo "Falta docs/PRD.md ou docs/plano-do-produto.md — rode o Prompt 2 ou /imersao:pg-imersao-prd."; exit 1; fi
+   if [ -d ../projeto-design ]; then DESIGN_DIR="../projeto-design"
+   else DESIGN_DIR="../${APP}-design"; fi
+   { [ -f "$DESIGN_DIR/product-plan.zip" ] || [ -d "$DESIGN_DIR/product-plan" ] || [ -d product-plan ]; } \
+     || { echo "Falta o export — rode o Prompt 3 ou /imersao:pg-imersao-prototipo."; exit 1; }
+   echo "PLAN=$PLAN DESIGN=$DESIGN_DIR"
    ```
 
    Se o servidor do Design OS (Fase 2) ainda estiver no ar, **desligue-o** pra liberar a
@@ -57,7 +65,7 @@ só o **o quê** e o **porquê**):
 
 ## Conexões de fora — real ou demonstração explícita (sem surpresa)
 
-3. Antes de construir, leia a seção **"Conexões de fora"** do `docs/plano-do-produto.md`
+3. Antes de construir, leia o **mapa de ondas** e a seção **"Conexões de fora"** do `$PLAN`
    — e o resto do plano como rede de segurança: uma funcionalidade tipo "gera resumo com
    IA" conta mesmo se a seção não listou. Classifique o que o app precisa de fora:
    **IA**, **pagamento**, **e-mail**, **mapa**, outro.
@@ -110,20 +118,34 @@ só o **o quê** e o **porquê**):
      menos que o aluno já tenha chave de um provedor.
    - **Mapa / APIs com camada grátis** → criar a chave grátis (guiado) ou demonstração.
 
-## Disparar o motor
+## Plano técnico — mapa de ondas, depois writing-plans
 
-O design **já foi aprovado** nas Fases 1 e 2 (plano + protótipo) — esta fase **não
-re-aprova design**. O motor pula direto pro plano técnico e só pausa na **entrega final**.
+O design **já foi aprovado** (plano + protótipo) — esta fase **não re-aprova design**.
+**Não** chame `/imersao:pg-imersao-goal` aqui.
 
-4. Acione o motor autônomo:
+4. **Passo zero — tabela de ondas.** Antes de qualquer tarefa, mostre e espere o aluno
+   confirmar:
 
-   ```
-   /imersao:pg-imersao-goal "implementar o app conforme docs/plano-do-produto.md e o export do Design OS em $DESIGN_DIR/product-plan/ — o design JÁ está aprovado (plano + protótipo), então PULE o brainstorming e vá direto pro plano técnico; só pause na entrega final. Monte o Next.js NA PRÓPRIA pasta do app (não num subdiretório novo). Capacidades externas (IA etc.) seguem o contrato já decidido com o aluno: REAL com a chave no .env, ou demonstração explícita com selo na tela — NUNCA simulação silenciosa"
-   ```
+   | Onda | O que entra | Quando | Onde |
+   | 1 — hoje (MVP) | fluxo principal + dado que persiste + conexões obrigatórias | hoje | esta pasta |
+   | 2+ | cada item do plano que ficou fora | depois da imersão | a mesma pasta |
+
+   Diga: “Hoje construímos a **onda 1**. O produto que você imaginou continua no plano.”
+   Sem essa confirmação, o plano não vale. Nada da visão some. Não chame onda 2+ de
+   “fora do escopo”.
+
+5. Invoque a skill **`writing-plans`**. Fontes, nesta ordem: `$PLAN` (com mapa de ondas),
+   `$DESIGN_DIR/product-plan/` (ou `product-plan/` se já copiado). Tarefas **somente da
+   onda 1**. Se a skill pedir cobertura de toda a spec, as ondas 2+ vão para a seção
+   final **“Como continuar depois”** — não viram tarefa. Salve em
+   `docs/superpowers/plans/`. **Não execute ainda.**
+
+6. Invoque a skill **`executing-plans`** no plano aprovado. Só a onda 1. Se o plano
+   misturar onda 2 no meio, **pare**, separe e peça confirmação.
 
 ## Como o plano DEVE começar (Task 1 — scaffold)
 
-5. A **primeira tarefa** do plano monta o esqueleto **de forma não interativa** (todo
+7. A **primeira tarefa** do plano monta o esqueleto **de forma não interativa** (todo
    comando fecha o stdin com `< /dev/null` pra um prompt inesperado falhar rápido em vez
    de travar), com **banco em Docker desde o dia 1**. Ordem que funciona:
 
@@ -185,9 +207,9 @@ re-aprova design**. O motor pula direto pro plano técnico e só pausa na **entr
    migrations geradas** (vão pro GitHub e rodam no Railway no deploy); o `docker-compose.yml`
    é **só pro banco local** — no Railway o Postgres é um serviço à parte.
 
-## Tarefas seguintes
+## Tarefas seguintes (ainda onda 1)
 
-6. Depois do scaffold, o plano segue tarefa a tarefa (TDD):
+8. Depois do scaffold, o plano segue tarefa a tarefa (TDD), **só o que é onda 1**:
    - **portar os componentes** exportados (React + Tailwind), seção por seção;
    - **ligar os dados** com Drizzle (queries/migrations);
    - **route handlers / server actions** para as ações;
@@ -198,7 +220,7 @@ re-aprova design**. O motor pula direto pro plano técnico e só pausa na **entr
 
 ## Antes da entrega: o registro do que é real
 
-7. Antes do gate final, escreva **`docs/o-que-e-real.md`** no projeto do aluno (português
+9. Antes do gate final, escreva **`docs/o-que-e-real.md`** no projeto do aluno (português
    simples, sem jargão):
    - uma tabela: **funcionalidade → real / demonstração → o que falta pra ativar** (ex.:
      "Resumo com IA → demonstração → colar sua chave no arquivo `.env`");
@@ -207,6 +229,9 @@ re-aprova design**. O motor pula direto pro plano técnico e só pausa na **entr
    Narre em 1 linha: "deixei anotado o que está funcionando de verdade e o que está em
    demonstração — fica em `docs/o-que-e-real.md`."
 
-8. Os **gates humanos** (aprovar plano e integração final) são conduzidos pelo
-   `/imersao:pg-imersao-goal`. Ao final: `docker compose up -d && npm run dev` → **app
-   funcionando de ponta a ponta**, fácil de mexer e ajustar.
+10. Gate humano da entrega: mostre o app rodando e o mapa de ondas de novo. A onda 1
+    funciona; as ondas 2+ estão em “Como continuar depois”. Ao final:
+    `docker compose up -d && npm run dev` → **onda 1 de ponta a ponta**.
+
+    Diga: “Esta pasta continua sendo o produto. Semana que vem você pede a onda 2.
+    Outro produto = outra pasta.”

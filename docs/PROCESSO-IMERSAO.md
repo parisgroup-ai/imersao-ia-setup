@@ -107,11 +107,11 @@ Nunca publique senha, dado de cliente ou chave.
 
 ---
 
-## Atalho opcional — os 4 comandos `/imersao:pg-imersao-*`
+## Atalho — os 4 comandos `/imersao:pg-imersao-*`
 
-Na sala o aluno **cola os prompts do caderno** (playbook → ondas → Superpowers).
-Os comandos abaixo são um **atalho**: o Claude conduz sem você colar o bloco.
-Eles **não substituem** o mapa dos três dias nem o mapa de ondas.
+Na sala o aluno **pode colar os prompts do caderno** ou disparar o comando.
+Os dois caminhos agora seguem o **mesmo** método: playbook → ondas → onda 1 →
+publicar. Goal **não** constrói o MVP.
 
 ```
   IDEIA

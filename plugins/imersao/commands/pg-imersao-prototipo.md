@@ -1,11 +1,14 @@
 ---
-description: "Fase 2 · DESENHAR — vira o PRD em protótipo funcional no Design OS público (setup automático)."
+description: "Dia 2 · DESENHAR — protótipo no Design OS, telas com selo onda 1 ou depois."
 ---
 
 # /imersao:pg-imersao-prototipo — Fase 2: PRD → protótipo
 
-Objetivo: a partir do `docs/plano-do-produto.md`, **montar e subir o Design OS público sozinho**
-(o aluno não cola bloco nenhum) e então conduzir o design até o protótipo aprovado.
+Objetivo: a partir do plano (`docs/PRD.md` **ou** `docs/plano-do-produto.md`), **montar e
+subir o Design OS público sozinho** e conduzir o design até o protótipo aprovado.
+
+A **visão** pode aparecer no protótipo. Cada tela leva um selo: `onda 1` ou `depois`.
+Implementação de verdade, no próximo passo, é **só a onda 1**.
 
 ## Narração didática (Fase 2)
 
@@ -16,21 +19,38 @@ Automatize o setup (clone/install/server) **sem** narrar a sintaxe, mas explique
 |---|---|
 | protótipo | "Um protótipo é um rascunho clicável das suas telas — a gente valida o visual ANTES de construir de verdade, porque é muito mais barato mudar um desenho do que um app pronto." |
 | Design OS | "O Design OS é uma ferramenta de desenho de telas: você conversa, ele desenha, e você vê na hora no navegador." |
-| mapa de telas | "O mapa de telas é a lista de tudo que você vai ver no protótipo — eu confiro no final que nenhuma tela do seu plano ficou de fora." |
+| mapa de telas | "O mapa de telas é a lista do protótipo — eu confiro que **todas as telas do plano** da onda 1 estão lá; as de depois levam selo e não somem." |
+| onda | "Onda 1 é o que a gente constrói hoje. O resto do produto que você imaginou fica marcado como depois, no mesmo projeto." |
 
 ## 1. Pré-condições
 
-- Exija **`docs/plano-do-produto.md`**. Se faltar, peça `/imersao:pg-imersao-prd` antes e pare.
+- Exija um plano: **`docs/PRD.md`** ou **`docs/plano-do-produto.md`**. Se faltar os dois,
+  peça `/imersao:pg-imersao-prd` (ou o Prompt 2 do caderno) e pare.
+  ```bash
+  if [ -f docs/PRD.md ]; then PLAN=docs/PRD.md
+  elif [ -f docs/plano-do-produto.md ]; then PLAN=docs/plano-do-produto.md
+  else echo "Falta o plano do produto"; exit 1; fi
+  echo "PLAN=$PLAN"
+  ```
+- Leia o **mapa de ondas** do plano. Telas da **onda 1** são obrigatórias. Telas
+  **depois** entram no mapa com status `depois` / selo visível — não bloqueiam o Dia 2.
 - **Monte o mapa de telas** a partir da seção **"Telas e navegação"** do plano: uma linha
-  por tela, status `pendente`. Plano **sem** essa seção? Derive um rascunho da seção
-  "Fluxos" e confirme com o aluno em **uma** pergunta leve ("seu plano não listou as
-  telas — pelo que entendi são essas: […]. Confere?"). **Nunca** siga com o mapa vazio.
-  Narre o conceito em 1 linha na primeira vez (tabela acima).
-- A partir da pasta do app, derive a pasta-irmã do design (mantenha o `cwd` na raiz do
-  app o tempo todo — **nunca** use `cd` solto; prefira `git -C`/`npm --prefix`):
+  por tela, status `pendente`, coluna **onda** (`1` ou `depois`). Plano **sem** essa seção?
+  Derive um rascunho da seção "Fluxos" e confirme com o aluno em **uma** pergunta leve
+  ("seu plano não listou as telas — pelo que entendi são essas: […]. Confere?"). **Nunca**
+  siga com o mapa vazio. Narre o conceito em 1 linha na primeira vez (tabela acima).
+- A partir da pasta do app, derive a pasta-irmã do design. Na sala:
+  `~/founders-ai/projeto` → `../projeto-design`. No atalho antigo: `../<app>-design`.
+  Mantenha o `cwd` na raiz do app — **nunca** use `cd` solto; prefira `git -C`/`npm --prefix`:
 
   ```bash
-  APP="$(basename "$PWD")"; DESIGN_DIR="../${APP}-design"; echo "design em: $DESIGN_DIR"
+  APP="$(basename "$PWD")"
+  if [ -d ../projeto-design ] || [ "$(basename "$(dirname "$PWD")")" = "founders-ai" ]; then
+    DESIGN_DIR="../projeto-design"
+  else
+    DESIGN_DIR="../${APP}-design"
+  fi
+  echo "design em: $DESIGN_DIR"
   ```
 
 ## 2. Setup automático (VOCÊ executa via Bash — não mande o aluno colar)
@@ -52,7 +72,8 @@ Automatize o setup (clone/install/server) **sem** narrar a sintaxe, mas explique
    ```
 3. **Levar o PRD** pra dentro da pasta do design:
    ```bash
-   cp docs/plano-do-produto.md "$DESIGN_DIR/plano-do-produto.md"
+   cp "$PLAN" "$DESIGN_DIR/plano-do-produto.md"
+   cp "$PLAN" "$DESIGN_DIR/input/PRD.md" 2>/dev/null || mkdir -p "$DESIGN_DIR/input" && cp "$PLAN" "$DESIGN_DIR/input/PRD.md"
    ```
 4. **Gravar o mapa de telas** na **raiz do clone** — nunca dentro de `product/` ou `src/`
    (o renderizador não pode tropeçar nele). Escreva `$DESIGN_DIR/mapa-de-telas.md`:
@@ -60,9 +81,9 @@ Automatize o setup (clone/install/server) **sem** narrar a sintaxe, mas explique
    ```markdown
    # Mapa de telas — <nome do produto>
 
-   | # | Tela (do plano) | Seção no protótipo | Status |
-   |---|---|---|---|
-   | 1 | <tela 1> | (a definir) | pendente |
+   | # | Tela (do plano) | Onda | Seção no protótipo | Status |
+   |---|---|---|---|---|
+   | 1 | <tela 1> | 1 ou depois | (a definir) | pendente |
    ```
 
    `Status`: `pendente` → `desenhada` → ou `dispensada (<motivo do aluno>)`. O arquivo
@@ -125,9 +146,9 @@ arquivo e execute as instruções você mesmo**, escrevendo os arquivos de desig
 4. Na dúvida, **releia o arquivo de comando** correspondente no clone antes de escrever.
 
 Sequência canônica (lendo o comando no clone antes de cada etapa, **narrando em 1 linha**):
-`product-vision` (gera overview + roadmap + data-shape de uma vez — use o `docs/plano-do-produto.md`
-como as "raw notes", não faça o aluno redigitar) → `design-tokens` → `design-shell` →
-**por seção — TODAS as seções do roadmap, sem pular nenhuma:** `shape-section` (spec + dados + tipos) → `design-screen`. (`product-roadmap`,
+`product-vision` (gera overview + roadmap + data-shape de uma vez — use o `$PLAN`
+como as "raw notes", não faça o aluno redigitar; passe o mapa de ondas) → `design-tokens` → `design-shell` →
+**por seção — TODAS as seções da onda 1 do roadmap, sem pular nenhuma:** `shape-section` (spec + dados + tipos) → `design-screen`. Seções `depois` só se sobrar tempo, sempre com selo. (`product-roadmap`,
 `data-shape`, `sample-data` são comandos de **atualização** — não use na primeira passada.)
 
 **Cobertura do roadmap (na hora do `product-vision`):** passe o mapa de telas como
@@ -168,9 +189,11 @@ gate do export confere contra o mapa **atual**, não contra o plano original.
 - **Passo 0 — confira o mapa de telas (antes do export):** mostre o checklist
   `tela do plano → onde está → ✓/✗`. Tem `✗`? Ofereça **desenhar agora**, ou o aluno
   **dispensa** explicitamente ("essa não precisa") — registre `dispensada (<motivo>)` no
-  mapa **e** acrescente 1 linha em **"Em aberto / futuro"** do `docs/plano-do-produto.md`
-  do app (a Fase 3 não constrói tela dispensada). Tudo `✓`/`dispensada` → siga: mapa
-  100% coberto passa **sem pausa extra** (a tabela aparece numa tela só, e segue).
+  mapa **e** acrescente 1 linha em **"Em aberto / futuro"** (e no mapa de ondas, como
+  onda 2+) do `$PLAN` do app (a construção não implementa tela dispensada nem tela
+  `depois`). Tela `depois` com selo conta como coberta no mapa — não é ✗. Tudo
+  `✓`/`dispensada`/`depois` da onda 1 → siga: mapa 100% coberto passa **sem pausa extra**
+  (a tabela aparece numa tela só, e segue).
 - Aprovado? Execute o **export** do Design OS (leia o arquivo de comando `export-product`
   no clone e siga). **Reinicie o servidor** depois (o export gera arquivo novo) e confirme
   o pacote: ele fica em **`$DESIGN_DIR/product-plan/`** (pasta) e **`$DESIGN_DIR/product-plan.zip`**

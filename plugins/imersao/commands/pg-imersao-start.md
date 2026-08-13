@@ -61,9 +61,8 @@ Aponte o caderno:
 - por que Railway → `caderno/05-Guias/Por que publicar.md`
 
 Os comandos `/imersao:pg-imersao-prd` / `prototipo` / `implementar` / `publicar`
-são **atalho opcional**. Na sala o aluno cola os prompts do caderno. Se ele
-perguntar do `pg-imersao-goal`: na sala, Goal só no Dia 3, com `--plan`, para
-**refinar** — nunca para construir o MVP.
+seguem o **mesmo** método do caderno (ondas, onda 1). Goal só no Dia 3, com
+`--plan`, para **refinar** — nunca para construir o MVP.
 
 ---
 

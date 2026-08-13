@@ -40,8 +40,8 @@ Depois, dentro dessa pasta com o Claude Code aberto, conduza o fluxo de design:
 Revise o **protótipo vivo** e ajuste em linguagem natural antes de exportar. Só então
 parta para a implementação.
 
-> Na imersão, os comandos `/pg-imersao-prototipo` (prototipar) e
-> `/pg-imersao-implementar` (construir) já encadeiam esse fluxo de ponta a ponta.
+> Na imersão: prototipo marca cada tela `onda 1` ou `depois`; implementar constrói
+> **só a onda 1** com writing-plans + executing-plans. Caderno: `caderno/Comece aqui.md`.
 
 ### UI pequena / um componente isolado → frontend-design
 

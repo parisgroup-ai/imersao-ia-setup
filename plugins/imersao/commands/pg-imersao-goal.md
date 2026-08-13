@@ -1,87 +1,79 @@
 ---
-description: "⚙️ Motor INTERNO (a Fase 3 chama sozinha — você normalmente NÃO digita) — encadeia brainstorming → planos → execução → entrega com 2 gates."
-argument-hint: "<objetivo do projeto>"
+description: "Dia 3 · REFINAR — só o plano curto depois da validação. Não constrói o MVP. Não redesenha o produto."
+argument-hint: "--plan <arquivo-do-plano-curto>  ou  <objetivo livre, fora da sala>"
 ---
 
-# /imersao:pg-imersao-goal — motor autônomo da imersão
+# /imersao:pg-imersao-goal — na sala, só refina
 
-Você é o orquestrador. O objetivo do aluno está em **$ARGUMENTS**. Conduza o projeto
-do começo ao fim encadeando as skills da imersão, **avançando sozinho** entre as
-etapas e parando em **exatamente 2 momentos** para o humano decidir.
+Na turma Founders AI este comando **não constrói o app**.
 
-> **Isto é o motor, não um passo.** Na imersão você quase nunca digita `pg-imersao-goal`
-> direto — a **Fase 3 (`/imersao:pg-imersao-implementar`) liga ele sozinha**. Os 4 comandos
-> que o aluno digita são `prd` → `prototipo` → `implementar` → `publicar`. Use o `goal` direto só pra um
-> objetivo livre, fora do trilho da imersão.
+| Quando | O que fazer |
+|---|---|
+| Dia 2, montar o MVP | **Pare.** Mande `/imersao:pg-imersao-implementar` ou o Prompt 5 (`/executing-plans`). |
+| Dia 3, depois da validação, com plano curto | Execute **somente** esse plano. Não refaça playbook, PRD, Design OS nem a onda 1. |
+| Objetivo livre, fora da sala | Aí sim o motor completo (abaixo), com mapa de ondas. |
 
-Se `$ARGUMENTS` estiver vazio, pergunte ao aluno: "Qual é o objetivo? (uma frase)".
+O caderno: `caderno/Comece aqui.md`. Prompt oficial do Dia 3: `caderno/06-Prompts/Prompt 6 - Refinar.md`.
+
+Se `$ARGUMENTS` estiver vazio, pergunte: "Qual o plano curto de hoje — ou é um objetivo novo, fora da imersão?"
+
+## Se o argumento tem `--plan` ou um arquivo em `docs/superpowers/plans/`
+
+Trate como **refinamento da onda 1 já pronta**:
+
+1. Leia o plano curto. Se ele pedir reconstruir MVP, brainstorming, PRD ou Design OS — **pare** e corte essas tarefas.
+2. Invoque `executing-plans` só no que está no plano curto.
+3. Regressão: fluxo principal, persistência, conexões, testes, tipos, build.
+4. Atualize `docs/o-que-e-real.md`.
+5. Resumo + roteiro de apresentação. **Espere** autorização antes de publicar.
+
+Não invente onda 2 no meio. Onda 2 é depois, na mesma pasta, com o Guia 2.
 
 ## Narração didática (turma de construtores de produto, não-devs)
 
-Esta turma quer **construir produtos com IA** — a mecânica (git, comandos, sintaxe) é
-**meio, não fim**. Ao executar:
-
-- **Automatize o encanamento** (git, instalar deps, rodar comandos, sintaxe). O aluno
-  **não digita** nada disso e **não precisa decorar**.
-- **MAS narre o CONCEITO em UMA linha simples**, em português, na **primeira vez** que ele
-  aparece — pra o aluno entender a **lógica** sem se afogar na sintaxe.
+- **Automatize o encanamento** (git, deps, comandos). O aluno **não digita** isso.
+- **Narre o CONCEITO em UMA linha**, em português, na primeira vez.
 - **Nunca** despeje jargão ou log cru sem traduzir.
-
-Glossário de bolso (use quando o conceito surgir, uma vez cada):
 
 | Conceito | Diga assim (1 linha, simples) |
 |---|---|
 | salvar versão (commit) | "Salvei um ponto do projeto que dá pra voltar depois, tipo um save de jogo." |
 | teste | "Fiz um cheque automático que confirma que essa parte funciona — pra não quebrar sem você notar." |
 | frontend / backend | "Frontend é o que você vê e clica; backend é o cérebro que processa e fala com o banco." |
+| onda | "Onda 1 já está pronta. Agora a gente só corrige o que o uso mostrou — não começa o produto de novo." |
 
-A narração é **informativa, não vira pergunta** — as pausas humanas continuam sendo só 2.
+## Motor completo — SÓ objetivo livre (fora do trilho da sala)
 
-## As 4 etapas (auto-avanço)
+Se o aluno pediu um produto **novo**, em pasta **nova**, sem imersão no meio:
 
 1. **brainstorming** — *só se o design ainda NÃO estiver aprovado.*
-   - **Se já existe um design aprovado** (um `docs/plano-do-produto.md` + um protótipo
-     exportado — é o caso da Fase 3): **NÃO refaça o brainstorming nem peça aprovação de
-     design de novo.** O design já foi decidido (plano na Fase 1, protótipo na Fase 2);
-     trate o plano como o spec aprovado e **vá direto pra etapa 2.** (Aí a Fase 3 fica com
-     **1 gate só**: a entrega.)
-   - **Senão** (objetivo livre, sem design prévio): invoque a skill `brainstorming`,
-     proponha o design e escreva o spec.
-     → 🛑 **GATE HUMANO 1 (aprovar design):** só avance quando o aluno aprovar o design
-     e o spec estiver escrito/commitado.
+   - **Se já existe um design aprovado** (um `docs/PRD.md` ou `docs/plano-do-produto.md` +
+     um protótipo exportado): **NÃO refaça o brainstorming.** Vá ao mapa de ondas e ao plano.
+   - **Senão:** invoque `brainstorming`, proponha o design, escreva o spec **com mapa de
+     ondas** (visão, onda 1, ondas 2+, fora do escopo).
+     → 🛑 **GATE HUMANO 1 (aprovar design + ondas):** só avance quando o aluno confirmar
+     a tabela. “A onda 1 é o primeiro andar. O resto continua no plano.”
 
-2. **writing-plans** — invoque a skill `writing-plans`. Quebre o spec em tarefas
-   pequenas e testáveis (TDD). Salve o plano.
-   → **Avance automaticamente** assim que o plano estiver salvo. Não pergunte nada.
+2. **writing-plans** — invoque `writing-plans`. Primeiro a tabela de ondas; tarefas só da
+   onda 1; seção “Como continuar depois” para o resto. Salve o plano.
+   → Avance automaticamente.
 
-3. **executing-plans** — invoque a skill `executing-plans`. Execute tarefa por tarefa
-   no ciclo Red → Green → Verify → Commit. Se um teste falhar, entre em
+3. **executing-plans** — invoque `executing-plans` **só na onda 1**. Se um teste falhar,
    `systematic-debugging` (no máximo 3 tentativas; se persistir, **pare e peça ajuda ao
    instrutor**).
-   → **Avance automaticamente** quando todas as tarefas estiverem feitas e commitadas.
+   → Avance quando a onda 1 estiver feita e commitada.
 
-4. **finishing-a-development-branch** — invoque a skill `finishing-a-development-branch`.
-   Rode os testes, e apresente o menu de integração.
-   → 🛑 **GATE HUMANO 2 (entrega final):** apresente a escolha em **linguagem simples**
-   ("salvar tudo no projeto" / "guardar pra revisar depois") — **nunca** "merge / PR /
-   discard". O salvamento (git) acontece por baixo dos panos.
+4. **finishing-a-development-branch** — testes + menu de integração.
+   → 🛑 **GATE HUMANO 2 (entrega):** "salvar tudo no projeto" / "guardar pra revisar
+   depois" — **nunca** "merge / PR / discard".
 
-## Regras do motor
+## Regras
 
-- **No máximo 2 gates humanos:** aprovar design (etapa 1) e integração (etapa 4). Quando
-  o design **já vem aprovado** (Fase 3: plano + protótipo), a etapa 1 é pulada e sobra
-  **só 1 gate** (a entrega). Entre as etapas, **não peça confirmação** — avance assim que
-  a condição de término da etapa for atingida.
-- Objetivo é **texto livre**. Não há roadmap, backlog ou persistência de tarefas além
-  do plano em markdown.
-- **Commits** são feitos com `git` puro, mensagens em Conventional Commits, staging
-  explícito dos arquivos (`git add <arquivos>`), sem `--no-verify`.
-- **TDD roda nos bastidores:** escreva os testes e rode-os de verdade (teste primeiro,
-  veja falhar, implemente, veja passar) — mas o aluno **não assiste** ao ciclo
-  vermelho-verde; ele vê só o resultado narrado ("construí X e confirmei que funciona ✅").
-- **Verifique sempre, mas traduza:** antes de dizer que algo está pronto, rode os
-  testes/build de verdade — e mostre o resultado em **linguagem simples**, não o log cru.
+- Na sala: **zero gates de construção**. Só executa o plano curto.
+- Fora da sala: no máximo 2 gates (ondas + entrega).
+- Commits com `git` puro, Conventional Commits, staging explícito, sem `--no-verify`.
+- TDD nos bastidores. Traduza o resultado.
+- Nunca simulação silenciosa. Real ou demonstração com selo.
 
-> Dica: para a imersão, os comandos de fase (`/imersao:pg-imersao-prd`, `/imersao:pg-imersao-prototipo`,
-> `/imersao:pg-imersao-implementar`) já chamam este motor no momento certo. Use `/imersao:pg-imersao-goal`
-> diretamente quando quiser dirigir um objetivo livre do início ao fim.
+> Dica: `/imersao:pg-imersao-prd` → `prototipo` → `implementar` → `publicar` já encadeiam
+> a sala. Este comando, na turma, é o **refino do Dia 3**.

@@ -1,5 +1,5 @@
 ---
-description: "Fase 4 · PUBLICAR — sobe seu app pro GitHub e coloca no ar no Railway (link público)."
+description: "Dia 3 · PUBLICAR — GitHub + Railway. Prova, uso e manutenção (onda 2 sem reinstalar)."
 ---
 
 # /imersao:pg-imersao-publicar — Fase 4: colocar o app no ar
@@ -7,6 +7,14 @@ description: "Fase 4 · PUBLICAR — sobe seu app pro GitHub e coloca no ar no R
 O app já roda no seu computador. Agora vamos **colocar ele no ar** — num link que
 qualquer pessoa abre no navegador. São duas partes: **guardar o código no GitHub** e
 **publicar no Railway** (que roda o app e o banco na nuvem, lendo do seu GitHub).
+
+**Por que isso existe** (diga em voz de dono, 3 linhas):
+1. **Prova** — o produto saiu da cabeça e ganhou endereço.
+2. **Uso** — sem URL, ninguém de fora testa; o plano de 30 dias não tem usuário de verdade.
+3. **Manutenção** — a onda 2 não pede “instala de novo no meu PC”. `git push` atualiza o mesmo link.
+
+GitHub é o cartório. Railway é a loja. Push é a reposição. Detalhe no caderno:
+`caderno/05-Guias/Por que publicar.md`.
 
 ## Narração didática (Fase 4)
 
@@ -22,8 +30,8 @@ Automatize a mecânica, **narre o conceito em 1 linha** na primeira vez (nunca a
 
 ## Pré-condições
 
-- Trabalhe na pasta do **app** (a mesma do `docs/plano-do-produto.md`), com o app já
-  construído (tem `package.json` com `next`).
+- Trabalhe na pasta do **app** (a mesma do `docs/PRD.md` ou `docs/plano-do-produto.md`),
+  com o app já construído (tem `package.json` com `next`). Na sala: `~/founders-ai/projeto`.
 - O app precisa **buildar pra produção**. Rode silenciosamente; se falhar, conserte antes
   de seguir (narre em português, não mostre log cru):
   ```bash
@@ -128,7 +136,7 @@ navegador**: o aluno clica, **você guia um passo de cada vez** (abra `open http
 ## 4. Atualizar depois (auto-deploy)
 
 Explique o ciclo dali pra frente, simples: "Toda vez que você mudar algo e der `git push`,
-o Railway publica a nova versão **sozinho**. Você programa, dá push, e o ar atualiza."
+o Railway publica a nova versão **sozinho**. Você programa, dá push, e o ar atualiza.
+**Este app continua nesta pasta** — a onda 2 é o mesmo link. Outro produto = outra pasta."
 
-> O `/imersao:pg-imersao-implementar` (e o motor) já commitam as mudanças; pra publicar uma
-> versão nova é só `git push`. O Railway faz o resto.
+> Depois da onda 1, pra publicar uma versão nova é só `git push`. O Railway faz o resto.

@@ -27,6 +27,8 @@ has 'pesquisa-de-mercado\.md'                && ok "artefato pesquisa-de-mercado
 has 'plano-do-produto\.md'                   && ok "artefato plano-do-produto.md"   || err "sem plano-do-produto.md"
 has 'Por que vale a pena'                    && ok "seção 'Por que vale a pena'"    || err "sem seção de valor no plano"
 has 'chute|não consegui pesquisar'           && ok "fallback sem internet"          || err "sem fallback de pesquisa"
+has 'onda'                                   && ok "mapa de ondas no plano"         || err "sem mapa de ondas"
+has 'PRD\.md'                                && ok "também grava docs/PRD.md"       || err "não grava docs/PRD.md"
 
 echo ""
 if [ "$fail" -eq 0 ]; then echo "✓ Fase 1 OK"; else echo "✗ Fase 1 com problemas (veja acima)"; fi

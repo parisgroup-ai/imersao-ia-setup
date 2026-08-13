@@ -1,7 +1,7 @@
 {
   "name": "imersao",
-  "version": "1.10.1",
-  "description": "Skills de IA curadas da Imersão IA da ParisGroup + o processo guiado da imersão (PRD → protótipo no Design OS → implementação) via comandos /pg-imersao-*. Funciona em qualquer projeto.",
+  "version": "1.11.0",
+  "description": "Skills da Imersão Founders AI (Paris Group) + método da sala: playbook → PRD com mapa de ondas → protótipo → onda 1 → publicar. Comandos /imersao:pg-imersao-*.",
   "author": {
     "name": "ParisGroup",
     "email": "dev@parisgroup.ai"

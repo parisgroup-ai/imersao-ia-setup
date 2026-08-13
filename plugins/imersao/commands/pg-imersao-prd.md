@@ -1,19 +1,26 @@
 ---
-description: "Fase 1 · DEFINIR — conversa guiada que pesquisa o mercado, acha o ângulo mais forte e transforma sua ideia (ou o que você já tem) no plano do produto."
+description: "Dia 1 · CONTEXTO — playbook + três caminhos + plano do produto com mapa de ondas (visão, onda 1, depois)."
 argument-hint: "<sua ideia em uma frase — ou rode numa pasta que já tem um projeto>"
 ---
 
-# Fase 1 — sua ideia (ou o que você já tem) vira o plano do produto
+# Dia 1 — o processo vira plano do produto (com mapa de ondas)
 
-Conduza uma **conversa curta e amigável** (NÃO um interrogatório técnico) pra transformar
-a ideia do aluno num **plano do produto** claro — agora com dois superpoderes: você
-**pesquisa o mercado de verdade** antes de desenhar, e oferece **alguns caminhos fortes**
-pra convergir no melhor. O aluno é **iniciante, possivelmente não-programador** — fale
-100% em **português coloquial, sem jargão**. A ideia inicial está em **$ARGUMENTS**.
+Conduza uma **conversa curta e amigável** (NÃO um interrogatório técnico). Na sala, o
+aluno já tem (ou está montando) um **playbook** do próprio trabalho. Este comando
+transforma isso num **plano do produto** com **mapa de ondas**: o produto inteiro fica
+documentado; só a **onda 1** entra no Dia 2.
 
-O foco é entender **O QUÊ construir** (visão, quem usa, funcionalidades, fluxos, regras)
-**e se vale a pena** (o mercado). **Nada de tecnologia** (stack, banco, código): isso é das
-Fases 2 e 3.
+Você também **pesquisa o mercado de verdade** e oferece **alguns caminhos fortes**.
+O aluno é **iniciante** — fale 100% em **português coloquial, sem jargão**. A ideia
+inicial está em **$ARGUMENTS**.
+
+O foco é **O QUÊ construir** e **o que é hoje vs depois**. **Nada de tecnologia**.
+
+Se existir `playbook/playbook.md` ou `../playbook/playbook.md`, **leia primeiro** e
+use como fonte. Não invente etapas que o playbook não tem.
+
+Se o aluno estiver na raiz `~/founders-ai`, peça para continuar em `projeto/`
+(é lá que o plano mora). O caderno da turma: `caderno/Comece aqui.md`.
 
 ## Regras de ouro (leia antes de começar)
 
@@ -152,7 +159,8 @@ puxar a próxima). Cubra, derivando e propondo onde der:
   Se depender — principalmente de **IA** — narre 1 linha, sem assustar: "isso vai usar
   **IA de verdade**; lá na construção você vai precisar de uma **chave** (custa centavos
   por uso, separada da assinatura do Claude) — te aviso na hora certa, é rapidinho."
-- o que **não** precisa entrar agora.
+- o que **não** precisa entrar agora (e o que é **depois**, na mesma pasta — não é
+  “nunca”).
 
 Onde faltar, **proponha um rascunho** e deixe o aluno **confirmar ou ajustar**. Seja
 proativo com tela vazia, erro e permissão — sem afogar.
@@ -168,7 +176,8 @@ Espere o "sim" (ou ajustes).
 
 ## Passo 8 — salvar (silencioso)
 
-Escreva **`docs/plano-do-produto.md`** — comece com uma seção nova no topo:
+Escreva **`docs/plano-do-produto.md`** e uma cópia **`docs/PRD.md`** (mesmo conteúdo —
+a sala usa esse nome). Comece com uma seção nova no topo:
 
 - **Por que vale a pena** — 3-4 bullets: o caminho escolhido + o sinal de mercado (é
   vendável? / quanto economiza?) + a aposta de valor. (Em modo análise, diga **em cima de
@@ -177,8 +186,19 @@ Escreva **`docs/plano-do-produto.md`** — comece com uma seção nova no topo:
 Depois, as seções do plano (só as que fizerem sentido, com o **nome do produto** no topo):
 **Visão**, **Quem usa**, **Funcionalidades** (essencial agora × depois), **Fluxos**
 (incluindo tela vazia e erro), **Telas e navegação**, **Informações** (dados e relações),
-**Conta e permissões**, **Conexões de fora**, **Regras**, **Entrega por fases**, **Em
-aberto / futuro**.
+**Conta e permissões**, **Conexões de fora**, **Regras**, **Mapa de ondas** (obrigatório),
+**Entrega por fases**, **Em aberto / futuro**.
+
+**Mapa de ondas — não pule.** Mostre e confirme com o aluno antes de salvar:
+
+| Onda | O que entra | Quando | Onde |
+| visão | o produto inteiro, em poucas frases | — | documento |
+| 1 — hoje | um usuário, um fluxo, dado que persiste, conexões obrigatórias | Dia 2 | esta pasta |
+| 2+ | cada item que ficou de fora da onda 1, com nome e resultado | depois da imersão | a **mesma** pasta |
+| fora do escopo | só o que **nunca** vamos fazer | — | — |
+
+Diga em uma frase: “A onda 1 é o primeiro andar. O prédio que você imaginou continua
+no plano.” Melhoria futura **não** é fora do escopo.
 
 > Em **Conexões de fora**, registre cada conexão com: o que é, se **precisa de chave**, o
 > **custo aproximado** (ex.: "IA: centavos por uso") e uma nota de que a **Fase 3 resolve
@@ -192,7 +212,8 @@ o plano do seu produto e a pesquisa de mercado. ✅"
 
 ## Passo 9 — fechamento humano
 
-> "Pronto! Sua ideia não é só um palpite — ela passou por uma **checagem de mercado de
-> verdade**, e a gente escolheu o ângulo mais forte. Esse plano é o **mapa** do seu produto.
-> Agora a gente transforma ele em **telas de verdade** que você vê e clica. Quando quiser,
-> digite **`/`** e escolha **`imersao:pg-imersao-prototipo`** na lista."
+> "Pronto! Sua ideia passou por uma **checagem de mercado de verdade**, e o plano tem o
+> **mapa de ondas**: hoje a onda 1; o resto fica neste mesmo projeto, depois. Agora a
+> gente desenha as **telas** (onda 1 com selo, o resto marcado como depois). Quando
+> quiser, digite **`/`** e escolha **`imersao:pg-imersao-prototipo`** — ou cole o
+> Prompt 3 do caderno."

@@ -40,7 +40,8 @@ Dia 3  entrega    validar → refinar → publicar
 
 > **Perdido? Rode `/imersao:pg-imersao-start`** — a bússola mostra os 3 dias e o próximo passo (sem executar nada).
 
-Os comandos abaixo são **atalho opcional**. Na sala o aluno cola os prompts do caderno.
+Os comandos abaixo seguem o **mesmo** método da sala (ondas, onda 1, Goal só no Dia 3).
+Dá para colar o prompt do caderno ou disparar o comando.
 
 | Comando | Para quê |
 |---|---|
