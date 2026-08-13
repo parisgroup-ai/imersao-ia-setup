@@ -57,7 +57,7 @@ Baixe o AppImage ou o `.deb` / `.rpm` em https://www.onorca.dev/download (ou rel
    ```
 
 4. Faça login na 1ª vez (Claude Max).  
-5. Use o pipeline da imersão: `/imersao:pg-imersao-start` e as fases.  
+5. Abra o Caderno (`caderno/Comece aqui.md`) e a bússola `/imersao:pg-imersao-start`.  
 6. **Opcional e recomendado:** pareie o **celular** (abaixo) para continuar de fora da mesa.
 
 Não precisa decorar atalhos do Orca no D1 — o mentor mostra em sala. O mínimo é: **Orca aberto + `claude` rodando + login feito**.

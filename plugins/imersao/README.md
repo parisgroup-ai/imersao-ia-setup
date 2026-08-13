@@ -26,21 +26,30 @@ Plugins são um recurso do Claude Code. Para usar essas skills no **Codex**, rod
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/sync-codex-skills.sh | bash
 ```
 
-## Processo da Imersão (comandos)
+## Processo da Imersão (sala + atalho)
 
-O plugin traz um **pipeline guiado** que leva da ideia ao app **no ar**, em 4 fases
-sobre um motor autônomo. Guia completo: [`docs/PROCESSO-IMERSAO.md`](../../docs/PROCESSO-IMERSAO.md).
+O mapa que vale na turma está no **Caderno Founders**:
+[`caderno/Comece aqui.md`](../../caderno/Comece%20aqui.md).
+Guia: [`docs/PROCESSO-IMERSAO.md`](../../docs/PROCESSO-IMERSAO.md).
 
-> **Não sabe por onde começar? Rode `/imersao:pg-imersao-start`** — a bússola mostra os 4 passos e diz o próximo (sem executar nada por você).
+```
+Dia 1  contexto   playbook → PRD com mapa de ondas
+Dia 2  geração    protótipo → onda 1 (MVP)
+Dia 3  entrega    validar → refinar → publicar
+```
 
-| Comando | Fase | Para quê |
-|---|---|---|
-| `/imersao:pg-imersao-start` | 👈 | **Comece aqui** — bússola: mostra os 4 passos e o próximo passo |
-| `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/plano-do-produto.md` (conversa guiada) |
-| `/imersao:pg-imersao-prototipo` | 2 | Plano → protótipo no **Design OS** público → export React+Tailwind |
-| `/imersao:pg-imersao-implementar` | 3 | Export + plano → app **Next.js + Tailwind + shadcn/ui + Drizzle + Postgres (Docker)** |
-| `/imersao:pg-imersao-publicar` | 4 | App → **no ar**: push pro GitHub + deploy no Railway |
-| `/imersao:pg-imersao-goal` | — | Motor autônomo (brainstorming → plano → execução → integração) com 2 gates humanos |
+> **Perdido? Rode `/imersao:pg-imersao-start`** — a bússola mostra os 3 dias e o próximo passo (sem executar nada).
+
+Os comandos abaixo são **atalho opcional**. Na sala o aluno cola os prompts do caderno.
+
+| Comando | Para quê |
+|---|---|
+| `/imersao:pg-imersao-start` | 👈 Bússola da sala |
+| `/imersao:pg-imersao-prd` | Atalho: ideia → `docs/plano-do-produto.md` |
+| `/imersao:pg-imersao-prototipo` | Atalho: plano → protótipo → export |
+| `/imersao:pg-imersao-implementar` | Atalho: export → app (onda 1) |
+| `/imersao:pg-imersao-publicar` | Atalho: app → no ar (GitHub + Railway) |
+| `/imersao:pg-imersao-goal` | Motor interno; na sala, só Dia 3 com `--plan` |
 
 As skills-base de método (`brainstorming`, `writing-plans`, `executing-plans`,
 `finishing-a-development-branch`, `test-driven-development`, `systematic-debugging`,

@@ -184,11 +184,12 @@ Itens **X** críticos: Git, Node, Claude, Docker rodando, plugin imersão, `gh`,
 No Orca (ou no Ubuntu, se ainda estiver no shell puro):
 
 ```bash
-mkdir -p ~/meu-app && cd ~/meu-app
+mkdir -p ~/founders-ai/{playbook,projeto,projeto-design}
+cd ~/founders-ai/projeto
 claude
 ```
 
-Depois:
+Manual da turma: `caderno/Comece aqui.md`. Depois, a bússola:
 
 ```text
 /imersao:pg-imersao-start

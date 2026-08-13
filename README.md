@@ -1,6 +1,8 @@
 # Imersão IA - ParisGroup AI
 
-Repositório central da Imersão de IA. Contém o **instalador do ambiente** e um **plugin de skills de IA** curadas para turbinar seu desenvolvimento com Claude Code e Codex.
+Repositório central da Imersão de IA. Contém o **instalador do ambiente**, o **Caderno Founders** (base de conhecimento da turma) e um **plugin de skills** para Claude Code e Codex.
+
+**Aluno:** depois do setup, abra [`caderno/Comece aqui.md`](caderno/Comece%20aqui.md). É o manual da imersão — método, três dias, prompts, ondas, por que publicar.
 
 ## Comece aqui — escolha sua máquina
 
@@ -165,23 +167,23 @@ Plugins são um recurso do **Claude Code**. Para usar as mesmas skills no **Code
 curl -fsSL https://raw.githubusercontent.com/parisgroup-ai/imersao-ia-setup/main/scripts/sync-codex-skills.sh | bash
 ```
 
-## 4. Processo da Imersão (do PRD ao app)
+## 4. Processo da Imersão (o método da sala)
 
-O plugin traz um **pipeline guiado** que leva da ideia a um app **no ar**, em 4 fases sobre um motor autônomo (`/imersao:pg-imersao-goal`, com 2 gates humanos).
+O mapa que vale na turma:
 
-**👉 Comece por `/imersao:pg-imersao-start`** — a bússola mostra os 4 passos e diz qual é o próximo (sem executar por você; quem roda cada fase é o aluno, de propósito):
+```
+Dia 1  contexto   playbook → PRD com mapa de ondas
+Dia 2  geração    protótipo → onda 1 (MVP) funcionando
+Dia 3  entrega    validar → refinar → publicar
+```
 
-| Comando | Fase | O que faz |
-|---|---|---|
-| `/imersao:pg-imersao-start` | 👈 | **Comece aqui** — bússola dos 4 passos |
-| `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/plano-do-produto.md` (conversa guiada) |
-| `/imersao:pg-imersao-prototipo` | 2 | Plano → protótipo no **Design OS** público → export React + Tailwind |
-| `/imersao:pg-imersao-implementar` | 3 | Export + plano → app **Next.js + Tailwind + shadcn/ui + Drizzle + Postgres (Docker)** |
-| `/imersao:pg-imersao-publicar` | 4 | App → **no ar**: push pro GitHub + deploy no Railway |
+A onda 1 é o primeiro andar. O produto que você imaginou continua no plano (ondas 2+), na **mesma** pasta. Manual: **[caderno/Comece aqui.md](caderno/Comece%20aqui.md)**. Roteiro: **[docs/PROCESSO-IMERSAO.md](docs/PROCESSO-IMERSAO.md)**.
+
+**👉 Perdido no Claude?** `/imersao:pg-imersao-start` — a bússola diz o próximo passo, sem executar por você.
+
+Os comandos `/imersao:pg-imersao-prd` / `prototipo` / `implementar` / `publicar` são **atalho opcional** (o Claude conduz sem colar o prompt). Na sala, o aluno cola os prompts do caderno.
 
 > **Contas:** Claude Max **$200/mês** (obrigatório), **GitHub** (grátis) e **Railway** (Hobby **$5/mês**, exige cartão — dá pra testar o deploy no Trial grátis sem cartão) — crie antes de começar.
-
-Passo a passo completo (aluno + instrutor): **[docs/PROCESSO-IMERSAO.md](docs/PROCESSO-IMERSAO.md)**.
 
 ## 5. Gerenciar skills
 

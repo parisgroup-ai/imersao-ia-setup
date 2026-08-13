@@ -1,226 +1,177 @@
-# Processo da Imersão — da ideia ao app, de ponta a ponta
+# Processo da Imersão — o método da sala
 
-Este é o guia do fluxo que vamos usar na imersão: você sai de uma **ideia** e chega num
-**app funcionando**, com banco de dados, passando por um **plano do produto** e por um **protótipo**
-de design. Tudo guiado pelo Claude Code.
+Este é o mapa que vale na turma Founders AI. Você sai de uma **rotina real** e chega
+num **app funcionando**, com o produto completo desenhado em ondas — a onda 1 hoje,
+as outras na mesma pasta, depois.
 
-> Pré-requisito: ambiente core ok (Mac: instalador · Windows: [WINDOWS.md](./WINDOWS.md)) e **Orca** como meio de trabalho ([ORCA.md](./ORCA.md)).
-> e skills carregadas (`claude plugin update imersao` e reabrir o Claude Code).
-> Confira com `scripts/check.sh` (multi-OS).
-
-> **👉 Perdido? Rode `/imersao:pg-imersao-start`** a qualquer momento — a bússola te diz
-> em que passo você está e qual o próximo (sem fazer por você). É retomável: fechou tudo,
-> rodou de novo, ela reorienta.
+Perdido? Abra o **Caderno Founders**: [`caderno/Comece aqui.md`](../caderno/Comece%20aqui.md).
+No Claude, `/imersao:pg-imersao-start` aponta o próximo passo sem fazer por você.
 
 ---
 
-## Visão geral
+## Visão geral (três dias)
+
+```
+Dia 1  curso ToStudy → playbook → /brainstorming → PRD com mapa de ondas
+Dia 2  Design OS → /writing-plans → /executing-plans → onda 1 (MVP) funcionando
+Dia 3  validar → plano curto → /goal --plan → apresentar → publicar (se fizer sentido)
+```
+
+A frase que segura o Dia 2: **a onda 1 é o primeiro andar. O prédio que você
+imaginou continua no plano.**
+
+Detalhe das ondas: [`caderno/01-O-metodo/O mapa de ondas.md`](../caderno/01-O-metodo/O%20mapa%20de%20ondas.md).
+
+---
+
+## Pasta de trabalho
+
+```
+~/founders-ai/
+  playbook/          ← rotina real
+  projeto/           ← PRD, plano, app, provas
+  projeto-design/    ← Design OS (protótipo)
+```
+
+No Windows: essa árvore fica **dentro do Ubuntu/WSL**, nunca em `/mnt/c`.
+
+Uma pasta = um projeto. Depois da imersão você continua **nesta** pasta (onda 2)
+ou abre **outra** pasta para um produto novo. O método viaja.
+
+---
+
+## Dia 1 — contexto
+
+Curso: [Playbook Executável de Operação](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao).
+
+1. Ambiente ok (`scripts/check.sh`) e pasta aberta no Orca.
+2. Percorra os três módulos do curso aplicando no **seu** processo.
+3. Consolide com o Prompt 1 e valide o playbook com outra pessoa.
+4. `/brainstorming` (Prompt 2): três caminhos, **você** escolhe.
+5. Aprove `projeto/docs/PRD.md` com **mapa de ondas** (visão, onda 1, ondas 2+,
+   fora do escopo). Fora do escopo é só o que nunca vamos fazer.
+
+Não abra o Design OS. Não rode `/writing-plans`. Prompts: `caderno/06-Prompts/`.
+
+---
+
+## Dia 2 — geração (só a onda 1)
+
+1. Copie o PRD para o Design OS. Telas com selo `onda 1` ou `depois`.
+2. Monte o **mapa de telas** a partir do plano: toda tela da onda 1 vira tela
+   demonstrável; tela `depois` pode ficar só no mapa, com selo.
+3. Outra pessoa executa a tarefa principal. Exporte `product-plan/`.
+4. `/writing-plans` (Prompt 4): **primeiro a tabela de ondas**, depois as tarefas
+   da onda 1. Sem a tabela confirmada, o plano não vale.
+5. `/executing-plans` (Prompt 5): constrói **somente** a onda 1.
+6. Dado persiste. Integração real ou demonstração com selo. `docs/o-que-e-real.md`.
+
+Não use `/goal` para construir o MVP. Goal é do Dia 3, só para refinar.
+
+---
+
+## Dia 3 — teste, entrega e (se fizer sentido) o ar
+
+1. Uma pessoa usa o app. Você não ajuda no meio.
+2. Liste `agora` / `depois` / `não fazer`.
+3. Plano curto → `/goal --plan`. Não reconstrói o MVP.
+4. Regressão. Documento = interface.
+5. Apresentação honesta.
+
+### Por que publicar
+
+Sem o link, o produto morre quando o notebook fecha. Com o link: prova, uso real
+e manutenção (onda 2 não pede “instala de novo”). GitHub é o cartório. Railway
+é a loja. Push é a reposição.
+
+Guia: [`caderno/05-Guias/Por que publicar.md`](../caderno/05-Guias/Por%20que%20publicar.md).
+
+### Antes de publicar, a honestidade
+
+Nada sai do seu computador sem o quadro honesto: o Claude confere
+`docs/o-que-e-real.md`, checa se bate com o app e, se algo estiver em
+demonstração, pergunta — publicar assim (com selo), ativar a chave, ou segurar.
+
+Nunca publique senha, dado de cliente ou chave.
+
+---
+
+## Depois da sala
+
+- **Este app continua.** Mesma pasta, próxima onda.
+  [`caderno/08-Depois/Este projeto continua.md`](../caderno/08-Depois/Este%20projeto%20continua.md)
+- **Outro produto, outra pasta.** Mesmo ciclo.
+  [`caderno/08-Depois/Outro%20projeto,%20outra%20pasta.md`](../caderno/08-Depois/Outro%20projeto,%20outra%20pasta.md)
+- **30 dias.** Uso, uma melhoria, evidência.
+  [`caderno/08-Depois/Plano de 30 dias.md`](../caderno/08-Depois/Plano%20de%2030%20dias.md)
+
+---
+
+## Atalho opcional — os 4 comandos `/imersao:pg-imersao-*`
+
+Na sala o aluno **cola os prompts do caderno** (playbook → ondas → Superpowers).
+Os comandos abaixo são um **atalho**: o Claude conduz sem você colar o bloco.
+Eles **não substituem** o mapa dos três dias nem o mapa de ondas.
 
 ```
   IDEIA
     │
-    ▼   /imersao:pg-imersao-prd            (Fase 1 — conversa + pesquisa de mercado)
-  docs/plano-do-produto.md
+    ▼   /imersao:pg-imersao-prd
+  docs/plano-do-produto.md     (equivale ao PRD; inclua o mapa de ondas)
     │
-    ▼   /imersao:pg-imersao-prototipo      (Fase 2 — Design OS público)
-  protótipo vivo (localhost:3000)  →  export (React + Tailwind)
+    ▼   /imersao:pg-imersao-prototipo
+  protótipo vivo → export
     │
-    ▼   /imersao:pg-imersao-implementar    (Fase 3 — construir o app)
-  APP FUNCIONANDO  (Next.js + Postgres em Docker)
+    ▼   /imersao:pg-imersao-implementar
+  APP FUNCIONANDO  (onda 1)
     │
-    ▼   /imersao:pg-imersao-publicar       (Fase 4 — colocar no ar)
-  APP NO AR  (GitHub + Railway, link público)
+    ▼   /imersao:pg-imersao-publicar
+  APP NO AR
 
-        └── motor: /imersao:pg-imersao-goal (autônomo, 2 gates humanos) ──┘
+        └── motor interno: /imersao:pg-imersao-goal
+            (na sala, Goal só refina no Dia 3)
 ```
 
-São **4 comandos** (um por fase) rodando sobre **um motor** (`/imersao:pg-imersao-goal`) que
-dirige o trabalho sozinho e só para 2 vezes para você decidir.
+`/imersao:pg-imersao-start` é a bússola: mostra onde você está e o próximo passo.
+Não executa sozinha.
 
----
+Se o comando de protótipo falar em cobrir **todas as telas do plano**, leia
+“todas as telas da **onda 1** + as `depois` com selo”. O mapa de telas continua
+obrigatório. Tela futura vai para “Em aberto / futuro”, não some.
 
-## Estrutura de pastas — DOIS repositórios
+Stack do atalho: Next.js + Tailwind + shadcn/ui + Drizzle + Postgres em Docker.
+Por que Next.js: frontend + backend + banco num repositório só.
 
-Você vai ter duas pastas lado a lado:
-
-```
-~/www/
-  meu-projeto/            ← o APP de verdade. O plano do produto mora aqui. É aqui que o app é construído.
-  meu-projeto-design/     ← clone do Design OS. SÓ para prototipar. Roda em localhost:3000.
-```
-
-Manter separado evita misturar as dependências do Design OS com as do seu app.
-
----
-
-## Fase 1 — `/imersao:pg-imersao-prd` (ideia → plano do produto, com mercado)
-
-Dentro de `meu-projeto/`, rode:
-
-```
-/imersao:pg-imersao-prd "um app pra agendar consultas do meu salão"
-```
-
-(Ou rode numa pasta que **já tem um projeto**: ele detecta, pergunta, e **analisa o que já
-existe** pra sugerir o que dá pra construir ou melhorar.)
-
-O Claude faz três coisas: **(1)** entende sua ideia com poucas perguntas; **(2)**
-**pesquisa o mercado de verdade** — quem já faz parecido, se as pessoas pagam, e quanto dá
-pra economizar — e te dá um veredito honesto; **(3)** te mostra **2-3 caminhos** (direções)
-mais fortes e recomenda um, pra você escolher.
-
-🛑 **Escolha o caminho** e, no fim, **aprove o resumo**. Aí ele escreve dois arquivos:
-**`docs/plano-do-produto.md`** (a fonte da verdade) e **`docs/pesquisa-de-mercado.md`** (o
-que ele descobriu, com as fontes).
-
----
-
-## Fase 2 — `/imersao:pg-imersao-prototipo` (PRD → protótipo)
-
-Dentro do Claude do app, rode:
-
-```
-/imersao:pg-imersao-prototipo
-```
-
-O comando **faz o setup do Design OS sozinho** — clona o repositório público numa
-pasta irmã, instala as dependências, sobe o servidor em `http://localhost:3000` e abre
-no navegador. **Você não cola nenhum bloco de comandos.** (Se a porta 3000 estiver
-ocupada, ele te avisa e usa outra.)
-
-Depois do setup, **tudo acontece nesta mesma conversa** — você **não** abre um segundo
-Claude. O próprio Claude do app conduz o Design OS (desenha as telas na ordem: visão →
-roadmap → dados → tokens → shell → telas → dados de exemplo) e o navegador atualiza ao
-vivo. Você só vai conversando e pedindo o que quiser.
-
-**Nenhuma tela fica de fora:** o Claude monta um **mapa de telas** a partir do seu plano
-e confere, antes de exportar, que **cada tela do plano virou uma tela de verdade no
-protótipo** — se faltar alguma, ele desenha na hora (ou você diz que não precisa, e isso
-fica anotado no plano).
-
-🛑 **Gate 2 — revisar e ajustar.** Na **aba do navegador que o Claude abriu pra você**,
-veja o protótipo **vivo** e peça mudanças em **linguagem natural** ("aumenta o card",
-"tira esse campo").
-Ele re-desenha só as telas afetadas, ali na conversa. Quando estiver bom, peça pra
-**exportar** → o pacote (componentes React + Tailwind + specs) vai para
-`../meu-projeto-design/product-plan/` (e o zip `product-plan.zip`).
-
-> 💡 O **servidor** do Design OS roda destacado (não cai sozinho). O **design** acontece
-> nesta conversa do Claude do app — é com ele que você fala. Pra parar o servidor depois:
-> `kill $(cat ../meu-projeto-design/.dev-server.pid)`.
-
----
-
-## Fase 3 — `/imersao:pg-imersao-implementar` (export → app completo)
-
-De volta em `meu-projeto/`:
-
-```
-/imersao:pg-imersao-implementar
-```
-
-Isso dispara o motor `/imersao:pg-imersao-goal`, que monta o app a partir do protótipo + plano.
-
-**Antes de construir, a honestidade:** se o seu plano usa algo **de fora** (IA, pagamento,
-e-mail…), o Claude te avisa **antes** — pra IA, ele explica que precisa de uma **chave de
-API** (separada da assinatura do Claude; custa centavos por uso) e te dá a escolha: **criar
-a chave agora** (ele guia, ~5 min) ou seguir em **modo demonstração** (respostas de exemplo
-com um selo na tela; colar a chave depois vira real, sem mexer em código). Nada de
-funcionalidade fingida sem avisar.
-
-A **primeira tarefa** já sobe a base com **banco em Docker**:
-
-- **Next.js** (App Router, TypeScript) + **Tailwind** + **shadcn/ui**
-- **Drizzle ORM** + **Postgres 16 em Docker** (`docker-compose.yml`) + `.env`
-- primeira migration + rota `/api/health`
-- se o app usa **IA**: a integração real (ou a demonstração marcada) já nasce no formato certo
-
-```bash
-docker compose up -d     # sobe o Postgres
-npm run dev              # sobe o app
-```
-
-Depois ele porta os componentes, liga os dados e escreve testes — tarefa por tarefa. No
-fim, ele deixa um **`docs/o-que-e-real.md`** no projeto: o registro honesto do que está
-funcionando de verdade e do que está em demonstração (e o que falta pra ativar).
-
-🛑 **Gate final — integração.** No fim, você escolhe como fechar o trabalho (merge, PR
-ou segurar).
-
----
-
-## Fase 4 — `/imersao:pg-imersao-publicar` (app local → no ar)
-
-Com o app rodando no seu computador, é hora de **colocar no ar**:
-
-```
-/imersao:pg-imersao-publicar
-```
-
-**Antes de publicar, a honestidade:** nada sai do seu computador sem você ver o quadro
-honesto do app — o Claude confere o `docs/o-que-e-real.md` (recria, se não existir),
-checa se ele bate com a realidade e, se algo estiver em demonstração, pergunta: publicar
-assim mesmo (com o selo), ativar a chave agora, ou segurar. App 100% real passa direto.
-
-Duas partes: o Claude **guarda seu código no GitHub** (cria o repositório e dá push) e
-depois te **guia no Railway** (alguns cliques no navegador) — criar o projeto a partir do
-seu GitHub, adicionar um **Postgres na nuvem**, ligar o app ao banco (`DATABASE_URL`),
-rodar as migrations no deploy e **gerar o link público**.
-
-No fim você tem uma **URL** que qualquer pessoa abre. E daí pra frente é só `git push`: o
-Railway **republica sozinho** a cada mudança.
-
-> Pré-requisitos: conta no **GitHub** (autenticada com `gh auth login`) e no **Railway**
-> (Hobby **$5/mês**, exige cartão; Trial grátis sem cartão pra testar). O app precisa
-> **buildar** (`npm run build`).
-
----
-
-## Por que Next.js (e não Vite + React)?
-
-Porque o app tem **banco de dados**. O Next.js entrega **frontend + backend + acesso ao
-Postgres num repositório só** — o aluno mantém um modelo mental e um projeto. Vite +
-React é só frontend; para falar com o banco você teria que montar um backend separado,
-o que adiciona complexidade que não ajuda no objetivo da imersão.
-
----
-
-## O que esperar nos gates humanos
+### O que esperar nos gates (atalho)
 
 | Gate | Quando | O que você faz |
 |---|---|---|
-| Aprovar design | Fim da Fase 1 | Lê o resumo, aprova ou ajusta |
-| Revisar protótipo | Durante a Fase 2 | Olha a aba do navegador que abriu, pede mudanças em linguagem natural |
-| Integração final | Fim da Fase 3 | Escolhe merge / PR / segurar |
+| Aprovar o recorte | Fim do PRD | Confirma o mapa de ondas |
+| Revisar protótipo | Durante o desenho | Olha o navegador, pede mudanças em português |
+| Integração final | Fim da construção | Escolhe merge / PR / segurar |
 
----
+### Quando um teste teima em falhar
 
-## Quando um teste teima em falhar
+O Claude tenta 3 vezes. Depois **para e pede ajuda**. Isso é proposital.
 
-Na Fase 3, se um teste falhar, o Claude tenta corrigir sozinho (método de depuração
-sistemática). Depois de **3 tentativas** sem sucesso, ele **para e pede ajuda ao
-instrutor** — isso é proposital, para não entrar em loop. Instrutores: fiquem atentos a
-esse ponto de pausa.
-
----
-
-## Qual comando usar quando
-
-| Comando | Fase | Para quê |
-|---|---|---|
-| `/imersao:pg-imersao-prd` | 1 | Ideia → `docs/plano-do-produto.md` |
-| `/imersao:pg-imersao-prototipo` | 2 | Plano → protótipo no Design OS → export |
-| `/imersao:pg-imersao-implementar` | 3 | Export + plano → app funcionando |
-| `/imersao:pg-imersao-publicar` | 4 | App local → no ar (GitHub + Railway) |
-| `/imersao:pg-imersao-goal` | — | Dirigir um objetivo livre do início ao fim |
+| Comando | Para quê |
+|---|---|
+| `/imersao:pg-imersao-start` | Bússola |
+| `/imersao:pg-imersao-prd` | Ideia → `docs/plano-do-produto.md` |
+| `/imersao:pg-imersao-prototipo` | Plano → protótipo → export |
+| `/imersao:pg-imersao-implementar` | Export + plano → app (onda 1) |
+| `/imersao:pg-imersao-publicar` | App local → no ar |
+| `/imersao:pg-imersao-goal` | Motor interno; na sala, só Dia 3 com `--plan` |
 
 ---
 
 ## Nota de manutenção (para a organização)
 
-As skills-base de método (`brainstorming`, `writing-plans`, `executing-plans`,
+As skills-base (`brainstorming`, `writing-plans`, `executing-plans`,
 `finishing-a-development-branch`, `test-driven-development`, `systematic-debugging`,
-`subagent-driven-development`, `verification-before-completion`) são **vendorizadas** no
-plugin `imersao` (cópias limpas, sem acoplamento a ferramentas internas). Quando o
-upstream (superpowers) evoluir, faça um **re-sync manual** dessas pastas e rode
+`subagent-driven-development`, `verification-before-completion`) são vendorizadas
+no plugin `imersao`. Quando o upstream evoluir, re-sync e
 `bash scripts/validate-skills.sh`.
+
+O caderno do aluno é fonte da verdade pedagógica. Se o plugin e o caderno
+divergirem, o caderno da sala ganha.

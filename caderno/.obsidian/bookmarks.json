@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "type": "file",
+      "ctime": 1755100000000,
+      "path": "Comece aqui.md",
+      "title": "Comece aqui"
+    },
+    {
+      "type": "file",
+      "ctime": 1755100000001,
+      "path": "01-O-metodo/O mapa de ondas.md",
+      "title": "O mapa de ondas"
+    },
+    {
+      "type": "file",
+      "ctime": 1755100000004,
+      "path": "06-Prompts/Biblioteca de prompts.md",
+      "title": "Biblioteca de prompts"
+    },
+    {
+      "type": "file",
+      "ctime": 1755100000002,
+      "path": "02-Os-tres-dias/Mapa dos tres dias.md",
+      "title": "Mapa dos três dias"
+    },
+    {
+      "type": "file",
+      "ctime": 1755100000003,
+      "path": "09-Referencia/Glossario.md",
+      "title": "Glossário"
+    }
+  ]
+}

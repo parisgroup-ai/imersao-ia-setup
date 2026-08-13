@@ -104,23 +104,27 @@ Você **não precisa decorar comandos nem nomes de skill** — descreva o que qu
 
 ## 7. Construindo seu app de verdade (o projeto da imersão)
 
-O hello-world acima é só pra sentir o Claude Code. Pra construir o **app da imersão** —
-da ideia até um app funcionando, com banco de dados — existe um caminho guiado em **4
-passos**. No Orca:
+O hello-world acima é só pra sentir o Claude Code. O app da imersão segue o
+**método da sala** (3 dias): playbook → PRD com ondas → protótipo → onda 1 → validar
+→ no ar.
+
+Pasta da turma:
 
 ```bash
-mkdir ~/meu-app && cd ~/meu-app
+mkdir -p ~/founders-ai/{playbook,projeto,projeto-design}
+cd ~/founders-ai/projeto
 claude
 ```
 
-Dentro do Claude, rode a **bússola** (digite `/` e escolha na lista, não precisa decorar):
+Manual: [`caderno/Comece aqui.md`](../caderno/Comece%20aqui.md).
+
+Dentro do Claude, a **bússola** (digite `/` e escolha):
 
 ```text
 /imersao:pg-imersao-start
 ```
 
-Ela mostra os 4 passos (**definir → desenhar → construir → publicar**) e te diz exatamente o próximo
-— sem fazer por você (quem constrói é você, pra aprender a lógica). Roteiro completo:
+Ela mostra os 3 dias e o próximo passo — sem fazer por você. Roteiro:
 [PROCESSO-IMERSAO.md](./PROCESSO-IMERSAO.md).
 
 ## 8. Atualizando as skills depois

@@ -91,6 +91,8 @@ No Windows, se o browser não abrir sozinho, oriente abrir o arquivo/HTML pelo W
 
 ## Passo 6 — Onde achar ajuda
 
+- Caderno Founders: `caderno/Comece aqui.md` (manual da turma)
+- `docs/PROCESSO-IMERSAO.md` (método da sala)
 - `docs/ORCA.md` (ambiente padrão + celular)
 - `docs/PRIMEIROS-PASSOS.md`
 - `docs/WINDOWS.md` (Windows)
@@ -98,4 +100,6 @@ No Windows, se o browser não abrir sozinho, oriente abrir o arquivo/HTML pelo W
 - Re-checar: `check.sh` do Passo 1
 - Mentor da imersão
 
-Encerre reforçando: **trabalhe no Orca**, peça em português, e o pipeline da imersão começa com `/imersao:pg-imersao-start`.
+Encerre reforçando: **trabalhe no Orca**, peça em português, abra o caderno se
+perder o mapa, e a bússola é `/imersao:pg-imersao-start`. Uma pasta = um projeto.
+A onda 1 é o primeiro andar; o resto fica no plano.
