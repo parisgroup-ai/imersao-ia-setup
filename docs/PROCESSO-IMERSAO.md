@@ -42,7 +42,7 @@ ou abre **outra** pasta para um produto novo. O método viaja.
 
 ## Dia 1 — contexto
 
-Curso: [Playbook Executável de Operação](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao).
+Curso: [Manual de Operação com IA: do Que Você Sabe à Rotina Automática (antes: Playbook Executável de Operação)](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao).
 
 1. Ambiente ok (`scripts/check.sh`) e pasta aberta no Orca.
 2. Percorra os três módulos do curso aplicando no **seu** processo.
