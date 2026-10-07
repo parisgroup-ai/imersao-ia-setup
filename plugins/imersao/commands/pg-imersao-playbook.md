@@ -7,7 +7,9 @@ argument-hint: "<nome da rotina, se já souber>"
 
 O aluno **não cola prompt**. Você conduz. Uma pergunta por vez. Português simples.
 
-Curso do Dia 1: [Playbook Executável de Operação](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao)
+Curso do Dia 1: [Manual de Operação com IA: do Que Você Sabe à Rotina Automática (antes: Playbook Executável de Operação)](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao)
+
+No curso da ToStudy, a entrega se chama **Manual de Operação** (Ficha do Processo, Passo a Passo, Mapa de Decisões). Aqui na sala, o método do comando continua o mesmo: é o seu `playbook.md`.
 
 ## Pasta
 

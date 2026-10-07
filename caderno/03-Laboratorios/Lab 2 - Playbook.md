@@ -2,7 +2,7 @@
 
 **Dia:** 1.
 
-**Curso:** [Playbook Executável de Operação](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao)
+**Curso:** [Manual de Operação com IA: do Que Você Sabe à Rotina Automática (antes: Playbook Executável de Operação)](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao)
 
 ## Passos
 

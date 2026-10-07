@@ -31,6 +31,6 @@ Não traz dados de outros alunos, contratos, pagamentos ou materiais internos da
 
 ## Curso da imersão
 
-[Playbook Executável de Operação, Do Contexto à Automação](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao)
+[Manual de Operação com IA: do Que Você Sabe à Rotina Automática (antes: Playbook Executável de Operação)](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao)
 
 Paris Group · Founders AI · 2026

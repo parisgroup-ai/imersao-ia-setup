@@ -4,7 +4,7 @@ Onde você aprende o método do playbook.
 
 Site: [tostudy.ai](https://tostudy.ai)
 
-Curso da imersão: [Playbook Executável de Operação, Do Contexto à Automação](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao)
+Curso da imersão: [Manual de Operação com IA: do Que Você Sabe à Rotina Automática (antes: Playbook Executável de Operação)](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao)
 
 ## Analogia
 

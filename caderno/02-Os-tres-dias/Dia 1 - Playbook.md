@@ -4,7 +4,9 @@ O primeiro dia é a fundação. Começa nos fundamentos e termina com o ativo ma
 
 Protótipo e código começam no Dia 2. Hoje você aprende o caminho.
 
-Curso do dia: [Playbook Executável de Operação, Do Contexto à Automação](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao)
+Curso do dia: [Manual de Operação com IA: do Que Você Sabe à Rotina Automática (antes: Playbook Executável de Operação)](https://tostudy.ai/pt-BR/courses/playbook-executavel-de-operacao-do-contexto-a-automacao)
+
+No curso da ToStudy, a entrega se chama **Manual de Operação** (Ficha do Processo, Passo a Passo, Mapa de Decisões). Aqui na sala, o método do comando continua o mesmo: é o seu `playbook.md`.
 
 Mantenha o curso, o playbook e o Claude Code abertos. Cada bloco do curso precisa virar uma parte verificável do seu processo.
 

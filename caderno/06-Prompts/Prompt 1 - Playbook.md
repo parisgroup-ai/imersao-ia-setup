@@ -6,7 +6,7 @@ O aluno **não cola isto**. Ele fala **"vamos fazer o playbook"** ou escolhe
 Texto que o comando carrega (mentor / se o comando falhar):
 
 ```text
-Estou percorrendo o curso Playbook Executável de Operação, Do Contexto à Automação na ToStudy e quero aplicar cada bloco a uma rotina real do meu trabalho.
+Estou percorrendo o curso Manual de Operação com IA: do Que Você Sabe à Rotina Automática (antes: Playbook Executável de Operação) na ToStudy e quero aplicar cada bloco a uma rotina real do meu trabalho.
 
 Use somente:
 - o que eu relatar sobre meu processo;
