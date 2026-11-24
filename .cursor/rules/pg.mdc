@@ -1,0 +1,8 @@
+---
+description: Regras da Paris Group (fonte única: AGENTS.md)
+alwaysApply: true
+---
+<!-- gerado por pg-devkit regras; não edite: mude o AGENTS.md -->
+Leia e siga o `AGENTS.md` da raiz deste repo antes de qualquer tarefa. Ele é a fonte única das regras.
+
+@AGENTS.md
